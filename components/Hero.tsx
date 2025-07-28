@@ -1,23 +1,19 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { Spotlight } from "@/components/ui/spotlight";
 import FadeContent from "@/components/ui/fade-content";
-import CircularText from "@/components/ui/circular-text";
+import { Spotlight } from "@/components/ui/spotlight";
 import { TextTrail, TextTrailChar } from "@/components/ui/text-trail";
-import dynamic from "next/dynamic";
 import {
   ArrowDown,
+  ArrowRight,
+  Code2,
   Github,
   Linkedin,
   Mail,
   MapPin,
-  Coffee,
-  Code2,
-  ArrowRight,
 } from "lucide-react";
+import dynamic from "next/dynamic";
 
 // Dynamically import HeroBg with no SSR to prevent hydration mismatch
 const HeroBg = dynamic(() => import("@/components/ui/hero-bg"), {
