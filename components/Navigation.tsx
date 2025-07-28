@@ -71,10 +71,7 @@ export default function Navigation() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={() => {
-                console.log("Mobile menu clicked, current state:", isMenuOpen);
-                setIsMenuOpen(!isMenuOpen);
-              }}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="w-9 h-9 text-foreground/80 hover:text-foreground hover:bg-foreground/10 rounded-lg relative z-20"
             >
               {isMenuOpen ? (
