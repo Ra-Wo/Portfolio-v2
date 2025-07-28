@@ -53,7 +53,7 @@ export default function Hero() {
           hueShift={330}
           noiseIntensity={0}
           scanlineIntensity={0.1}
-          speed={2}
+          speed={0.4}
           scanlineFrequency={8}
           warpAmount={1}
           resolutionScale={1}
@@ -77,9 +77,9 @@ export default function Hero() {
       />
 
       {/* Floating Circular Text */}
-      <div className="absolute top-20 right-20 opacity-20 dark:opacity-10 hidden lg:block z-30">
+      <div className="absolute top-20 right-20 opacity-10 dark:opacity-20 hidden lg:block z-30">
         <DynamicCircularText
-          text="CREATIVE • DEVELOPER • DESIGNER • INNOVATOR • "
+          text="CREATIVE • DEVELOPER • INNOVATOR • DREAMER • BUILDER • CODER"
           radius={100}
           fontSize={12}
           spinDuration={30}
@@ -92,19 +92,19 @@ export default function Hero() {
           {/* Profile Avatar and Status */}
           <FadeContent direction="scale" delay={0.1}>
             <div className="mb-8 flex flex-col items-center">
-              <Avatar className="w-20 h-20 mb-4 ring-2 ring-purple-500/20 ring-offset-4 ring-offset-black">
+              {/* <Avatar className="w-20 h-20 mb-4 ring-2 ring-purple-500/20 ring-offset-4 ring-offset-black">
                 <AvatarFallback className="text-2xl font-bold bg-gradient-to-br from-purple-500 to-blue-600 text-white">
                   RO
                 </AvatarFallback>
-              </Avatar>
-              <Badge
+              </Avatar> */}
+              {/* <Badge
                 variant="success"
                 className="mb-4 bg-green-500/10 border-green-500/20 text-green-400"
               >
                 <div className="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></div>
                 <Coffee className="w-3 h-3 mr-1" />
                 Available for work
-              </Badge>
+              </Badge> */}
             </div>
           </FadeContent>
 
@@ -116,7 +116,7 @@ export default function Hero() {
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading text-white tracking-tight leading-tight">
                 Become emboldened by <br />
-                <span className="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
                   the flame of ambition
                 </span>
               </h1>
