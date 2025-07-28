@@ -91,12 +91,16 @@ export default function About() {
             >
               About Me
             </Badge>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 font-heading text-foreground">
-              <TextTrail delay={0.2} stagger={0.1}>
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight">
+              <TextTrail
+                delay={0.2}
+                stagger={0.1}
+                className="bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent"
+              >
                 Hey there, I'm Rachid Oudouch
               </TextTrail>
             </h2>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
               A passionate web developer from Morocco with an exhilarating
               journey into the world of coding. I'm excited to offer you a
               glimpse of my adventure in creating exceptional digital
@@ -110,10 +114,10 @@ export default function About() {
           <div className="space-y-8">
             <FadeContent direction="up" delay={0.2}>
               <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-foreground font-heading">
+                <h3 className="text-2xl font-bold text-foreground font-heading tracking-tight">
                   My Story
                 </h3>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
+                <div className="space-y-4 text-gray-300 leading-relaxed">
                   <p>
                     My journey into the world of coding has been an exhilarating
                     ride, starting with a simple curiosity about how websites
@@ -182,7 +186,7 @@ export default function About() {
           <div className="space-y-8">
             <FadeContent direction="up" delay={0.4}>
               <div>
-                <h3 className="text-2xl font-bold text-foreground font-heading mb-6">
+                <h3 className="text-2xl font-bold text-foreground font-heading mb-6 tracking-tight">
                   What Drives Me
                 </h3>
                 <div className="space-y-6">
@@ -195,10 +199,10 @@ export default function About() {
                         {value.icon}
                       </div>
                       <div className="space-y-2">
-                        <h4 className="text-lg font-semibold text-foreground">
+                        <h4 className="text-lg font-semibold text-foreground tracking-tight">
                           {value.title}
                         </h4>
-                        <p className="text-muted-foreground text-sm leading-relaxed">
+                        <p className="text-gray-300 text-sm leading-relaxed">
                           {value.description}
                         </p>
                       </div>
@@ -214,11 +218,11 @@ export default function About() {
                 <div className="space-y-4">
                   <div className="flex items-center gap-2">
                     <Rocket className="w-5 h-5 text-violet-400" />
-                    <h4 className="text-lg font-semibold text-foreground">
+                    <h4 className="text-lg font-semibold text-foreground tracking-tight">
                       Currently Exploring
                     </h4>
                   </div>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-gray-300 leading-relaxed">
                     I'm currently diving deep into advanced web development
                     patterns while strengthening my foundation in system
                     programming at 1337 School. Always excited to experiment

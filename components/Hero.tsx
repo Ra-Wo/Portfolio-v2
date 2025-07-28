@@ -42,7 +42,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black"
     >
       {/* WebGL Background */}
       <div className="absolute inset-0 w-full h-full z-0">
