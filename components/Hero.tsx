@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Spotlight } from "@/components/ui/spotlight";
 import FadeContent from "@/components/ui/fade-content";
 import CircularText from "@/components/ui/circular-text";
+import { TextTrail, TextTrailChar } from "@/components/ui/text-trail";
 import dynamic from "next/dynamic";
 import {
   ArrowDown,
@@ -115,10 +116,16 @@ export default function Hero() {
                 ✨ New Portfolio
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading text-white tracking-tight leading-tight">
-                Become emboldened by <br />
-                <span className="bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
-                  the flame of ambition
-                </span>
+                <TextTrail delay={0.3} stagger={0.15}>
+                  Ambition isn't optional.
+                </TextTrail>
+                <TextTrailChar
+                  delay={1.2}
+                  stagger={0.05}
+                  className="bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent"
+                >
+                  It's compiled into every build.
+                </TextTrailChar>
               </h1>
               <div className="flex items-center justify-center gap-2 text-lg sm:text-xl text-gray-400 mb-4 font-light">
                 <Code2 className="w-5 h-5 text-purple-400" />
