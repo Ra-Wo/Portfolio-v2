@@ -13,6 +13,7 @@ const config: Config = {
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         heading: ["var(--font-poppins)", "system-ui", "sans-serif"],
         mono: ["var(--font-jetbrains-mono)", "Fira Code", "monospace"],
+        pacifico: ["var(--font-pacifico)", "cursive"],
       },
       colors: {
         background: "hsl(var(--background))",

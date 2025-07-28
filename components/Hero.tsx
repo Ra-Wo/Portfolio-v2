@@ -19,7 +19,7 @@ import dynamic from "next/dynamic";
 const HeroBg = dynamic(() => import("@/components/ui/hero-bg"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full bg-gradient-to-br from-purple-900/20 via-black to-blue-900/20" />
+    <div className="w-full h-full bg-gradient-to-br from-purple-900/20 via-gray-900 to-blue-900/20" />
   ),
 });
 
@@ -42,7 +42,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-black"
+      className="min-h-screen flex items-center justify-center relative overflow-hidden bg-background"
     >
       {/* WebGL Background */}
       <div className="absolute inset-0 w-full h-full z-0">
@@ -74,7 +74,7 @@ export default function Hero() {
       />
 
       {/* Floating Circular Text */}
-      <div className="absolute top-20 right-20 opacity-10 dark:opacity-20 hidden lg:block z-30">
+      <div className="absolute top-20 right-20 opacity-20 hidden lg:block z-30">
         <DynamicCircularText
           text="CREATIVE • DEVELOPER • INNOVATOR • DREAMER • BUILDER • CODER"
           radius={100}
@@ -111,7 +111,7 @@ export default function Hero() {
               <div className="inline-flex items-center px-4 py-2 bg-purple-500/10 border border-purple-500/20 rounded-full text-sm text-purple-300 mb-6">
                 ✨ New Portfolio
               </div>
-              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading text-white tracking-tight leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading text-foreground tracking-tight leading-tight">
                 <TextTrail delay={0.3} stagger={0.15}>
                   Ambition isn't optional.
                 </TextTrail>
