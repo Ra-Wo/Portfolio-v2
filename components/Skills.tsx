@@ -14,6 +14,22 @@ import {
   Zap,
   Rocket,
   Coffee,
+  Terminal,
+  Braces,
+  FileCode,
+  Atom,
+  Monitor,
+  Palette,
+  Database,
+  GitBranch,
+  Package,
+  Settings,
+  Workflow,
+  Cloud,
+  Gamepad2,
+  Box,
+  Store,
+  Archive,
 } from "lucide-react";
 
 export default function Skills() {
@@ -23,23 +39,26 @@ export default function Skills() {
       title: "Programming Languages",
       description: "Core languages for system and web development",
       skills: [
-        { name: "C", level: "Advanced" },
-        { name: "C++", level: "Advanced" },
-        { name: "JavaScript", level: "Expert" },
-        { name: "TypeScript", level: "Expert" },
-        { name: "Python", level: "Intermediate" },
+        { name: "C", icon: <Terminal className="w-4 h-4" /> },
+        { name: "C++", icon: <Terminal className="w-4 h-4" /> },
+        { name: "JavaScript", icon: <Braces className="w-4 h-4" /> },
+        { name: "TypeScript", icon: <FileCode className="w-4 h-4" /> },
+        { name: "Kotlin", icon: <Code2 className="w-4 h-4" /> },
       ],
     },
     {
       icon: <Globe className="w-6 h-6" />,
       title: "Frontend Development",
-      description: "Modern web technologies and frameworks",
+      description: "Modern web and mobile technologies",
       skills: [
-        { name: "React", level: "Expert" },
-        { name: "Next.js", level: "Expert" },
-        { name: "HTML5", level: "Expert" },
-        { name: "CSS3", level: "Expert" },
-        { name: "Tailwind CSS", level: "Expert" },
+        { name: "React", icon: <Atom className="w-4 h-4" /> },
+        { name: "Next.js", icon: <Rocket className="w-4 h-4" /> },
+        { name: "React Native", icon: <Smartphone className="w-4 h-4" /> },
+        { name: "Redux", icon: <Store className="w-4 h-4" /> },
+        { name: "Zustand", icon: <Archive className="w-4 h-4" /> },
+        { name: "HTML5", icon: <Globe className="w-4 h-4" /> },
+        { name: "CSS3", icon: <Palette className="w-4 h-4" /> },
+        { name: "Tailwind CSS", icon: <Palette className="w-4 h-4" /> },
       ],
     },
     {
@@ -47,11 +66,13 @@ export default function Skills() {
       title: "Backend & Database",
       description: "Server-side technologies and data management",
       skills: [
-        { name: "Node.js", level: "Advanced" },
-        { name: "Express.js", level: "Advanced" },
-        { name: "MongoDB", level: "Intermediate" },
-        { name: "PostgreSQL", level: "Intermediate" },
-        { name: "REST APIs", level: "Advanced" },
+        { name: "Node.js", icon: <Server className="w-4 h-4" /> },
+        { name: "Express.js", icon: <Zap className="w-4 h-4" /> },
+        { name: "NestJS", icon: <Layers className="w-4 h-4" /> },
+        { name: "MongoDB", icon: <Database className="w-4 h-4" /> },
+        { name: "PostgreSQL", icon: <Database className="w-4 h-4" /> },
+        { name: "SQL", icon: <Database className="w-4 h-4" /> },
+        { name: "REST APIs", icon: <Workflow className="w-4 h-4" /> },
       ],
     },
     {
@@ -59,11 +80,13 @@ export default function Skills() {
       title: "Tools & Technologies",
       description: "Development tools and modern workflows",
       skills: [
-        { name: "Git", level: "Expert" },
-        { name: "Docker", level: "Intermediate" },
-        { name: "VS Code", level: "Expert" },
-        { name: "Webpack", level: "Advanced" },
-        { name: "Vercel", level: "Advanced" },
+        { name: "Git", icon: <GitBranch className="w-4 h-4" /> },
+        { name: "Docker", icon: <Package className="w-4 h-4" /> },
+        { name: "VS Code", icon: <Monitor className="w-4 h-4" /> },
+        { name: "Figma", icon: <Palette className="w-4 h-4" /> },
+        { name: "Unity Engine", icon: <Gamepad2 className="w-4 h-4" /> },
+        { name: "Blender", icon: <Box className="w-4 h-4" /> },
+        { name: "Vercel", icon: <Cloud className="w-4 h-4" /> },
       ],
     },
   ];
@@ -183,21 +206,22 @@ export default function Skills() {
                   </div>
 
                   {/* Skills List */}
-                  <div className="space-y-3">
+                  <div className="flex flex-wrap gap-2">
                     {category.skills.map((skill, skillIndex) => (
                       <div
                         key={skillIndex}
-                        className="flex justify-between items-center"
+                        className="group relative overflow-hidden rounded-lg bg-violet-500/5 border border-violet-500/10 px-3 py-2 hover:bg-violet-500/10 hover:border-violet-500/20 transition-all duration-300 cursor-default"
                       >
-                        <span className="text-foreground font-medium">
-                          {skill.name}
-                        </span>
-                        <Badge
-                          variant="secondary"
-                          className="bg-violet-500/10 text-violet-300 border-violet-500/20 text-xs"
-                        >
-                          {skill.level}
-                        </Badge>
+                        <div className="flex items-center gap-2">
+                          <div className="text-violet-400 group-hover:text-violet-300 group-hover:scale-110 transition-all duration-300">
+                            {skill.icon}
+                          </div>
+                          <span className="text-foreground font-medium group-hover:text-violet-300 transition-colors duration-300 text-sm">
+                            {skill.name}
+                          </span>
+                        </div>
+                        {/* Subtle glow effect on hover */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-violet-600/0 via-violet-600/5 to-purple-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
                       </div>
                     ))}
                   </div>
@@ -219,15 +243,15 @@ export default function Skills() {
               </div>
               <p className="text-gray-300 leading-relaxed max-w-3xl mx-auto">
                 Always pushing boundaries and staying ahead of the curve.
-                Currently diving deeper into advanced algorithms at 1337 School
-                while exploring modern web technologies and AI integration.
+                Currently diving deeper into advanced programming concepts while
+                exploring modern web technologies and AI integration.
               </p>
               <div className="flex flex-wrap justify-center gap-2 pt-2">
                 <Badge
                   variant="secondary"
                   className="bg-violet-500/10 text-violet-300 border-violet-500/20"
                 >
-                  Advanced Algorithms
+                  Unity
                 </Badge>
                 <Badge
                   variant="secondary"

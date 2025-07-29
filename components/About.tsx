@@ -21,49 +21,49 @@ export default function About() {
     {
       icon: <Code2 className="w-5 h-5" />,
       title: "1337 School",
-      description: "42 Network Student",
+      description: "1.5 Years of Study",
     },
     {
       icon: <Rocket className="w-5 h-5" />,
-      title: "Multiple Projects",
-      description: "Diverse Portfolio",
+      title: "3.5 Years",
+      description: "Combined Experience",
     },
     {
       icon: <Users className="w-5 h-5" />,
-      title: "Client Success",
-      description: "5-Star Reviews",
+      title: "3 Companies",
+      description: "Full-Stack Developer",
     },
     {
       icon: <Coffee className="w-5 h-5" />,
-      title: "Morocco",
-      description: "Based in Morocco",
+      title: "Recent",
+      description: "Open Development & Education Ltd.",
     },
   ];
 
   const values = [
     {
       icon: <Brain className="w-6 h-6 text-violet-400" />,
-      title: "Problem Solver",
+      title: "Professional Experience",
       description:
-        "I approach challenges with analytical thinking and creative solutions, turning complex algorithms and data structures into elegant, efficient code.",
+        "Recently completed a Full-Stack Developer role with proven experience across multiple companies, delivering high-quality web applications.",
     },
     {
       icon: <Lightbulb className="w-6 h-6 text-violet-400" />,
-      title: "Full-Stack Focus",
+      title: "Continuous Growth",
       description:
-        "From low-level programming with C/C++ to modern web development with JavaScript and TypeScript, I bridge the gap between system programming and web technologies.",
+        "From internship to full-time roles, I've consistently evolved my skills and taken on greater responsibilities in each position.",
     },
     {
       icon: <Target className="w-6 h-6 text-violet-400" />,
-      title: "Quality Driven",
+      title: "Full-Stack Expertise",
       description:
-        "Committed to writing clean, maintainable code with attention to detail. My clients consistently provide 5-star reviews for my communication and expertise.",
+        "Specialized in Next.js for frontend and NestJS for backend development, delivering end-to-end solutions with modern full-stack practices.",
     },
     {
       icon: <BookOpen className="w-6 h-6 text-violet-400" />,
-      title: "42 Network Student",
+      title: "Strong Foundation",
       description:
-        "Currently studying at 1337 Coding School (42 Network), where I'm devoted to refining my craft through peer-to-peer learning and challenging projects.",
+        "Currently studying at 1337 Coding School, building solid programming fundamentals that complement my professional development experience.",
     },
   ];
 
@@ -119,39 +119,49 @@ export default function About() {
                 </h3>
                 <div className="space-y-4 text-gray-300 leading-relaxed">
                   <p>
-                    My journey into the world of coding has been an exhilarating
-                    ride, starting with a simple curiosity about how websites
-                    work. What began as tinkering with HTML and CSS has evolved
-                    into a passion for creating sophisticated web applications
-                    that solve real-world problems.
+                    My journey into full-stack development began at
+                    <span className="text-violet-400 font-semibold">
+                      {" "}
+                      1337 Coding School
+                    </span>
+                    , where I've been developing a strong foundation in
+                    programming fundamentals for 1.5 years. This intensive
+                    education, combined with almost 2 years of professional
+                    experience, has given me a comprehensive understanding of
+                    both theoretical concepts and real-world application.
                   </p>
                   <p>
-                    Armed with a versatile toolkit of skills, I thrive in
-                    languages like
-                    <span className="text-violet-400 font-semibold"> C</span>,
-                    <span className="text-violet-400 font-semibold"> C++</span>,
+                    Recently completed my role as a
                     <span className="text-violet-400 font-semibold">
                       {" "}
-                      JavaScript
-                    </span>
-                    , and
+                      Full-Stack Developer
+                    </span>{" "}
+                    at
                     <span className="text-violet-400 font-semibold">
                       {" "}
-                      TypeScript
-                    </span>
-                    . My educational voyage has steered me to the esteemed
+                      Open Development and Education Ltd.
+                    </span>{" "}
+                    (May 2024 - July 2025), where I gained valuable experience
+                    building robust web applications over almost 2 years. I
+                    worked extensively with
                     <span className="text-violet-400 font-semibold">
                       {" "}
-                      1337 Coding School (42 Network)
-                    </span>
-                    , where I'm devoted to refining my craft.
+                      Next.js
+                    </span>{" "}
+                    for frontend development and
+                    <span className="text-violet-400 font-semibold">
+                      {" "}
+                      NestJS
+                    </span>{" "}
+                    for backend services, delivering complete full-stack
+                    solutions.
                   </p>
                   <p>
-                    I've been fortunate to work with diverse clients, from Jacob
-                    Gundersen on Upwork to real-world clients like Ayoub
-                    Kremcht, each providing excellent feedback and contributing
-                    to my growth. Every project has been a learning opportunity,
-                    pushing me to grow and diversify my skill set.
+                    My professional journey includes internship and full-time
+                    experience at Open Development and Education Ltd., where
+                    I've consistently delivered high-quality solutions and
+                    contributed to meaningful projects, developing expertise in
+                    modern full-stack development practices.
                   </p>
                 </div>
               </div>
@@ -224,10 +234,11 @@ export default function About() {
                   </div>
                   <p className="text-gray-300 leading-relaxed">
                     I'm currently diving deep into advanced web development
-                    patterns while strengthening my foundation in system
-                    programming at 1337 School. Always excited to experiment
-                    with emerging technologies that bridge low-level programming
-                    concepts with modern web development.
+                    patterns while continuing my studies at 1337 School. My
+                    recent experience with Next.js and NestJS has given me a
+                    solid understanding of modern full-stack architecture, and
+                    I'm always excited to experiment with emerging technologies
+                    that bridge different development paradigms.
                   </p>
                   <div className="flex flex-wrap gap-2 pt-2">
                     <Badge
@@ -252,7 +263,13 @@ export default function About() {
                       variant="secondary"
                       className="bg-violet-500/10 text-violet-300 border-violet-500/20"
                     >
-                      React/Next.js
+                      Next.js
+                    </Badge>
+                    <Badge
+                      variant="secondary"
+                      className="bg-violet-500/10 text-violet-300 border-violet-500/20"
+                    >
+                      NestJS
                     </Badge>
                     <Badge
                       variant="secondary"

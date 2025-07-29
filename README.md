@@ -1,6 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Rachid Oudouch - Portfolio
 
-## Getting Started
+A modern, responsive portfolio website built with Next.js 15, showcasing my journey as a Full-Stack Developer. Features a dark theme with purple accents, glass morphism effects, and smooth animations.
+
+## 🚀 Tech Stack
+
+- **Framework**: Next.js 15 with App Router
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS 4 with custom design system
+- **UI Components**: shadcn/ui with custom modifications
+- **Icons**: Lucide React
+- **Animations**: Framer Motion and custom CSS animations
+- **Fonts**: Inter (sans), Poppins (heading), JetBrains Mono (mono), Pacifico (logo)
+
+## 🎨 Design Features
+
+- **Dark Theme Only**: Consistent dark aesthetic throughout
+- **Purple/Violet Accents**: Custom gradient color scheme
+- **Glass Morphism**: Modern glassmorphism effects for navigation
+- **Responsive Design**: Mobile-first approach with seamless desktop scaling
+- **Smooth Animations**: Interactive hover effects and scroll animations
+- **WebGL Background**: Dynamic visual elements
+
+## 📋 Sections
+
+- **Hero**: Dynamic introduction with animated text trails
+- **About**: Professional journey and core values
+- **Skills**: Interactive technology showcase with icons
+- **Navigation**: Glass morphism navbar with smooth scroll
+
+## 🛠 Getting Started
 
 First, run the development server:
 
@@ -18,19 +46,49 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📞 Contact
 
-## Learn More
+- **Portfolio**: [Your Portfolio URL]
+- **LinkedIn**: [Your LinkedIn Profile]
+- **GitHub**: [Your GitHub Profile]
+- **Email**: [Your Email]
 
-To learn more about Next.js, take a look at the following resources:
+## 🏗 Project Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+├── app/
+│   ├── globals.css          # Global styles and CSS variables
+│   ├── layout.tsx           # Root layout with fonts and theme
+│   └── page.tsx             # Main page component
+├── components/
+│   ├── ui/                  # shadcn/ui components and custom UI primitives
+│   ├── About.tsx            # About section component
+│   ├── Hero.tsx             # Hero section with animations
+│   ├── Navigation.tsx       # Main navigation with mobile menu
+│   └── Skills.tsx           # Skills showcase component
+└── lib/
+    └── utils.ts             # Utility functions
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 🎯 Features
 
-## Deploy on Vercel
+- **Performance Optimized**: Dynamic imports for heavy components
+- **Accessibility First**: Semantic HTML, ARIA labels, keyboard navigation
+- **Mobile Responsive**: Touch-friendly interface with proper breakpoints
+- **SEO Ready**: Optimized meta tags and semantic structure
+- **Type Safe**: Full TypeScript coverage with strict mode
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📱 Browser Support
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## 🤝 Contributing
+
+This is a personal portfolio project. If you'd like to use this template for your own portfolio, feel free to fork and customize it!
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
