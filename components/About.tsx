@@ -17,56 +17,6 @@ import {
 } from "lucide-react";
 
 export default function About() {
-  const achievements = [
-    {
-      icon: <Code2 className="w-5 h-5" />,
-      title: "1337 School",
-      description: "1.5 Years of Study",
-    },
-    {
-      icon: <Rocket className="w-5 h-5" />,
-      title: "3.5 Years",
-      description: "Combined Experience",
-    },
-    {
-      icon: <Users className="w-5 h-5" />,
-      title: "3 Companies",
-      description: "Full-Stack Developer",
-    },
-    {
-      icon: <Coffee className="w-5 h-5" />,
-      title: "Recent",
-      description: "Open Development & Education Ltd.",
-    },
-  ];
-
-  const values = [
-    {
-      icon: <Brain className="w-6 h-6 text-violet-400" />,
-      title: "Professional Experience",
-      description:
-        "Recently completed a Full-Stack Developer role with proven experience across multiple companies, delivering high-quality web applications.",
-    },
-    {
-      icon: <Lightbulb className="w-6 h-6 text-violet-400" />,
-      title: "Continuous Growth",
-      description:
-        "From internship to full-time roles, I've consistently evolved my skills and taken on greater responsibilities in each position.",
-    },
-    {
-      icon: <Target className="w-6 h-6 text-violet-400" />,
-      title: "Full-Stack Expertise",
-      description:
-        "Specialized in Next.js for frontend and NestJS for backend development, delivering end-to-end solutions with modern full-stack practices.",
-    },
-    {
-      icon: <BookOpen className="w-6 h-6 text-violet-400" />,
-      title: "Strong Foundation",
-      description:
-        "Currently studying at 1337 Coding School, building solid programming fundamentals that complement my professional development experience.",
-    },
-  ];
-
   return (
     <section
       id="about"
@@ -166,62 +116,10 @@ export default function About() {
                 </div>
               </div>
             </FadeContent>
-
-            {/* Achievements */}
-            <FadeContent direction="up" delay={0.3}>
-              <div className="grid grid-cols-2 gap-4">
-                {achievements.map((achievement, index) => (
-                  <Card
-                    key={index}
-                    className="p-4 bg-card/50 border-violet-500/20 hover:bg-card/70 transition-colors duration-200 group"
-                  >
-                    <div className="flex flex-col items-center text-center space-y-2">
-                      <div className="text-violet-400 group-hover:text-violet-300 transition-colors duration-200">
-                        {achievement.icon}
-                      </div>
-                      <div className="text-lg font-bold text-foreground">
-                        {achievement.title}
-                      </div>
-                      <div className="text-sm text-muted-foreground">
-                        {achievement.description}
-                      </div>
-                    </div>
-                  </Card>
-                ))}
-              </div>
-            </FadeContent>
           </div>
 
-          {/* Right Column - Values & Approach */}
+          {/* Right Column - Current Focus */}
           <div className="space-y-8">
-            <FadeContent direction="up" delay={0.4}>
-              <div>
-                <h3 className="text-2xl font-bold text-foreground font-heading mb-6 tracking-tight">
-                  What Drives Me
-                </h3>
-                <div className="space-y-6">
-                  {values.map((value, index) => (
-                    <div
-                      key={index}
-                      className="flex gap-4 p-4 rounded-lg hover:bg-card/30 transition-colors duration-200 group"
-                    >
-                      <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center group-hover:bg-violet-500/20 transition-colors duration-200">
-                        {value.icon}
-                      </div>
-                      <div className="space-y-2">
-                        <h4 className="text-lg font-semibold text-foreground tracking-tight">
-                          {value.title}
-                        </h4>
-                        <p className="text-gray-300 text-sm leading-relaxed">
-                          {value.description}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </FadeContent>
-
             {/* Current Focus */}
             <FadeContent direction="up" delay={0.5}>
               <Card className="p-6 bg-gradient-to-br from-violet-500/5 via-purple-500/5 to-violet-500/5 border-violet-500/20">

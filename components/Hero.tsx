@@ -56,10 +56,8 @@ export default function Hero() {
           resolutionScale={1}
         />
       </div>
-
       {/* Dark overlay for better text readability */}
       <div className="absolute inset-0 bg-black/40 z-10"></div>
-
       <Spotlight
         className="-top-40 -right-10 md:-right-32 md:-top-20 h-screen z-20"
         fill="blue"
@@ -72,8 +70,7 @@ export default function Hero() {
         className="top-28 left-80 h-[80vh] w-[50vw] z-20"
         fill="blue"
       />
-
-      {/* Floating Circular Text */}
+      {/* Floating Circular Text
       <div className="absolute top-20 right-20 opacity-20 hidden lg:block z-30">
         <DynamicCircularText
           text="CREATIVE • DEVELOPER • INNOVATOR • DREAMER • BUILDER • CODER"
@@ -82,8 +79,7 @@ export default function Hero() {
           spinDuration={30}
           onHover="speedUp"
         />
-      </div>
-
+      </div> */}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-30">
         <div className="text-center">
           {/* Profile Avatar and Status */}
@@ -113,14 +109,14 @@ export default function Hero() {
               </div>
               <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading text-foreground tracking-tight leading-tight">
                 <TextTrail delay={0.3} stagger={0.15}>
-                  Ambition isn't optional.
+                  Code is poetry.
                 </TextTrail>
                 <TextTrailChar
                   delay={1.2}
                   stagger={0.05}
                   className="bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent"
                 >
-                  It's compiled into every build.
+                  Every function tells a story.
                 </TextTrailChar>
               </h1>
               <div className="flex items-center justify-center gap-2 text-lg sm:text-xl text-gray-400 mb-4 font-light">

@@ -92,29 +92,29 @@ export default function Skills() {
     },
   ];
 
-  const highlights = [
-    {
-      icon: <Layers className="w-5 h-5 text-violet-400" />,
-      title: "Full-Stack",
-      description: "End-to-end development",
-    },
-    {
-      icon: <Smartphone className="w-5 h-5 text-violet-400" />,
-      title: "Responsive",
-      description: "Mobile-first design",
-    },
+  // const highlights = [
+  //   {
+  //     icon: <Layers className="w-5 h-5 text-violet-400" />,
+  //     title: "Full-Stack",
+  //     description: "End-to-end development",
+  //   },
+  //   {
+  //     icon: <Smartphone className="w-5 h-5 text-violet-400" />,
+  //     title: "Responsive",
+  //     description: "Mobile-first design",
+  //   },
 
-    {
-      icon: <Globe className="w-5 h-5 text-violet-400" />,
-      title: "Modern Web",
-      description: "React & Next.js",
-    },
-    {
-      icon: <Rocket className="w-5 h-5 text-violet-400" />,
-      title: "Performance",
-      description: "Optimized solutions",
-    },
-  ];
+  //   {
+  //     icon: <Globe className="w-5 h-5 text-violet-400" />,
+  //     title: "Modern Web",
+  //     description: "React & Next.js",
+  //   },
+  //   {
+  //     icon: <Rocket className="w-5 h-5 text-violet-400" />,
+  //     title: "Performance",
+  //     description: "Optimized solutions",
+  //   },
+  // ];
 
   return (
     <section
@@ -158,7 +158,7 @@ export default function Skills() {
         </FadeContent>
 
         {/* Skills Highlights */}
-        <FadeContent direction="up" delay={0.2}>
+        {/* <FadeContent direction="up" delay={0.2}>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
             {highlights.map((highlight, index) => (
               <Card
@@ -179,7 +179,7 @@ export default function Skills() {
               </Card>
             ))}
           </div>
-        </FadeContent>
+        </FadeContent> */}
 
         {/* Skills Categories */}
         <div className="grid md:grid-cols-2 gap-8">
