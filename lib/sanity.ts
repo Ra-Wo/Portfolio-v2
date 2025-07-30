@@ -1,0 +1,63 @@
+import { createClient } from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
+
+export const client = createClient({
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "your-project-id",
+  dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
+  apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2025-07-29",
+  useCdn: false, // Set to true for production
+});
+
+const builder = imageUrlBuilder(client);
+
+export function urlFor(source: any) {
+  return builder.image(source);
+}
+
+// Types for our projects
+export interface Project {
+  _id: string;
+  title: string;
+  slug: {
+    current: string;
+  };
+  description: string;
+  image: {
+    asset: {
+      _ref: string;
+    };
+    alt?: string;
+  };
+  technologies: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+  featured: boolean;
+  order: number;
+}
+
+// GROQ queries
+export const projectsQuery = `*[_type == "project"] | order(order asc) {
+  _id,
+  title,
+  slug,
+  description,
+  image,
+  technologies,
+  liveUrl,
+  githubUrl,
+  featured,
+  order
+}`;
+
+export const featuredProjectsQuery = `*[_type == "project" && featured == true] | order(order asc) {
+  _id,
+  title,
+  slug,
+  description,
+  image,
+  technologies,
+  liveUrl,
+  githubUrl,
+  featured,
+  order
+}`;

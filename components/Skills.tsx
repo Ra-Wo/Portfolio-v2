@@ -82,6 +82,7 @@ export default function Skills() {
       skills: [
         { name: "Git", icon: <GitBranch className="w-4 h-4" /> },
         { name: "Docker", icon: <Package className="w-4 h-4" /> },
+        { name: "Zod", icon: <Settings className="w-4 h-4" /> },
         { name: "VS Code", icon: <Monitor className="w-4 h-4" /> },
         { name: "Figma", icon: <Palette className="w-4 h-4" /> },
         { name: "Unity Engine", icon: <Gamepad2 className="w-4 h-4" /> },
