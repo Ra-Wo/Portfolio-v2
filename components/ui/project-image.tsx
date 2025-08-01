@@ -1,0 +1,72 @@
+import Image from "next/image";
+import { urlFor } from "@/lib/sanity";
+
+interface ProjectImageProps {
+  image: any;
+  alt: string;
+  title: string;
+  width?: number;
+  height?: number;
+  className?: string;
+  objectFit?: "cover" | "contain";
+  priority?: boolean;
+}
+
+export default function ProjectImage({
+  image,
+  alt,
+  title,
+  width = 1200,
+  height = 675,
+  className = "",
+  objectFit = "contain",
+  priority = false,
+}: ProjectImageProps) {
+  // Helper function to safely get image URL
+  const getImageUrl = () => {
+    try {
+      if (image?.asset?._ref && !image.asset._ref.startsWith("mock-image")) {
+        return urlFor(image).width(width).height(height).url();
+      }
+      return null;
+    } catch (err) {
+      console.error("Error generating image URL:", err);
+      return null;
+    }
+  };
+
+  const imageUrl = getImageUrl();
+
+  if (imageUrl) {
+    return (
+      <div className={`relative overflow-hidden bg-black/20 ${className}`}>
+        <Image
+          src={imageUrl}
+          alt={alt || title}
+          fill
+          unoptimized
+          priority={priority}
+          className={`${
+            objectFit === "cover" ? "object-cover" : "object-contain"
+          } transition-transform duration-300`}
+          style={{
+            objectPosition: "center",
+          }}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+        />
+      </div>
+    );
+  }
+
+  // Fallback placeholder
+  return (
+    <div
+      className={`bg-gradient-to-br from-violet-900/50 to-purple-900/50 flex items-center justify-center ${className}`}
+    >
+      <div className="text-center text-violet-300">
+        <div className="text-6xl mb-4">🚀</div>
+        <p className="text-sm opacity-70">Project Image</p>
+      </div>
+    </div>
+  );
+}

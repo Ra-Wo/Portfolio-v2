@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import FadeContent from "@/components/ui/fade-content";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TextTrail } from "@/components/ui/text-trail";
+import ProjectImage from "@/components/ui/project-image";
 import { ExternalLink, Github, Loader2 } from "lucide-react";
 import { client, urlFor, projectsQuery, type Project } from "@/lib/sanity";
 
@@ -56,11 +58,32 @@ export default function Projects() {
       slug: { current: "ecommerce-platform" },
       description:
         "A full-stack e-commerce platform built with Next.js and NestJS, featuring user authentication, payment processing, and admin dashboard.",
+      content: [],
       image: {
         asset: { _ref: "mock-image-1" },
         alt: "E-Commerce Platform",
       },
+      gallery: [],
       technologies: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Stripe"],
+      category: "web-app",
+      status: "completed",
+      duration: "3 months",
+      teamSize: "Solo project",
+      challenges: [
+        "Implementing secure payment processing",
+        "Building scalable user authentication",
+        "Optimizing database performance",
+      ],
+      solutions: [
+        "Integrated Stripe for secure payments",
+        "Used JWT with refresh tokens",
+        "Implemented database indexing and caching",
+      ],
+      learnings: [
+        "Advanced TypeScript patterns",
+        "Microservices architecture",
+        "Payment gateway integration",
+      ],
       liveUrl: "https://example.com",
       githubUrl: "https://github.com/username/project",
       featured: true,
@@ -72,11 +95,32 @@ export default function Projects() {
       slug: { current: "task-management" },
       description:
         "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+      content: [],
       image: {
         asset: { _ref: "mock-image-2" },
         alt: "Task Management App",
       },
+      gallery: [],
       technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
+      category: "web-app",
+      status: "completed",
+      duration: "2 months",
+      teamSize: "3 developers",
+      challenges: [
+        "Real-time synchronization across multiple users",
+        "Complex drag-and-drop interactions",
+        "Performance optimization for large datasets",
+      ],
+      solutions: [
+        "WebSocket implementation with Socket.io",
+        "React Beautiful DnD library",
+        "Virtual scrolling and pagination",
+      ],
+      learnings: [
+        "Real-time application architecture",
+        "Complex state management",
+        "Team collaboration workflows",
+      ],
       liveUrl: "https://example.com",
       githubUrl: "https://github.com/username/project",
       featured: true,
@@ -88,11 +132,32 @@ export default function Projects() {
       slug: { current: "weather-dashboard" },
       description:
         "A responsive weather dashboard with location-based forecasts, interactive maps, and weather alerts.",
+      content: [],
       image: {
         asset: { _ref: "mock-image-3" },
         alt: "Weather Dashboard",
       },
+      gallery: [],
       technologies: ["Vue.js", "Express.js", "Chart.js", "OpenWeather API"],
+      category: "web-app",
+      status: "completed",
+      duration: "6 weeks",
+      teamSize: "Solo project",
+      challenges: [
+        "Handling multiple API integrations",
+        "Creating responsive data visualizations",
+        "Geolocation and mapping features",
+      ],
+      solutions: [
+        "API abstraction layer with error handling",
+        "Chart.js with custom responsive configurations",
+        "Integration with browser geolocation API",
+      ],
+      learnings: [
+        "Vue.js ecosystem and composition API",
+        "Data visualization best practices",
+        "API design and integration patterns",
+      ],
       liveUrl: "https://example.com",
       githubUrl: "https://github.com/username/project",
       featured: false,
@@ -178,28 +243,35 @@ export default function Projects() {
                 >
                   {/* Project Image */}
                   <div
-                    className={`relative h-64 lg:h-80 overflow-hidden ${index % 2 !== 0 ? "lg:order-2" : ""}`}
+                    className={`relative overflow-hidden ${index % 2 !== 0 ? "lg:order-2" : ""}`}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-br from-violet-500/20 to-purple-500/20 z-10" />
-                    {(() => {
-                      const imageUrl = getImageUrl(project.image);
-                      return imageUrl ? (
-                        <Image
-                          src={imageUrl}
-                          alt={project.image?.alt || project.title}
-                          fill
-                          unoptimized
-                          className="object-cover group-hover:scale-105 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-violet-900/50 to-purple-900/50 flex items-center justify-center">
-                          <div className="text-center text-violet-300">
-                            <div className="text-6xl mb-4">🚀</div>
-                            <p className="text-sm opacity-70">Project Image</p>
-                          </div>
-                        </div>
-                      );
-                    })()}
+                    <div className="relative bg-black/10 p-4 lg:p-6">
+                      <div className="relative aspect-video bg-gradient-to-br from-violet-500/10 to-purple-500/10 rounded-lg overflow-hidden">
+                        {(() => {
+                          const imageUrl = getImageUrl(project.image);
+                          return imageUrl ? (
+                            <Image
+                              src={imageUrl}
+                              alt={project.image?.alt || project.title}
+                              fill
+                              unoptimized
+                              className="object-contain group-hover:scale-105 transition-transform duration-500"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-violet-900/50 to-purple-900/50 flex items-center justify-center rounded-lg">
+                              <div className="text-center text-violet-300">
+                                <div className="text-6xl lg:text-7xl mb-4">
+                                  🚀
+                                </div>
+                                <p className="text-sm lg:text-base opacity-70">
+                                  Project Preview
+                                </p>
+                              </div>
+                            </div>
+                          );
+                        })()}
+                      </div>
+                    </div>
                   </div>
 
                   {/* Project Content */}
@@ -228,12 +300,23 @@ export default function Projects() {
                       </div>
 
                       {/* Project Links */}
-                      <div className="flex gap-4 pt-4">
+                      <div className="flex gap-3 pt-4 flex-wrap">
+                        <Button
+                          asChild
+                          variant="default"
+                          size="sm"
+                          className="bg-violet-600 hover:bg-violet-700 text-white"
+                        >
+                          <Link href={`/projects/${project.slug.current}`}>
+                            View Details
+                          </Link>
+                        </Button>
                         {project.liveUrl && (
                           <Button
                             asChild
                             size="sm"
-                            className="bg-violet-600 hover:bg-violet-700 text-white"
+                            variant="outline"
+                            className="border-violet-500/30 text-violet-300 hover:bg-violet-500/10"
                           >
                             <a
                               href={project.liveUrl}
@@ -260,7 +343,7 @@ export default function Projects() {
                               className="flex items-center gap-2"
                             >
                               <Github className="w-4 h-4" />
-                              Source Code
+                              Source
                             </a>
                           </Button>
                         )}
