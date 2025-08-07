@@ -9,9 +9,123 @@ import { Button } from "@/components/ui/button";
 import FadeContent from "@/components/ui/fade-content";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TextTrail } from "@/components/ui/text-trail";
-import ProjectImage from "@/components/ui/project-image";
 import { ExternalLink, Github, Loader2 } from "lucide-react";
 import { client, urlFor, projectsQuery, type Project } from "@/lib/sanity";
+
+// Mock data for development when Sanity is not configured
+const mockProjects: Project[] = [
+  {
+    _id: "1",
+    title: "E-Commerce Platform",
+    slug: { current: "ecommerce-platform" },
+    description:
+      "A full-stack e-commerce platform built with Next.js and NestJS, featuring user authentication, payment processing, and admin dashboard.",
+    content: [],
+    image: {
+      asset: { _ref: "mock-image-1" },
+      alt: "E-Commerce Platform",
+    },
+    gallery: [],
+    technologies: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Stripe"],
+    category: "web-app",
+    status: "completed",
+    duration: "3 months",
+    teamSize: "Solo project",
+    challenges: [
+      "Implementing secure payment processing",
+      "Building scalable user authentication",
+      "Optimizing database performance",
+    ],
+    solutions: [
+      "Integrated Stripe for secure payments",
+      "Used JWT with refresh tokens",
+      "Implemented database indexing and caching",
+    ],
+    learnings: [
+      "Advanced TypeScript patterns",
+      "Microservices architecture",
+      "Payment gateway integration",
+    ],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/username/project",
+    featured: true,
+    order: 1,
+  },
+  {
+    _id: "2",
+    title: "Task Management App",
+    slug: { current: "task-management" },
+    description:
+      "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
+    content: [],
+    image: {
+      asset: { _ref: "mock-image-2" },
+      alt: "Task Management App",
+    },
+    gallery: [],
+    technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
+    category: "web-app",
+    status: "completed",
+    duration: "2 months",
+    teamSize: "3 developers",
+    challenges: [
+      "Real-time synchronization across multiple users",
+      "Complex drag-and-drop interactions",
+      "Performance optimization for large datasets",
+    ],
+    solutions: [
+      "WebSocket implementation with Socket.io",
+      "React Beautiful DnD library",
+      "Virtual scrolling and pagination",
+    ],
+    learnings: [
+      "Real-time application architecture",
+      "Complex state management",
+      "Team collaboration workflows",
+    ],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/username/project",
+    featured: true,
+    order: 2,
+  },
+  {
+    _id: "3",
+    title: "Weather Dashboard",
+    slug: { current: "weather-dashboard" },
+    description:
+      "A responsive weather dashboard with location-based forecasts, interactive maps, and weather alerts.",
+    content: [],
+    image: {
+      asset: { _ref: "mock-image-3" },
+      alt: "Weather Dashboard",
+    },
+    gallery: [],
+    technologies: ["Vue.js", "Express.js", "Chart.js", "OpenWeather API"],
+    category: "web-app",
+    status: "completed",
+    duration: "6 weeks",
+    teamSize: "Solo project",
+    challenges: [
+      "Handling multiple API integrations",
+      "Creating responsive data visualizations",
+      "Geolocation and mapping features",
+    ],
+    solutions: [
+      "API abstraction layer with error handling",
+      "Chart.js with custom responsive configurations",
+      "Integration with browser geolocation API",
+    ],
+    learnings: [
+      "Vue.js ecosystem and composition API",
+      "Data visualization best practices",
+      "API design and integration patterns",
+    ],
+    liveUrl: "https://example.com",
+    githubUrl: "https://github.com/username/project",
+    featured: false,
+    order: 3,
+  },
+];
 
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -19,7 +133,7 @@ export default function Projects() {
   const [error, setError] = useState<string | null>(null);
 
   // Helper function to safely get image URL
-  const getImageUrl = (image: any) => {
+  const getImageUrl = (image: Project["image"]): string | null => {
     try {
       if (image?.asset?._ref && !image.asset._ref.startsWith("mock-image")) {
         return urlFor(image).width(600).height(400).url();
@@ -48,122 +162,7 @@ export default function Projects() {
     };
 
     fetchProjects();
-  }, []);
-
-  // Mock data for development when Sanity is not configured
-  const mockProjects: Project[] = [
-    {
-      _id: "1",
-      title: "E-Commerce Platform",
-      slug: { current: "ecommerce-platform" },
-      description:
-        "A full-stack e-commerce platform built with Next.js and NestJS, featuring user authentication, payment processing, and admin dashboard.",
-      content: [],
-      image: {
-        asset: { _ref: "mock-image-1" },
-        alt: "E-Commerce Platform",
-      },
-      gallery: [],
-      technologies: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Stripe"],
-      category: "web-app",
-      status: "completed",
-      duration: "3 months",
-      teamSize: "Solo project",
-      challenges: [
-        "Implementing secure payment processing",
-        "Building scalable user authentication",
-        "Optimizing database performance",
-      ],
-      solutions: [
-        "Integrated Stripe for secure payments",
-        "Used JWT with refresh tokens",
-        "Implemented database indexing and caching",
-      ],
-      learnings: [
-        "Advanced TypeScript patterns",
-        "Microservices architecture",
-        "Payment gateway integration",
-      ],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/username/project",
-      featured: true,
-      order: 1,
-    },
-    {
-      _id: "2",
-      title: "Task Management App",
-      slug: { current: "task-management" },
-      description:
-        "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-      content: [],
-      image: {
-        asset: { _ref: "mock-image-2" },
-        alt: "Task Management App",
-      },
-      gallery: [],
-      technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-      category: "web-app",
-      status: "completed",
-      duration: "2 months",
-      teamSize: "3 developers",
-      challenges: [
-        "Real-time synchronization across multiple users",
-        "Complex drag-and-drop interactions",
-        "Performance optimization for large datasets",
-      ],
-      solutions: [
-        "WebSocket implementation with Socket.io",
-        "React Beautiful DnD library",
-        "Virtual scrolling and pagination",
-      ],
-      learnings: [
-        "Real-time application architecture",
-        "Complex state management",
-        "Team collaboration workflows",
-      ],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/username/project",
-      featured: true,
-      order: 2,
-    },
-    {
-      _id: "3",
-      title: "Weather Dashboard",
-      slug: { current: "weather-dashboard" },
-      description:
-        "A responsive weather dashboard with location-based forecasts, interactive maps, and weather alerts.",
-      content: [],
-      image: {
-        asset: { _ref: "mock-image-3" },
-        alt: "Weather Dashboard",
-      },
-      gallery: [],
-      technologies: ["Vue.js", "Express.js", "Chart.js", "OpenWeather API"],
-      category: "web-app",
-      status: "completed",
-      duration: "6 weeks",
-      teamSize: "Solo project",
-      challenges: [
-        "Handling multiple API integrations",
-        "Creating responsive data visualizations",
-        "Geolocation and mapping features",
-      ],
-      solutions: [
-        "API abstraction layer with error handling",
-        "Chart.js with custom responsive configurations",
-        "Integration with browser geolocation API",
-      ],
-      learnings: [
-        "Vue.js ecosystem and composition API",
-        "Data visualization best practices",
-        "API design and integration patterns",
-      ],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/username/project",
-      featured: false,
-      order: 3,
-    },
-  ];
+  }, []); // mockProjects is defined outside component, so it's stable
 
   if (loading) {
     return (
@@ -364,8 +363,8 @@ export default function Projects() {
                 Interested in Working Together?
               </h3>
               <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                I'm always open to discussing new opportunities and exciting
-                projects. Let's create something amazing together!
+                I{"'"}m always open to discussing new opportunities and exciting
+                projects. Let{"'"}s create something amazing together!
               </p>
               <Button
                 size="lg"

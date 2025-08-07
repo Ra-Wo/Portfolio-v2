@@ -1,5 +1,6 @@
 import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "your-project-id",
@@ -10,8 +11,15 @@ export const client = createClient({
 
 const builder = imageUrlBuilder(client);
 
-export function urlFor(source: any) {
+export function urlFor(source: SanityImageSource) {
   return builder.image(source);
+}
+
+// Types for Portable Text content
+export interface PortableTextBlock {
+  _type: string;
+  _key: string;
+  [key: string]: unknown;
 }
 
 // Types for our projects
@@ -22,7 +30,7 @@ export interface Project {
     current: string;
   };
   description: string;
-  content?: any[]; // Rich text content
+  content?: PortableTextBlock[]; // Rich text content
   image: {
     asset: {
       _ref: string;

@@ -1,9 +1,11 @@
 import { PortableText } from "@portabletext/react";
 import ProjectImage from "./project-image";
-import { urlFor } from "@/lib/sanity";
+import { PortableTextBlock } from "@/lib/sanity";
 
-const components = {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const components: any = {
   types: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     image: ({ value }: any) => {
       return (
         <div className="my-8">
@@ -24,6 +26,7 @@ const components = {
         </div>
       );
     },
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     codeBlock: ({ value }: any) => (
       <div className="my-6">
         <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto">
@@ -35,19 +38,23 @@ const components = {
     ),
   },
   block: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     h2: ({ children }: any) => (
       <h2 className="text-2xl font-bold text-foreground mb-4 mt-8 font-heading">
         {children}
       </h2>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     h3: ({ children }: any) => (
       <h3 className="text-xl font-bold text-foreground mb-3 mt-6 font-heading">
         {children}
       </h3>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     normal: ({ children }: any) => (
       <p className="text-gray-300 leading-relaxed mb-4">{children}</p>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     blockquote: ({ children }: any) => (
       <blockquote className="border-l-4 border-violet-500 pl-4 my-6 italic text-gray-300">
         {children}
@@ -55,20 +62,24 @@ const components = {
     ),
   },
   marks: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     strong: ({ children }: any) => (
       <strong className="font-bold text-foreground">{children}</strong>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     em: ({ children }: any) => (
       <em className="italic text-gray-200">{children}</em>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     code: ({ children }: any) => (
       <code className="bg-gray-800 px-2 py-1 rounded text-sm text-violet-300">
         {children}
       </code>
     ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     link: ({ value, children }: any) => (
       <a
-        href={value.href}
+        href={value?.href || "#"}
         target="_blank"
         rel="noopener noreferrer"
         className="text-violet-400 hover:text-violet-300 underline transition-colors duration-200"
@@ -80,7 +91,7 @@ const components = {
 };
 
 interface RichTextProps {
-  value: any[];
+  value: PortableTextBlock[];
   className?: string;
 }
 

@@ -136,7 +136,7 @@ export default async function ProjectsPage() {
             Interested in Working Together?
           </h3>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            I'm always open to discussing new opportunities and exciting
+            I{"'"}m always open to discussing new opportunities and exciting
             projects.
           </p>
           <Button

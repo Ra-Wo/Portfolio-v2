@@ -4,8 +4,8 @@
   /* Font families */
   --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
   --font-heading: var(--font-poppins), system-ui, -apple-system, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), "Fira Code", "Cascadia Code",
-    monospace;
+  --font-mono:
+    var(--font-jetbrains-mono), "Fira Code", "Cascadia Code", monospace;
   --font-pacifico: var(--font-pacifico), "Pacifico", cursive;
 
   /* Dark theme CSS variables (now default) */
@@ -40,7 +40,9 @@ body {
   color: hsl(var(--foreground));
   background: hsl(var(--background));
   font-family: var(--font-sans);
-  font-feature-settings: "rlig" 1, "calt" 1;
+  font-feature-settings:
+    "rlig" 1,
+    "calt" 1;
 }
 
 /* Typography */
@@ -166,22 +168,56 @@ h3 {
 @keyframes float {
   0%,
   100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotate(2deg);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-25px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-10px) rotate(-2deg);
+  }
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) translateX(5px) rotate(3deg);
+  }
+  66% {
+    transform: translateY(-30px) translateX(-3px) rotate(-2deg);
+  }
+}
+
+@keyframes floatReverse {
+  0%,
+  100% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+  30% {
+    transform: translateY(-18px) translateX(-8px) rotate(-3deg);
+  }
+  70% {
+    transform: translateY(-35px) translateX(5px) rotate(2deg);
   }
 }
 
 @keyframes glow {
   0%,
   100% {
-    opacity: 0.5;
+    opacity: 0.6;
     transform: scale(1);
+    filter: brightness(1);
   }
   50% {
-    opacity: 0.8;
-    transform: scale(1.05);
+    opacity: 0.9;
+    transform: scale(1.08);
+    filter: brightness(1.2);
   }
 }
 
@@ -247,17 +283,21 @@ h3 {
 
 /* Hover effects */
 .hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .hover-lift:hover {
   transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
     0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .dark .hover-lift:hover {
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.25),
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.25),
     0 10px 10px -5px rgba(0, 0, 0, 0.1);
 }
 
@@ -271,7 +311,8 @@ h3 {
   background: rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(20px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+  box-shadow:
+    0 8px 32px 0 rgba(0, 0, 0, 0.37),
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
     inset 0 -1px 0 rgba(255, 255, 255, 0.05);
 }

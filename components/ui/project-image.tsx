@@ -1,8 +1,19 @@
 import Image from "next/image";
 import { urlFor } from "@/lib/sanity";
 
+// Type for Sanity image objects
+interface SanityImage {
+  asset?: {
+    _ref: string;
+    _type?: string;
+  };
+  alt?: string;
+  caption?: string;
+  _type?: string;
+}
+
 interface ProjectImageProps {
-  image: any;
+  image: SanityImage | unknown;
   alt: string;
   title: string;
   width?: number;
@@ -25,8 +36,12 @@ export default function ProjectImage({
   // Helper function to safely get image URL
   const getImageUrl = () => {
     try {
-      if (image?.asset?._ref && !image.asset._ref.startsWith("mock-image")) {
-        return urlFor(image).width(width).height(height).url();
+      const sanityImage = image as SanityImage;
+      if (
+        sanityImage?.asset?._ref &&
+        !sanityImage.asset._ref.startsWith("mock-image")
+      ) {
+        return urlFor(sanityImage).width(width).height(height).url();
       }
       return null;
     } catch (err) {

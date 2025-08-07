@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
@@ -10,7 +10,6 @@ import FadeContent from "@/components/ui/fade-content";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TextTrail } from "@/components/ui/text-trail";
 import RichText from "@/components/ui/rich-text";
-import ProjectImage from "@/components/ui/project-image";
 import {
   ExternalLink,
   Github,
@@ -30,14 +29,35 @@ interface ProjectDetailProps {
   project: Project;
 }
 
+// Type for Sanity image objects
+interface SanityImageAsset {
+  _ref: string;
+  _type: string;
+}
+
+interface SanityImage {
+  asset?: SanityImageAsset;
+  alt?: string;
+  caption?: string;
+  _type?: string;
+}
+
 export default function ProjectDetail({ project }: ProjectDetailProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Helper function to safely get image URL
-  const getImageUrl = (image: any, width = 800, height = 600) => {
+  const getImageUrl = (
+    image: SanityImage | unknown,
+    width = 800,
+    height = 600
+  ): string | null => {
     try {
-      if (image?.asset?._ref && !image.asset._ref.startsWith("mock-image")) {
-        return urlFor(image).width(width).height(height).url();
+      const sanityImage = image as SanityImage;
+      if (
+        sanityImage?.asset?._ref &&
+        !sanityImage.asset._ref.startsWith("mock-image")
+      ) {
+        return urlFor(sanityImage).width(width).height(height).url();
       }
       return null;
     } catch (err) {
@@ -46,20 +66,26 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
     }
   };
 
+  // Helper function to safely get image caption
+  const getImageCaption = (image: SanityImage | unknown): string | null => {
+    const sanityImage = image as SanityImage;
+    return sanityImage?.caption || null;
+  };
+
   const galleryImages = project.gallery || [];
   const allImages = project.image
     ? [project.image, ...galleryImages]
     : galleryImages;
 
-  const nextImage = () => {
+  const nextImage = useCallback(() => {
     setCurrentImageIndex((prev) => (prev + 1) % allImages.length);
-  };
+  }, [allImages.length]);
 
-  const prevImage = () => {
+  const prevImage = useCallback(() => {
     setCurrentImageIndex(
       (prev) => (prev - 1 + allImages.length) % allImages.length
     );
-  };
+  }, [allImages.length]);
 
   // Keyboard navigation for gallery
   useEffect(() => {
@@ -77,7 +103,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [allImages.length]);
+  }, [allImages.length, nextImage, prevImage]);
 
   const getStatusColor = (status?: string) => {
     switch (status) {
@@ -316,15 +342,18 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   )}
 
                   {/* Simple Caption */}
-                  {allImages[currentImageIndex] &&
-                    "caption" in allImages[currentImageIndex] &&
-                    (allImages[currentImageIndex] as any).caption && (
+                  {(() => {
+                    const caption = getImageCaption(
+                      allImages[currentImageIndex]
+                    );
+                    return caption ? (
                       <div className="mt-4">
                         <p className="text-gray-400 text-sm text-center">
-                          {(allImages[currentImageIndex] as any).caption}
+                          {caption}
                         </p>
                       </div>
-                    )}
+                    ) : null;
+                  })()}
                 </div>
               </FadeContent>
             )}
@@ -334,226 +363,248 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         {/* Project Details */}
         <section className="py-12">
           <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-            <div className="grid lg:grid-cols-3 gap-8">
-              {/* Main Content */}
-              <div className="lg:col-span-2 space-y-8">
-                {/* Technologies */}
-                <FadeContent direction="up" delay={0.4}>
-                  <Card className="p-4 bg-card/30 border-violet-500/20">
-                    <h3 className="text-lg font-semibold text-foreground mb-3 font-heading">
-                      Technologies Used
-                    </h3>
-                    <div className="flex flex-wrap gap-1.5">
-                      {project.technologies.map((tech) => (
-                        <Badge
-                          key={tech}
-                          variant="secondary"
-                          className="bg-violet-500/10 text-violet-300 border-violet-500/20 hover:bg-violet-500/20 transition-colors duration-200 text-xs"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
-                    </div>
-                  </Card>
-                </FadeContent>
-
-                {/* Project Content */}
-                {project.content && project.content.length > 0 ? (
-                  <FadeContent direction="up" delay={0.5}>
-                    <Card className="p-6 bg-card/30 border-violet-500/20">
-                      <h3 className="text-xl font-bold text-foreground mb-4 font-heading">
-                        Project Overview
-                      </h3>
-                      <RichText value={project.content} />
-                    </Card>
-                  </FadeContent>
-                ) : (
-                  <FadeContent direction="up" delay={0.5}>
-                    <Card className="p-6 bg-card/30 border-violet-500/20">
-                      <h3 className="text-xl font-bold text-foreground mb-4 font-heading">
-                        Project Overview
-                      </h3>
-                      <div className="prose prose-invert max-w-none">
-                        <p className="text-gray-300 leading-relaxed">
-                          {project.description}
-                        </p>
-                        <p className="text-gray-300 leading-relaxed mt-4">
-                          This project showcases modern web development
-                          practices and demonstrates proficiency in the listed
-                          technologies. The application was built with a focus
-                          on user experience, performance, and maintainable code
-                          architecture.
-                        </p>
-                      </div>
-                    </Card>
-                  </FadeContent>
-                )}
-
-                {/* Challenges */}
-                {project.challenges && project.challenges.length > 0 && (
-                  <FadeContent direction="up" delay={0.6}>
-                    <Card className="p-6 bg-card/30 border-violet-500/20">
-                      <h3 className="text-xl font-bold text-foreground mb-4 font-heading flex items-center gap-2">
-                        <Target className="w-5 h-5 text-violet-400" />
-                        Key Challenges
-                      </h3>
-                      <ul className="space-y-2">
-                        {project.challenges.map((challenge, index) => (
-                          <li
-                            key={index}
-                            className="flex items-start gap-3 text-gray-300"
-                          >
-                            <div className="w-1.5 h-1.5 bg-violet-400 rounded-full mt-2 flex-shrink-0" />
-                            {challenge}
-                          </li>
-                        ))}
-                      </ul>
-                    </Card>
-                  </FadeContent>
-                )}
-
-                {/* Solutions */}
-                {project.solutions && project.solutions.length > 0 && (
-                  <FadeContent direction="up" delay={0.7}>
-                    <Card className="p-6 bg-card/30 border-violet-500/20">
-                      <h3 className="text-xl font-bold text-foreground mb-4 font-heading flex items-center gap-2">
-                        <CheckCircle className="w-5 h-5 text-green-400" />
-                        Solutions Implemented
-                      </h3>
-                      <ul className="space-y-2">
-                        {project.solutions.map((solution, index) => (
-                          <li
-                            key={index}
-                            className="flex items-start gap-3 text-gray-300"
-                          >
-                            <div className="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 flex-shrink-0" />
-                            {solution}
-                          </li>
-                        ))}
-                      </ul>
-                    </Card>
-                  </FadeContent>
-                )}
-
-                {/* Learnings */}
-                {project.learnings && project.learnings.length > 0 && (
-                  <FadeContent direction="up" delay={0.8}>
-                    <Card className="p-6 bg-card/30 border-violet-500/20">
-                      <h3 className="text-xl font-bold text-foreground mb-4 font-heading flex items-center gap-2">
-                        <Lightbulb className="w-5 h-5 text-yellow-400" />
-                        Key Learnings
-                      </h3>
-                      <ul className="space-y-2">
-                        {project.learnings.map((learning, index) => (
-                          <li
-                            key={index}
-                            className="flex items-start gap-3 text-gray-300"
-                          >
-                            <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full mt-2 flex-shrink-0" />
-                            {learning}
-                          </li>
-                        ))}
-                      </ul>
-                    </Card>
-                  </FadeContent>
-                )}
-              </div>
-
-              {/* Sidebar */}
-              <div className="space-y-6">
-                {/* Project Info */}
-                <FadeContent direction="up" delay={0.4}>
-                  <Card className="p-4 bg-card/30 border-violet-500/20">
-                    <h3 className="text-base font-semibold text-foreground mb-3 font-heading">
-                      Project Details
-                    </h3>
-                    <div className="space-y-3">
-                      {project.duration && (
-                        <div className="flex items-center gap-2">
-                          <Calendar className="w-3.5 h-3.5 text-violet-400" />
-                          <div>
-                            <p className="text-xs text-gray-400">Duration</p>
-                            <p className="text-sm text-gray-300">
-                              {project.duration}
-                            </p>
-                          </div>
-                        </div>
-                      )}
-                      {project.teamSize && (
-                        <div className="flex items-center gap-2">
-                          <Users className="w-3.5 h-3.5 text-violet-400" />
-                          <div>
-                            <p className="text-xs text-gray-400">Team Size</p>
-                            <p className="text-sm text-gray-300">
-                              {project.teamSize}
-                            </p>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </Card>
-                </FadeContent>
-
-                {/* Quick Links */}
-                <FadeContent direction="up" delay={0.5}>
-                  <Card className="p-4 bg-card/30 border-violet-500/20">
-                    <h3 className="text-base font-semibold text-foreground mb-3 font-heading">
-                      Quick Links
-                    </h3>
-                    <div className="space-y-2">
-                      {project.liveUrl && (
-                        <Button
-                          asChild
-                          size="sm"
-                          className="w-full bg-violet-600 hover:bg-violet-700 text-white"
-                        >
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2"
-                          >
-                            <ExternalLink className="w-3.5 h-3.5" />
-                            Live Demo
-                          </a>
-                        </Button>
-                      )}
-                      {project.githubUrl && (
-                        <Button
-                          asChild
-                          variant="outline"
-                          size="sm"
-                          className="w-full border-violet-500/30 text-violet-300 hover:bg-violet-500/10"
-                        >
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2"
-                          >
-                            <Github className="w-3.5 h-3.5" />
-                            Source Code
-                          </a>
-                        </Button>
-                      )}
-                      <Button
-                        asChild
-                        variant="ghost"
-                        size="sm"
-                        className="w-full text-violet-300 hover:bg-violet-500/10"
+            {/* Single Column Layout */}
+            <div className="space-y-8">
+              {/* Technologies */}
+              <FadeContent direction="up" delay={0.4}>
+                <Card className="p-4 bg-card/30 border-violet-500/20">
+                  <h3 className="text-lg font-semibold text-foreground mb-3 font-heading">
+                    Technologies Used
+                  </h3>
+                  <div className="flex flex-wrap gap-1.5">
+                    {project.technologies.map((tech) => (
+                      <Badge
+                        key={tech}
+                        variant="secondary"
+                        className="bg-violet-500/10 text-violet-300 border-violet-500/20 hover:bg-violet-500/20 transition-colors duration-200 text-xs"
                       >
-                        <Link
-                          href="/#projects"
-                          className="flex items-center gap-2"
+                        {tech}
+                      </Badge>
+                    ))}
+                  </div>
+                </Card>
+              </FadeContent>
+
+              {/* Project Details & Quick Links Combined */}
+              <FadeContent direction="up" delay={0.45}>
+                <Card className="p-6 bg-card/30 border-violet-500/20">
+                  <div className="grid md:grid-cols-2 gap-8">
+                    {/* Project Info */}
+                    <div>
+                      <h3 className="text-lg font-semibold text-foreground mb-4 font-heading">
+                        Project Details
+                      </h3>
+                      <div className="space-y-4">
+                        {project.duration && (
+                          <div className="flex items-center gap-3">
+                            <Calendar className="w-4 h-4 text-violet-400" />
+                            <div>
+                              <p className="text-sm text-gray-400">Duration</p>
+                              <p className="text-base text-gray-300">
+                                {project.duration}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                        {project.teamSize && (
+                          <div className="flex items-center gap-3">
+                            <Users className="w-4 h-4 text-violet-400" />
+                            <div>
+                              <p className="text-sm text-gray-400">Team Size</p>
+                              <p className="text-base text-gray-300">
+                                {project.teamSize}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                        {project.category && (
+                          <div className="flex items-center gap-3">
+                            <Tag className="w-4 h-4 text-violet-400" />
+                            <div>
+                              <p className="text-sm text-gray-400">Category</p>
+                              <p className="text-base text-gray-300">
+                                {project.category
+                                  .replace("-", " ")
+                                  .toUpperCase()}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                        {project.status && (
+                          <div className="flex items-center gap-3">
+                            <CheckCircle className="w-4 h-4 text-violet-400" />
+                            <div>
+                              <p className="text-sm text-gray-400">Status</p>
+                              <p className="text-base text-gray-300">
+                                {project.status.replace("-", " ").toUpperCase()}
+                              </p>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div>
+                      <h3 className="text-lg font-semibold text-foreground mb-4 font-heading">
+                        Quick Links
+                      </h3>
+                      <div className="space-y-3">
+                        {project.liveUrl && (
+                          <Button
+                            asChild
+                            size="default"
+                            className="w-full bg-violet-600 hover:bg-violet-700 text-white"
+                          >
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2"
+                            >
+                              <ExternalLink className="w-4 h-4" />
+                              Live Demo
+                            </a>
+                          </Button>
+                        )}
+                        {project.githubUrl && (
+                          <Button
+                            asChild
+                            variant="outline"
+                            size="default"
+                            className="w-full border-violet-500/30 text-violet-300 hover:bg-violet-500/10"
+                          >
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center gap-2"
+                            >
+                              <Github className="w-4 h-4" />
+                              Source Code
+                            </a>
+                          </Button>
+                        )}
+                        <Button
+                          asChild
+                          variant="ghost"
+                          size="default"
+                          className="w-full text-violet-300 hover:bg-violet-500/10"
                         >
-                          <ArrowLeft className="w-3.5 h-3.5" />
-                          Back to Projects
-                        </Link>
-                      </Button>
+                          <Link
+                            href="/#projects"
+                            className="flex items-center gap-2"
+                          >
+                            <ArrowLeft className="w-4 h-4" />
+                            Back to Projects
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </FadeContent>
+
+              {/* Project Content */}
+              {project.content && project.content.length > 0 ? (
+                <FadeContent direction="up" delay={0.5}>
+                  <Card className="p-6 bg-card/30 border-violet-500/20">
+                    <h3 className="text-xl font-bold text-foreground mb-4 font-heading">
+                      Project Overview
+                    </h3>
+                    <RichText value={project.content} />
+                  </Card>
+                </FadeContent>
+              ) : (
+                <FadeContent direction="up" delay={0.5}>
+                  <Card className="p-6 bg-card/30 border-violet-500/20">
+                    <h3 className="text-xl font-bold text-foreground mb-4 font-heading">
+                      Project Overview
+                    </h3>
+                    <div className="prose prose-invert max-w-none">
+                      <p className="text-gray-300 leading-relaxed">
+                        {project.description}
+                      </p>
+                      <p className="text-gray-300 leading-relaxed mt-4">
+                        This project showcases modern web development practices
+                        and demonstrates proficiency in the listed technologies.
+                        The application was built with a focus on user
+                        experience, performance, and maintainable code
+                        architecture.
+                      </p>
                     </div>
                   </Card>
                 </FadeContent>
-              </div>
+              )}
+
+              {/* Challenges */}
+              {project.challenges && project.challenges.length > 0 && (
+                <FadeContent direction="up" delay={0.6}>
+                  <Card className="p-6 bg-card/30 border-violet-500/20">
+                    <h3 className="text-xl font-bold text-foreground mb-4 font-heading flex items-center gap-2">
+                      <Target className="w-5 h-5 text-violet-400" />
+                      Key Challenges
+                    </h3>
+                    <ul className="space-y-2">
+                      {project.challenges.map((challenge, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-3 text-gray-300"
+                        >
+                          <div className="w-1.5 h-1.5 bg-violet-400 rounded-full mt-2 flex-shrink-0" />
+                          {challenge}
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
+                </FadeContent>
+              )}
+
+              {/* Solutions */}
+              {project.solutions && project.solutions.length > 0 && (
+                <FadeContent direction="up" delay={0.7}>
+                  <Card className="p-6 bg-card/30 border-violet-500/20">
+                    <h3 className="text-xl font-bold text-foreground mb-4 font-heading flex items-center gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-400" />
+                      Solutions Implemented
+                    </h3>
+                    <ul className="space-y-2">
+                      {project.solutions.map((solution, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-3 text-gray-300"
+                        >
+                          <div className="w-1.5 h-1.5 bg-green-400 rounded-full mt-2 flex-shrink-0" />
+                          {solution}
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
+                </FadeContent>
+              )}
+
+              {/* Learnings */}
+              {project.learnings && project.learnings.length > 0 && (
+                <FadeContent direction="up" delay={0.8}>
+                  <Card className="p-6 bg-card/30 border-violet-500/20">
+                    <h3 className="text-xl font-bold text-foreground mb-4 font-heading flex items-center gap-2">
+                      <Lightbulb className="w-5 h-5 text-yellow-400" />
+                      Key Learnings
+                    </h3>
+                    <ul className="space-y-2">
+                      {project.learnings.map((learning, index) => (
+                        <li
+                          key={index}
+                          className="flex items-start gap-3 text-gray-300"
+                        >
+                          <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full mt-2 flex-shrink-0" />
+                          {learning}
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
+                </FadeContent>
+              )}
             </div>
           </div>
         </section>
