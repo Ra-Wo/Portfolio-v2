@@ -279,108 +279,98 @@ export default function Hero() {
                       {/* Animated typing effect for each line */}
                       <div className="space-y-2">
                         <div className="flex">
-                          <span className="text-gray-500 mr-4">1</span>
-                          <span className="text-purple-400">const</span>
-                          <span className="text-white mx-2">developer</span>
-                          <span className="text-gray-400">=</span>
+                          <span className="text-gray-500 mr-4 w-6 text-right">
+                            1
+                          </span>
+                          <span className="text-purple-400">function</span>
+                          <span className="text-yellow-400 mx-2">
+                            createDeveloper
+                          </span>
+                          <span className="text-gray-400">()</span>
                           <span className="text-white mx-2">{`{`}</span>
                         </div>
 
-                        <div className="flex ml-6">
-                          <span className="text-gray-500 mr-4">2</span>
-                          <span className="text-blue-400">name:</span>
-                          <span className="text-green-400 ml-2">
-                            &apos;Rachid Oudouch&apos;
+                        <div className="flex">
+                          <span className="text-gray-500 mr-4 w-6 text-right">
+                            2
                           </span>
-                          <span className="text-gray-400">,</span>
-                        </div>
-
-                        <div className="flex ml-6">
-                          <span className="text-gray-500 mr-4">3</span>
-                          <span className="text-blue-400">role:</span>
-                          <span className="text-green-400 ml-2">
-                            &apos;Full-Stack Dev&apos;
-                          </span>
-                          <span className="text-gray-400">,</span>
-                        </div>
-
-                        <div className="flex ml-6">
-                          <span className="text-gray-500 mr-4">4</span>
-                          <span className="text-blue-400">skills:</span>
-                          <span className="text-white ml-2">[</span>
-                        </div>
-
-                        {/* Animated skills array */}
-                        <div className="flex ml-12 animate-pulse">
-                          <span className="text-gray-500 mr-4">5</span>
-                          <span className="text-green-400">
-                            &apos;React&apos;
-                          </span>
-                          <span className="text-gray-400">,</span>
-                          <span className="text-green-400 ml-2">
-                            &apos;Next.js&apos;
-                          </span>
-                          <span className="text-gray-400">,</span>
-                        </div>
-
-                        <div
-                          className="flex ml-12 animate-pulse"
-                          style={{ animationDelay: "0.5s" }}
-                        >
-                          <span className="text-gray-500 mr-4">6</span>
-                          <span className="text-green-400">
-                            &apos;TypeScript&apos;
-                          </span>
-                          <span className="text-gray-400">,</span>
-                          <span className="text-green-400 ml-2">
-                            &apos;Node.js&apos;
-                          </span>
-                          <span className="text-gray-400">,</span>
-                        </div>
-
-                        <div
-                          className="flex ml-12 animate-pulse"
-                          style={{ animationDelay: "1s" }}
-                        >
-                          <span className="text-gray-500 mr-4">7</span>
-                          <span className="text-green-400">
-                            &apos;Tailwind&apos;
-                          </span>
-                          <span className="text-gray-400">,</span>
-                          <span className="text-green-400 ml-2">
-                            &apos;NestJS&apos;
-                          </span>
-                          <span className="text-gray-400">,</span>
-                        </div>
-
-                        <div
-                          className="flex ml-12 animate-pulse"
-                          style={{ animationDelay: "1.5s" }}
-                        >
-                          <span className="text-gray-500 mr-4">8</span>
-                          <span className="text-green-400">
-                            &apos;PostgreSQL&apos;
-                          </span>
-                          <span className="text-gray-400">,</span>
-                          <span className="text-green-400 ml-2">
-                            &apos;..etc&apos;
-                          </span>
-                        </div>
-
-                        <div className="flex ml-6">
-                          <span className="text-gray-500 mr-4">9</span>
-                          <span className="text-white">],</span>
+                          <span className="ml-6 text-purple-400">return</span>
+                          <span className="text-white mx-2">{`{`}</span>
                         </div>
 
                         <div className="flex">
-                          <span className="text-gray-500 mr-4">10</span>
+                          <span className="text-gray-500 mr-4 w-6 text-right">
+                            3
+                          </span>
+                          <span className="ml-12 text-blue-400">name:</span>
+                          <span className="text-green-400 ml-2">
+                            &quot;Rachid Oudouch&quot;
+                          </span>
+                          <span className="text-gray-400">,</span>
+                        </div>
+
+                        <div className="flex">
+                          <span className="text-gray-500 mr-4 w-6 text-right">
+                            4
+                          </span>
+                          <span className="ml-12 text-blue-400">role:</span>
+                          <span className="text-green-400 ml-2">
+                            &quot;Full-Stack Dev&quot;
+                          </span>
+                          <span className="text-gray-400">,</span>
+                        </div>
+
+                        <div className="flex">
+                          <span className="text-gray-500 mr-4 w-6 text-right">
+                            5
+                          </span>
+                          <span className="ml-12 text-blue-400">location:</span>
+                          <span className="text-green-400 ml-2">
+                            &quot;Online&quot;
+                          </span>
+                          <span className="text-gray-400">,</span>
+                        </div>
+
+                        <div className="flex">
+                          <span className="text-gray-500 mr-4 w-6 text-right">
+                            6
+                          </span>
+                          <span className="ml-12 text-blue-400">passion:</span>
+                          <span className="text-green-400 ml-2">
+                            &quot;Building things&quot;
+                          </span>
+                          <span className="text-gray-400">,</span>
+                        </div>
+
+                        <div className="flex">
+                          <span className="text-gray-500 mr-4 w-6 text-right">
+                            7
+                          </span>
+                          <span className="ml-12 text-blue-400">status:</span>
+                          <span className="text-green-400 ml-2">
+                            &quot;Available&quot;
+                          </span>
+                        </div>
+
+                        <div className="flex">
+                          <span className="text-gray-500 mr-4 w-6 text-right">
+                            8
+                          </span>
+                          <span className="ml-6 text-white">{`}`};</span>
+                        </div>
+
+                        <div className="flex">
+                          <span className="text-gray-500 mr-4 w-6 text-right">
+                            9
+                          </span>
                           <span className="text-white">{`}`}</span>
-                          <span className="text-gray-400">;</span>
                         </div>
 
                         {/* Animated cursor */}
                         <div className="flex mt-4">
-                          <span className="text-gray-500 mr-4">11</span>
+                          <span className="text-gray-500 mr-4 w-6 text-right">
+                            10
+                          </span>
                           <span className="w-2 h-5 bg-purple-400 animate-pulse"></span>
                         </div>
                       </div>

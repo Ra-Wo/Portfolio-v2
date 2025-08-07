@@ -5,20 +5,104 @@ import { Card } from "@/components/ui/card";
 import FadeContent from "@/components/ui/fade-content";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TextTrail } from "@/components/ui/text-trail";
-import {
-  BookOpen,
-  Brain,
-  Briefcase,
-  Calendar,
-  Code2,
-  Coffee,
-  GraduationCap,
-  Lightbulb,
-  MapPin,
-  Rocket,
-  Target,
-  Users,
-} from "lucide-react";
+import { Calendar } from "lucide-react";
+import Image from "next/image";
+
+// Experience data
+const experiences = [
+  {
+    id: 1,
+    company: "Open Development and Education Ltd.",
+    logo: "/opendeved_icon.png",
+    logoAlt: "Open Development and Education Ltd.",
+    gradientFrom: "orange-500/20",
+    gradientTo: "orange-600/20",
+    borderColor: "orange-500/30",
+    cardGradient: "from-violet-500/5 via-purple-500/5 to-violet-500/5",
+    cardBorder: "violet-500/20",
+    positions: [
+      {
+        title: "Full-stack Developer",
+        type: "Full-time",
+        duration: "May 2024 - Aug 2025 • 1 yr 4 mos",
+        badgeStyle: "bg-violet-500/10 text-violet-300 border-violet-500/20",
+      },
+      {
+        title: "Full-stack Developer",
+        type: "Internship",
+        duration: "Nov 2023 - Apr 2024 • 6 mos",
+        badgeStyle: "bg-blue-500/10 text-blue-300 border-blue-500/20",
+      },
+    ],
+    description:
+      "Developed and maintained full-stack web applications using modern technologies. Worked extensively with Next.js for frontend development and NestJS for backend services, delivering complete solutions that enhanced user experience and system performance.",
+    technologies: [
+      "Next.js",
+      "NestJS",
+      "TypeScript",
+      "React",
+      "Full-Stack Development",
+      "Team Collaboration",
+    ],
+  },
+  {
+    id: 2,
+    company: "A-DigitArt",
+    logo: "/a_digitart_logo.jpeg",
+    logoAlt: "A-DigitArt",
+    gradientFrom: "pink-500/20",
+    gradientTo: "pink-600/20",
+    borderColor: "pink-500/30",
+    cardGradient: "from-gray-500/5 via-gray-600/5 to-gray-500/5",
+    cardBorder: "gray-500/20",
+    logoClassName: "rounded-lg",
+    positions: [
+      {
+        title: "Full-stack Developer",
+        type: "Full-time",
+        duration: "Apr 2023 - Jun 2023 • 3 mos",
+        badgeStyle: "bg-violet-500/10 text-violet-300 border-violet-500/20",
+      },
+    ],
+    description:
+      "Contributed to full-stack development projects, gaining valuable experience in web application development and modern development practices.",
+    technologies: [
+      "Next.js",
+      "Strapi",
+      "Nginx",
+      "Web Development",
+      "Full-Stack",
+      "Team Collaboration",
+    ],
+  },
+];
+
+// Education data
+const education = [
+  {
+    id: 1,
+    institution: "1337 Coding School",
+    logo: "/1337_icon.png",
+    logoAlt: "1337 Coding School",
+    gradientFrom: "blue-500/20",
+    gradientTo: "purple-600/20",
+    borderColor: "blue-500/30",
+    cardGradient: "from-blue-500/5 via-purple-500/5 to-blue-500/5",
+    cardBorder: "blue-500/20",
+    hasWhiteBackground: true,
+    startDate: "Nov 2021",
+    skillsBadge: "React.js, Redux.js and +8 skills",
+    description:
+      "Intensive computer science education focused on programming fundamentals, algorithms, and modern web development technologies. Part of the prestigious 42 Network, known for its peer-to-peer learning methodology and rigorous curriculum.",
+    technologies: [
+      "C/C++",
+      "Web Development",
+      "Algorithms",
+      "Data Structures",
+      "Software Engineering",
+    ],
+  },
+];
 
 export default function About() {
   return (
@@ -51,310 +135,186 @@ export default function About() {
                 stagger={0.1}
                 className="bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent"
               >
-                Hey there, I'm Rachid Oudouch
+                Hey there, I&apos;m Rachid Oudouch
               </TextTrail>
             </h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
-              A passionate web developer from Morocco with an exhilarating
-              journey into the world of coding. I'm excited to offer you a
-              glimpse of my adventure in creating exceptional digital
-              experiences.
+              Full-stack developer specializing in modern web technologies and
+              scalable solutions.
             </p>
           </div>
         </FadeContent>
 
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Left Column - Story */}
-          <div className="space-y-8">
-            <FadeContent direction="up" delay={0.2}>
-              <div className="space-y-6">
-                <h3 className="text-2xl font-bold text-foreground font-heading tracking-tight">
-                  My Story
-                </h3>
-                <div className="space-y-4 text-gray-300 leading-relaxed">
-                  <p>
-                    My journey into full-stack development began at
-                    <span className="text-violet-400 font-semibold">
-                      {" "}
-                      1337 Coding School
-                    </span>
-                    , where I've been developing a strong foundation in
-                    programming fundamentals for 1.5 years. This intensive
-                    education, combined with almost 2 years of professional
-                    experience, has given me a comprehensive understanding of
-                    both theoretical concepts and real-world application.
-                  </p>
-                  <p>
-                    Recently completed my role as a
-                    <span className="text-violet-400 font-semibold">
-                      {" "}
-                      Full-Stack Developer
-                    </span>{" "}
-                    at
-                    <span className="text-violet-400 font-semibold">
-                      {" "}
-                      Open Development and Education Ltd.
-                    </span>{" "}
-                    (May 2024 - July 2025), where I gained valuable experience
-                    building robust web applications over almost 2 years. I
-                    worked extensively with
-                    <span className="text-violet-400 font-semibold">
-                      {" "}
-                      Next.js
-                    </span>{" "}
-                    for frontend development and
-                    <span className="text-violet-400 font-semibold">
-                      {" "}
-                      NestJS
-                    </span>{" "}
-                    for backend services, delivering complete full-stack
-                    solutions.
-                  </p>
-                  <p>
-                    My professional journey includes internship and full-time
-                    experience at Open Development and Education Ltd., where
-                    I've consistently delivered high-quality solutions and
-                    contributed to meaningful projects, developing expertise in
-                    modern full-stack development practices.
-                  </p>
+        <div className="max-w-4xl mx-auto">
+          {/* Story Section */}
+          <FadeContent direction="up" delay={0.2}>
+            <div className="mt-20">
+              <div className="text-center mb-12">
+                <div className="section-decoration mb-4">
+                  <h3 className="text-3xl font-bold text-foreground font-heading tracking-tight">
+                    My Story
+                  </h3>
                 </div>
+                <p className="text-gray-400 max-w-2xl mx-auto">
+                  My journey into the world of web development
+                </p>
               </div>
-            </FadeContent>
-          </div>
 
-          {/* Right Column - Current Focus */}
-          <div className="space-y-8">
-            {/* Current Focus */}
-            <FadeContent direction="up" delay={0.5}>
-              <Card className="p-6 bg-gradient-to-br from-violet-500/5 via-purple-500/5 to-violet-500/5 border-violet-500/20">
-                <div className="space-y-4">
-                  <div className="flex items-center gap-2">
-                    <Rocket className="w-5 h-5 text-violet-400" />
-                    <h4 className="text-lg font-semibold text-foreground tracking-tight">
-                      Currently Exploring
-                    </h4>
-                  </div>
-                  <p className="text-gray-300 leading-relaxed">
-                    I'm currently diving deep into advanced web development
-                    patterns while continuing my studies at 1337 School. My
-                    recent experience with Next.js and NestJS has given me a
-                    solid understanding of modern full-stack architecture, and
-                    I'm always excited to experiment with emerging technologies
-                    that bridge different development paradigms.
-                  </p>
-                  <div className="flex flex-wrap gap-2 pt-2">
-                    <Badge
-                      variant="secondary"
-                      className="bg-violet-500/10 text-violet-300 border-violet-500/20"
-                    >
-                      C/C++
-                    </Badge>
-                    <Badge
-                      variant="secondary"
-                      className="bg-violet-500/10 text-violet-300 border-violet-500/20"
-                    >
-                      JavaScript
-                    </Badge>
-                    <Badge
-                      variant="secondary"
-                      className="bg-violet-500/10 text-violet-300 border-violet-500/20"
-                    >
-                      TypeScript
-                    </Badge>
-                    <Badge
-                      variant="secondary"
-                      className="bg-violet-500/10 text-violet-300 border-violet-500/20"
-                    >
-                      Next.js
-                    </Badge>
-                    <Badge
-                      variant="secondary"
-                      className="bg-violet-500/10 text-violet-300 border-violet-500/20"
-                    >
-                      NestJS
-                    </Badge>
-                    <Badge
-                      variant="secondary"
-                      className="bg-violet-500/10 text-violet-300 border-violet-500/20"
-                    >
-                      42 Network
-                    </Badge>
-                  </div>
-                </div>
-              </Card>
-            </FadeContent>
-          </div>
+              <div className="space-y-4 text-gray-300 leading-relaxed max-w-4xl mx-auto">
+                <p>
+                  My journey into full-stack development began at
+                  <span className="text-violet-400 font-semibold">
+                    {" "}
+                    1337 Coding School
+                  </span>
+                  , where I&apos;ve been developing a strong foundation in
+                  programming fundamentals. This intensive education, combined
+                  with professional experience, has given me a comprehensive
+                  understanding of both theoretical concepts and real-world
+                  application.
+                </p>
+                <p>
+                  Recently completed my role as a
+                  <span className="text-violet-400 font-semibold">
+                    {" "}
+                    Full-Stack Developer
+                  </span>{" "}
+                  at
+                  <span className="text-violet-400 font-semibold">
+                    {" "}
+                    Open Development and Education Ltd.
+                  </span>{" "}
+                  (May 2024 - July 2025), where I gained valuable experience
+                  building robust web applications. I worked extensively with
+                  <span className="text-violet-400 font-semibold">
+                    {" "}
+                    Next.js
+                  </span>{" "}
+                  for frontend development and
+                  <span className="text-violet-400 font-semibold">
+                    {" "}
+                    NestJS
+                  </span>{" "}
+                  for backend services, delivering complete full-stack
+                  solutions.
+                </p>
+                <p>
+                  My professional journey includes internship and full-time
+                  experience at Open Development and Education Ltd, where
+                  I&apos;ve consistently delivered high-quality solutions and
+                  contributed to meaningful projects, developing expertise in
+                  modern full-stack development practices.
+                </p>
+              </div>
+            </div>
+          </FadeContent>
         </div>
 
         {/* Experience Section */}
         <FadeContent direction="up" delay={0.6}>
           <div className="mt-20">
             <div className="text-center mb-12">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <Briefcase className="w-6 h-6 text-violet-400" />
+              <div className="section-decoration mb-4">
                 <h3 className="text-3xl font-bold text-foreground font-heading tracking-tight">
                   Experience
                 </h3>
               </div>
               <p className="text-gray-400 max-w-2xl mx-auto">
-                My professional journey in web development
+                Building digital solutions and growing as a developer
               </p>
             </div>
 
             <div className="space-y-8 max-w-4xl mx-auto">
-              {/* Current/Recent Position */}
-              <Card className="p-6 bg-gradient-to-br from-violet-500/5 via-purple-500/5 to-violet-500/5 border-violet-500/20">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-orange-500/20 to-orange-600/20 rounded-xl border border-orange-500/30 flex items-center justify-center">
-                    <div className="w-8 h-8 bg-orange-500 rounded-lg flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">OD</span>
+              {experiences.map((exp) => (
+                <Card
+                  key={exp.id}
+                  className={`p-6 bg-gradient-to-br ${exp.cardGradient} border-${exp.cardBorder}`}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br from-${exp.gradientFrom} to-${exp.gradientTo} rounded-xl border border-${exp.borderColor} flex items-center justify-center overflow-hidden`}
+                    >
+                      <Image
+                        src={exp.logo}
+                        alt={exp.logoAlt}
+                        width={40}
+                        height={40}
+                        className={`object-contain ${exp.logoClassName || ""}`}
+                      />
                     </div>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-semibold text-foreground mb-1">
-                      Open Development and Education Ltd.
-                    </h4>
-                    <div className="space-y-3">
-                      {/* Full-time Position */}
-                      <div>
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <Badge className="bg-violet-500/10 text-violet-300 border-violet-500/20">
-                            Full-stack Developer
-                          </Badge>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold text-foreground mb-1">
+                        {exp.company}
+                      </h4>
+
+                      {exp.positions.length > 1 ? (
+                        <div className="space-y-3">
+                          {exp.positions.map((position, index) => (
+                            <div
+                              key={index}
+                              className={
+                                index > 0
+                                  ? "pl-4 border-l-2 border-gray-700"
+                                  : ""
+                              }
+                            >
+                              <div className="flex flex-wrap items-center gap-2 mb-2">
+                                <Badge className={position.badgeStyle}>
+                                  {position.title}
+                                </Badge>
+                                <Badge
+                                  variant="outline"
+                                  className="border-gray-600 text-gray-400"
+                                >
+                                  {position.type}
+                                </Badge>
+                              </div>
+                              <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
+                                <Calendar className="w-4 h-4" />
+                                <span>{position.duration}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <div>
+                          <div className="flex flex-wrap items-center gap-2 mb-2">
+                            <Badge className={exp.positions[0].badgeStyle}>
+                              {exp.positions[0].title}
+                            </Badge>
+                            <Badge
+                              variant="outline"
+                              className="border-gray-600 text-gray-400"
+                            >
+                              {exp.positions[0].type}
+                            </Badge>
+                          </div>
+                          <div className="flex items-center gap-2 text-sm text-gray-400 mb-3">
+                            <Calendar className="w-4 h-4" />
+                            <span>{exp.positions[0].duration}</span>
+                          </div>
+                        </div>
+                      )}
+
+                      <p className="text-gray-300 leading-relaxed mb-4">
+                        {exp.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2">
+                        {exp.technologies.map((tech, techIndex) => (
                           <Badge
-                            variant="outline"
-                            className="border-gray-600 text-gray-400"
+                            key={techIndex}
+                            variant="secondary"
+                            className="bg-gray-800/50 text-gray-300"
                           >
-                            Full-time
+                            {tech}
                           </Badge>
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-gray-400 mb-2">
-                          <Calendar className="w-4 h-4" />
-                          <span>May 2024 - Aug 2025 • 1 yr 4 mos</span>
-                        </div>
-                      </div>
-
-                      {/* Internship Position */}
-                      <div className="pl-4 border-l-2 border-gray-700">
-                        <div className="flex flex-wrap items-center gap-2 mb-2">
-                          <Badge className="bg-blue-500/10 text-blue-300 border-blue-500/20">
-                            Full-stack Developer
-                          </Badge>
-                          <Badge
-                            variant="outline"
-                            className="border-gray-600 text-gray-400"
-                          >
-                            Internship
-                          </Badge>
-                        </div>
-                        <div className="flex items-center gap-2 text-sm text-gray-400 mb-3">
-                          <Calendar className="w-4 h-4" />
-                          <span>Nov 2023 - Apr 2024 • 6 mos</span>
-                        </div>
+                        ))}
                       </div>
                     </div>
-
-                    <p className="text-gray-300 leading-relaxed mb-4">
-                      Developed and maintained full-stack web applications using
-                      modern technologies. Worked extensively with Next.js for
-                      frontend development and NestJS for backend services,
-                      delivering complete solutions that enhanced user
-                      experience and system performance.
-                    </p>
-
-                    <div className="flex flex-wrap gap-2">
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        Next.js
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        NestJS
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        TypeScript
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        React
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        Full-Stack Development
-                      </Badge>
-                    </div>
                   </div>
-                </div>
-              </Card>
-
-              {/* A-DigitArt Position */}
-              <Card className="p-6 bg-gradient-to-br from-gray-500/5 via-gray-600/5 to-gray-500/5 border-gray-500/20">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-pink-500/20 to-pink-600/20 rounded-xl border border-pink-500/30 flex items-center justify-center">
-                    <div className="w-8 h-8 bg-pink-500 rounded-lg flex items-center justify-center">
-                      <span className="text-white font-bold text-sm">A</span>
-                    </div>
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-semibold text-foreground mb-1">
-                      A-DigitArt
-                    </h4>
-                    <div className="flex flex-wrap items-center gap-2 mb-2">
-                      <Badge className="bg-violet-500/10 text-violet-300 border-violet-500/20">
-                        Full-stack Developer
-                      </Badge>
-                      <Badge
-                        variant="outline"
-                        className="border-gray-600 text-gray-400"
-                      >
-                        Full-time
-                      </Badge>
-                    </div>
-                    <div className="flex items-center gap-2 text-sm text-gray-400 mb-3">
-                      <Calendar className="w-4 h-4" />
-                      <span>Apr 2023 - Jun 2023 • 3 mos</span>
-                    </div>
-
-                    <p className="text-gray-300 leading-relaxed mb-4">
-                      Contributed to full-stack development projects, gaining
-                      valuable experience in web application development and
-                      modern development practices.
-                    </p>
-
-                    <div className="flex flex-wrap gap-2">
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        Web Development
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        Full-Stack
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        Team Collaboration
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              ))}
             </div>
           </div>
         </FadeContent>
@@ -363,89 +323,80 @@ export default function About() {
         <FadeContent direction="up" delay={0.8}>
           <div className="mt-20">
             <div className="text-center mb-12">
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <GraduationCap className="w-6 h-6 text-violet-400" />
+              <div className="section-decoration mb-4">
                 <h3 className="text-3xl font-bold text-foreground font-heading tracking-tight">
                   Education
                 </h3>
               </div>
               <p className="text-gray-400 max-w-2xl mx-auto">
-                My educational journey in computer science and programming
+                Building foundations in code and creative problem solving
               </p>
             </div>
 
             <div className="max-w-4xl mx-auto">
-              <Card className="p-6 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-blue-500/5 border-blue-500/20">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-blue-500/20 to-purple-600/20 rounded-xl border border-blue-500/30 flex items-center justify-center">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                      <span className="text-white font-bold text-xs">1337</span>
+              {education.map((edu) => (
+                <Card
+                  key={edu.id}
+                  className={`p-6 bg-gradient-to-br ${edu.cardGradient} border-${edu.cardBorder}`}
+                >
+                  <div className="flex items-start gap-4">
+                    <div
+                      className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br from-${edu.gradientFrom} to-${edu.gradientTo} rounded-xl border border-${edu.borderColor} flex items-center justify-center overflow-hidden`}
+                    >
+                      {edu.hasWhiteBackground ? (
+                        <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1">
+                          <Image
+                            src={edu.logo}
+                            alt={edu.logoAlt}
+                            width={36}
+                            height={36}
+                            className="object-contain"
+                          />
+                        </div>
+                      ) : (
+                        <Image
+                          src={edu.logo}
+                          alt={edu.logoAlt}
+                          width={40}
+                          height={40}
+                          className="object-contain"
+                        />
+                      )}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-xl font-semibold text-foreground mb-1">
+                        {edu.institution}
+                      </h4>
+                      <div className="flex items-center gap-2 text-sm text-gray-400 mb-3">
+                        <Calendar className="w-4 h-4" />
+                        <span>{edu.startDate}</span>
+                      </div>
+
+                      <div className="mb-4">
+                        <Badge className="bg-blue-500/10 text-blue-300 border-blue-500/20 mb-3">
+                          {edu.skillsBadge}
+                        </Badge>
+                      </div>
+
+                      <p className="text-gray-300 leading-relaxed mb-4">
+                        {edu.description}
+                      </p>
+
+                      <div className="flex flex-wrap gap-2">
+                        {edu.technologies.map((tech, techIndex) => (
+                          <Badge
+                            key={techIndex}
+                            variant="secondary"
+                            className="bg-gray-800/50 text-gray-300"
+                          >
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  <div className="flex-1">
-                    <h4 className="text-xl font-semibold text-foreground mb-1">
-                      1337 Coding School
-                    </h4>
-                    <div className="flex items-center gap-2 text-sm text-gray-400 mb-3">
-                      <Calendar className="w-4 h-4" />
-                      <span>Nov 2021</span>
-                    </div>
-
-                    <div className="mb-4">
-                      <Badge className="bg-blue-500/10 text-blue-300 border-blue-500/20 mb-3">
-                        React.js, Redux.js and +8 skills
-                      </Badge>
-                    </div>
-
-                    <p className="text-gray-300 leading-relaxed mb-4">
-                      Intensive computer science education focused on
-                      programming fundamentals, algorithms, and modern web
-                      development technologies. Part of the prestigious 42
-                      Network, known for its peer-to-peer learning methodology
-                      and rigorous curriculum.
-                    </p>
-
-                    <div className="flex flex-wrap gap-2">
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        C/C++
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        React.js
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        Redux.js
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        Algorithms
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        Data Structures
-                      </Badge>
-                      <Badge
-                        variant="secondary"
-                        className="bg-gray-800/50 text-gray-300"
-                      >
-                        Software Engineering
-                      </Badge>
-                    </div>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              ))}
             </div>
           </div>
         </FadeContent>
