@@ -48,31 +48,48 @@ export default function Contact() {
     setFormStatus({ type: "loading", message: "Sending message..." });
 
     try {
-      // Simulate API call
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-
-      // Reset form on success
-      setFormData({
-        name: "",
-        email: "",
-        subject: "",
-        message: "",
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
       });
 
-      setFormStatus({
-        type: "success",
-        message: "Message sent successfully! I'll get back to you soon.",
-      });
+      const result = await response.json();
 
-      // Clear success message after 5 seconds
-      setTimeout(() => {
-        setFormStatus({ type: "idle", message: "" });
-      }, 5000);
+      if (response.ok) {
+        // Reset form on success
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+
+        setFormStatus({
+          type: "success",
+          message:
+            result.message ||
+            "Message sent successfully! I'll get back to you soon.",
+        });
+
+        // Clear success message after 8 seconds
+        setTimeout(() => {
+          setFormStatus({ type: "idle", message: "" });
+        }, 8000);
+      } else {
+        setFormStatus({
+          type: "error",
+          message: result.error || "Failed to send message. Please try again.",
+        });
+      }
     } catch (error) {
       console.error("Form submission error:", error);
       setFormStatus({
         type: "error",
-        message: "Failed to send message. Please try again.",
+        message:
+          "Failed to send message. Please check your connection and try again.",
       });
     }
   };

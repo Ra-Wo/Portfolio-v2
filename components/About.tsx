@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import FadeContent from "@/components/ui/fade-content";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TextTrail } from "@/components/ui/text-trail";
+import { cn } from "@/lib/utils";
 import { Calendar } from "lucide-react";
 import Image from "next/image";
 
@@ -15,11 +16,11 @@ const experiences = [
     company: "Open Development and Education Ltd.",
     logo: "/opendeved_icon.png",
     logoAlt: "Open Development and Education Ltd.",
-    gradientFrom: "orange-500/20",
-    gradientTo: "orange-600/20",
-    borderColor: "orange-500/30",
+    gradientFrom: "from-orange-500/20",
+    gradientTo: "to-orange-600/20",
+    borderColor: "border-orange-500/30",
     cardGradient: "from-violet-500/5 via-purple-500/5 to-violet-500/5",
-    cardBorder: "violet-500/20",
+    cardBorder: "border-violet-500/20",
     positions: [
       {
         title: "Full-stack Developer",
@@ -50,11 +51,11 @@ const experiences = [
     company: "A-DigitArt",
     logo: "/a_digitart_logo.jpeg",
     logoAlt: "A-DigitArt",
-    gradientFrom: "pink-500/20",
-    gradientTo: "pink-600/20",
-    borderColor: "pink-500/30",
+    gradientFrom: "from-pink-500/20",
+    gradientTo: "to-pink-600/20",
+    borderColor: "border-pink-500/30",
     cardGradient: "from-gray-500/5 via-gray-600/5 to-gray-500/5",
-    cardBorder: "gray-500/20",
+    cardBorder: "border-gray-500/20",
     logoClassName: "rounded-lg",
     positions: [
       {
@@ -84,11 +85,11 @@ const education = [
     institution: "1337 Coding School",
     logo: "/1337_icon.png",
     logoAlt: "1337 Coding School",
-    gradientFrom: "blue-500/20",
-    gradientTo: "purple-600/20",
-    borderColor: "blue-500/30",
+    gradientFrom: "from-blue-500/20",
+    gradientTo: "to-purple-600/20",
+    borderColor: "border-blue-500/30",
     cardGradient: "from-blue-500/5 via-purple-500/5 to-blue-500/5",
-    cardBorder: "blue-500/20",
+    cardBorder: "border-blue-500/20",
     hasWhiteBackground: true,
     startDate: "Nov 2021",
     skillsBadge: "React.js, Redux.js and +8 skills",
@@ -228,18 +229,29 @@ export default function About() {
               {experiences.map((exp) => (
                 <Card
                   key={exp.id}
-                  className={`p-6 bg-gradient-to-br ${exp.cardGradient} border-${exp.cardBorder}`}
+                  className={cn(
+                    "p-6 bg-gradient-to-br",
+                    exp.cardGradient,
+                    exp.cardBorder
+                  )}
                 >
                   <div className="flex items-start gap-4">
                     <div
-                      className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br from-${exp.gradientFrom} to-${exp.gradientTo} rounded-xl border border-${exp.borderColor} flex items-center justify-center overflow-hidden`}
+                      className={cn(
+                        `flex-shrink-0 w-16 h-16 bg-gradient-to-br rounded-xl border flex items-center justify-center overflow-hidden`,
+                        exp.gradientFrom,
+                        exp.gradientTo,
+                        exp.borderColor
+                      )}
                     >
                       <Image
                         src={exp.logo}
                         alt={exp.logoAlt}
                         width={40}
                         height={40}
-                        className={`object-contain ${exp.logoClassName || ""}`}
+                        className={cn(
+                          `object-contain ${exp.logoClassName || ""}`
+                        )}
                       />
                     </div>
                     <div className="flex-1">
@@ -337,11 +349,20 @@ export default function About() {
               {education.map((edu) => (
                 <Card
                   key={edu.id}
-                  className={`p-6 bg-gradient-to-br ${edu.cardGradient} border-${edu.cardBorder}`}
+                  className={cn(
+                    `p-6 bg-gradient-to-br`,
+                    edu.cardGradient,
+                    edu.cardBorder
+                  )}
                 >
                   <div className="flex items-start gap-4">
                     <div
-                      className={`flex-shrink-0 w-16 h-16 bg-gradient-to-br from-${edu.gradientFrom} to-${edu.gradientTo} rounded-xl border border-${edu.borderColor} flex items-center justify-center overflow-hidden`}
+                      className={cn(
+                        `flex-shrink-0 w-16 h-16 bg-gradient-to-br rounded-xl border flex items-center justify-center overflow-hidden`,
+                        edu.borderColor,
+                        edu.gradientFrom,
+                        edu.gradientTo
+                      )}
                     >
                       {edu.hasWhiteBackground ? (
                         <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center p-1">
