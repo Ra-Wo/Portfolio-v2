@@ -60,6 +60,9 @@ const config: Config = {
         glow: "glow 4s ease-in-out infinite",
         shimmer: "shimmer 2s infinite",
         spotlight: "spotlight 2s ease .75s 1 forwards",
+        "star-movement-bottom":
+          "star-movement-bottom linear infinite alternate",
+        "star-movement-top": "star-movement-top linear infinite alternate",
       },
       keyframes: {
         float: {
@@ -83,6 +86,14 @@ const config: Config = {
             opacity: "1",
             transform: "translate(-50%,-40%) scale(1)",
           },
+        },
+        "star-movement-bottom": {
+          "0%": { transform: "translate(0%, 0%)", opacity: "1" },
+          "100%": { transform: "translate(-100%, 0%)", opacity: "0" },
+        },
+        "star-movement-top": {
+          "0%": { transform: "translate(0%, 0%)", opacity: "1" },
+          "100%": { transform: "translate(100%, 0%)", opacity: "0" },
         },
       },
     },

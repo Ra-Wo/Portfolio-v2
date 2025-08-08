@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import FadeContent from "@/components/ui/fade-content";
 import { Spotlight } from "@/components/ui/spotlight";
 import { TextTrail } from "@/components/ui/text-trail";
+import StarBorder from "@/components/ui/star-border";
 import { ExternalLink, Github, Loader2 } from "lucide-react";
 import { client, urlFor, projectsQuery, type Project } from "@/lib/sanity";
 
@@ -236,23 +237,15 @@ export default function Projects() {
         {/* See All Projects Section */}
         <FadeContent direction="up" delay={0.5}>
           <div className="text-center mt-16">
-            <Card className="p-8 bg-gradient-to-br from-violet-500/5 via-purple-500/5 to-violet-500/5 border-violet-500/20">
-              <h3 className="text-2xl font-bold text-foreground mb-4 font-heading">
-                Want to See More?
-              </h3>
-              <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                Explore my complete portfolio to see all projects and technical work.
-              </p>
-              <Button
-                asChild
-                size="lg"
-                className="bg-violet-600 hover:bg-violet-700 text-white"
-              >
-                <Link href="/projects">
-                  See All Projects
-                </Link>
-              </Button>
-            </Card>
+            <StarBorder
+              as={Link}
+              href="/projects"
+              color="rgb(139, 92, 246)"
+              speed="4s"
+              className="inline-block"
+            >
+              See All Projects
+            </StarBorder>
           </div>
         </FadeContent>
       </div>
