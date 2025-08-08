@@ -5,17 +5,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import {
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-  Github,
-  Linkedin,
-  Twitter,
-  CheckCircle,
-  AlertCircle,
-} from "lucide-react";
+import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { contactDetails, socialLinks } from "@/lib/data";
 
 interface FormData {
   name: string;
@@ -41,48 +32,6 @@ export default function Contact() {
     type: "idle",
     message: "",
   });
-
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: "Email",
-      value: "rachid@example.com",
-      href: "mailto:rachid@example.com",
-    },
-    {
-      icon: Phone,
-      label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
-    },
-    {
-      icon: MapPin,
-      label: "Location",
-      value: "New York, NY",
-      href: "#",
-    },
-  ];
-
-  const socialLinks = [
-    {
-      icon: Github,
-      label: "GitHub",
-      href: "https://github.com",
-      username: "@rachid",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      href: "https://linkedin.com",
-      username: "rachid-dev",
-    },
-    {
-      icon: Twitter,
-      label: "Twitter",
-      href: "https://twitter.com",
-      username: "@rachid_dev",
-    },
-  ];
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -120,6 +69,7 @@ export default function Contact() {
         setFormStatus({ type: "idle", message: "" });
       }, 5000);
     } catch (error) {
+      console.error("Form submission error:", error);
       setFormStatus({
         type: "error",
         message: "Failed to send message. Please try again.",
@@ -143,8 +93,8 @@ export default function Contact() {
               </span>
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Ready to bring your ideas to life? Let's collaborate and create
-              something amazing together.
+              Ready to bring your ideas to life? Let&apos;s collaborate and
+              create something amazing together.
             </p>
           </div>
 
@@ -153,18 +103,18 @@ export default function Contact() {
             <div className="space-y-8">
               <div>
                 <h3 className="text-2xl font-heading font-semibold mb-6">
-                  Let's Connect
+                  Let&apos;s Connect
                 </h3>
                 <p className="text-muted-foreground mb-8">
-                  I'm always interested in hearing about new opportunities and
-                  exciting projects. Whether you have a question or just want to
-                  say hi, feel free to reach out!
+                  I&apos;m always interested in hearing about new opportunities
+                  and exciting projects. Whether you have a question or just
+                  want to say hi, feel free to reach out!
                 </p>
               </div>
 
               {/* Contact Details */}
               <div className="space-y-4">
-                {contactInfo.map((item, index) => (
+                {contactDetails.map((item, index) => (
                   <Card
                     key={index}
                     className="p-4 bg-background/50 backdrop-blur-sm border-white/10 hover:border-violet-400/30 transition-all duration-300 group"

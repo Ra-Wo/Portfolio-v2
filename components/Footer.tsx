@@ -1,46 +1,11 @@
 "use client";
 
-import {
-  Github,
-  Linkedin,
-  Twitter,
-  Mail,
-  Heart,
-  ArrowUp,
-  Code,
-  Coffee,
-} from "lucide-react";
+import { Heart, ArrowUp, Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { socialLinksWithEmail } from "@/lib/data";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
-
-  const socialLinks = [
-    {
-      icon: Github,
-      label: "GitHub",
-      href: "https://github.com",
-      username: "@rachid",
-    },
-    {
-      icon: Linkedin,
-      label: "LinkedIn",
-      href: "https://linkedin.com",
-      username: "rachid-dev",
-    },
-    {
-      icon: Twitter,
-      label: "Twitter",
-      href: "https://twitter.com",
-      username: "@rachid_dev",
-    },
-    {
-      icon: Mail,
-      label: "Email",
-      href: "mailto:rachid@example.com",
-      username: "rachid@example.com",
-    },
-  ];
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -93,7 +58,7 @@ export default function Footer() {
               Connect
             </h4>
             <div className="space-y-3">
-              {socialLinks.map((social) => (
+              {socialLinksWithEmail.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
