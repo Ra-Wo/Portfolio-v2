@@ -113,7 +113,7 @@ export default function Projects() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {projects.map((project, index) => (
+          {projects.slice(0, 9).map((project, index) => (
             <FadeContent
               key={project._id}
               direction="up"
@@ -233,22 +233,24 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* CTA Section */}
+        {/* See All Projects Section */}
         <FadeContent direction="up" delay={0.5}>
           <div className="text-center mt-16">
             <Card className="p-8 bg-gradient-to-br from-violet-500/5 via-purple-500/5 to-violet-500/5 border-violet-500/20">
               <h3 className="text-2xl font-bold text-foreground mb-4 font-heading">
-                Interested in Working Together?
+                Want to See More?
               </h3>
               <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-                I{"'"}m always open to discussing new opportunities and exciting
-                projects. Let{"'"}s create something amazing together!
+                Explore my complete portfolio to see all projects and technical work.
               </p>
               <Button
+                asChild
                 size="lg"
                 className="bg-violet-600 hover:bg-violet-700 text-white"
               >
-                Get In Touch
+                <Link href="/projects">
+                  See All Projects
+                </Link>
               </Button>
             </Card>
           </div>
