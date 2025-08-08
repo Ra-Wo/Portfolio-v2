@@ -4,6 +4,13 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { cn } from "@/lib/utils";
 
+type MarginValue = `${number}${"px" | "%"}`;
+type MarginType =
+  | MarginValue
+  | `${MarginValue} ${MarginValue}`
+  | `${MarginValue} ${MarginValue} ${MarginValue}`
+  | `${MarginValue} ${MarginValue} ${MarginValue} ${MarginValue}`;
+
 interface FadeContentProps {
   children: React.ReactNode;
   className?: string;
@@ -13,6 +20,7 @@ interface FadeContentProps {
   distance?: number;
   once?: boolean;
   threshold?: number;
+  useInViewMargin?: MarginType; // Margin for useInView
 }
 
 const FadeContent: React.FC<FadeContentProps> = ({
@@ -24,9 +32,14 @@ const FadeContent: React.FC<FadeContentProps> = ({
   distance = 30,
   once = true,
   threshold = 0.1,
+  useInViewMargin, // Detect slightly before element comes into view
 }) => {
   const ref = useRef<HTMLDivElement>(null);
-  const isInView = useInView(ref, { once, amount: threshold });
+  const isInView = useInView(ref, {
+    once,
+    amount: threshold,
+    margin: useInViewMargin || "0px 0px 0% 0px", // Use the margin parameter
+  });
 
   const getInitialState = () => {
     switch (direction) {

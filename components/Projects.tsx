@@ -12,121 +12,6 @@ import { TextTrail } from "@/components/ui/text-trail";
 import { ExternalLink, Github, Loader2 } from "lucide-react";
 import { client, urlFor, projectsQuery, type Project } from "@/lib/sanity";
 
-// Mock data for development when Sanity is not configured
-const mockProjects: Project[] = [
-  {
-    _id: "1",
-    title: "E-Commerce Platform",
-    slug: { current: "ecommerce-platform" },
-    description:
-      "A full-stack e-commerce platform built with Next.js and NestJS, featuring user authentication, payment processing, and admin dashboard.",
-    content: [],
-    image: {
-      asset: { _ref: "mock-image-1" },
-      alt: "E-Commerce Platform",
-    },
-    gallery: [],
-    technologies: ["Next.js", "NestJS", "TypeScript", "PostgreSQL", "Stripe"],
-    category: "web-app",
-    status: "completed",
-    duration: "3 months",
-    teamSize: "Solo project",
-    challenges: [
-      "Implementing secure payment processing",
-      "Building scalable user authentication",
-      "Optimizing database performance",
-    ],
-    solutions: [
-      "Integrated Stripe for secure payments",
-      "Used JWT with refresh tokens",
-      "Implemented database indexing and caching",
-    ],
-    learnings: [
-      "Advanced TypeScript patterns",
-      "Microservices architecture",
-      "Payment gateway integration",
-    ],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/username/project",
-    featured: true,
-    order: 1,
-  },
-  {
-    _id: "2",
-    title: "Task Management App",
-    slug: { current: "task-management" },
-    description:
-      "A collaborative task management application with real-time updates, drag-and-drop functionality, and team collaboration features.",
-    content: [],
-    image: {
-      asset: { _ref: "mock-image-2" },
-      alt: "Task Management App",
-    },
-    gallery: [],
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-    category: "web-app",
-    status: "completed",
-    duration: "2 months",
-    teamSize: "3 developers",
-    challenges: [
-      "Real-time synchronization across multiple users",
-      "Complex drag-and-drop interactions",
-      "Performance optimization for large datasets",
-    ],
-    solutions: [
-      "WebSocket implementation with Socket.io",
-      "React Beautiful DnD library",
-      "Virtual scrolling and pagination",
-    ],
-    learnings: [
-      "Real-time application architecture",
-      "Complex state management",
-      "Team collaboration workflows",
-    ],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/username/project",
-    featured: true,
-    order: 2,
-  },
-  {
-    _id: "3",
-    title: "Weather Dashboard",
-    slug: { current: "weather-dashboard" },
-    description:
-      "A responsive weather dashboard with location-based forecasts, interactive maps, and weather alerts.",
-    content: [],
-    image: {
-      asset: { _ref: "mock-image-3" },
-      alt: "Weather Dashboard",
-    },
-    gallery: [],
-    technologies: ["Vue.js", "Express.js", "Chart.js", "OpenWeather API"],
-    category: "web-app",
-    status: "completed",
-    duration: "6 weeks",
-    teamSize: "Solo project",
-    challenges: [
-      "Handling multiple API integrations",
-      "Creating responsive data visualizations",
-      "Geolocation and mapping features",
-    ],
-    solutions: [
-      "API abstraction layer with error handling",
-      "Chart.js with custom responsive configurations",
-      "Integration with browser geolocation API",
-    ],
-    learnings: [
-      "Vue.js ecosystem and composition API",
-      "Data visualization best practices",
-      "API design and integration patterns",
-    ],
-    liveUrl: "https://example.com",
-    githubUrl: "https://github.com/username/project",
-    featured: false,
-    order: 3,
-  },
-];
-
 export default function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
@@ -154,8 +39,6 @@ export default function Projects() {
       } catch (err) {
         console.error("Error fetching projects:", err);
         setError("Failed to load projects");
-        // Fallback to mock data for development
-        setProjects(mockProjects);
       } finally {
         setLoading(false);
       }
@@ -229,128 +112,123 @@ export default function Projects() {
         </FadeContent>
 
         {/* Projects Grid */}
-        <div className="grid gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.map((project, index) => (
             <FadeContent
               key={project._id}
               direction="up"
               delay={0.2 + index * 0.1}
             >
-              <Card className="group overflow-hidden bg-card/30 border-violet-500/20 hover:bg-card/50 transition-all duration-300">
-                <div
-                  className={`grid ${index % 2 === 0 ? "lg:grid-cols-2" : "lg:grid-cols-2"} gap-0`}
-                >
-                  {/* Project Image */}
-                  <div
-                    className={`relative overflow-hidden ${index % 2 !== 0 ? "lg:order-2" : ""}`}
-                  >
-                    <div className="relative bg-black/10 p-4 lg:p-6">
-                      <div className="relative aspect-video bg-gradient-to-br from-violet-500/10 to-purple-500/10 rounded-lg overflow-hidden">
-                        {(() => {
-                          const imageUrl = getImageUrl(project.image);
-                          return imageUrl ? (
-                            <Image
-                              src={imageUrl}
-                              alt={project.image?.alt || project.title}
-                              fill
-                              unoptimized
-                              className="object-contain group-hover:scale-105 transition-transform duration-500"
-                            />
-                          ) : (
-                            <div className="w-full h-full bg-gradient-to-br from-violet-900/50 to-purple-900/50 flex items-center justify-center rounded-lg">
-                              <div className="text-center text-violet-300">
-                                <div className="text-6xl lg:text-7xl mb-4">
-                                  🚀
-                                </div>
-                                <p className="text-sm lg:text-base opacity-70">
-                                  Project Preview
-                                </p>
-                              </div>
+              <Link href={`/projects/${project.slug.current}`}>
+                <Card className="group h-full overflow-hidden bg-card/30 border-violet-500/20 hover:bg-card/50 hover:border-violet-400/40 transition-all duration-300 cursor-pointer hover:-translate-y-2">
+                  <div className="relative">
+                    {/* Project Image */}
+                    <div className="relative aspect-video overflow-hidden">
+                      {(() => {
+                        const imageUrl = getImageUrl(project.image);
+                        return imageUrl ? (
+                          <Image
+                            src={imageUrl}
+                            alt={project.image?.alt || project.title}
+                            fill
+                            unoptimized
+                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gradient-to-br from-violet-900/50 to-purple-900/50 flex items-center justify-center">
+                            <div className="text-center text-violet-300">
+                              <div className="text-4xl mb-2">🚀</div>
+                              <p className="text-xs opacity-70">
+                                Project Preview
+                              </p>
                             </div>
-                          );
-                        })()}
+                          </div>
+                        );
+                      })()}
+                      {/* Gradient Overlay */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+
+                    {/* Project Content */}
+                    <div className="p-6">
+                      <div className="space-y-4">
+                        {/* Title and Description */}
+                        <div>
+                          <h3 className="!text-2xl font-bold text-foreground font-heading mb-2 tracking-tight group-hover:text-violet-300 transition-colors duration-200">
+                            {project.title}
+                          </h3>
+                          <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+                            {project.description}
+                          </p>
+                        </div>
+
+                        {/* Technologies */}
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.technologies.slice(0, 3).map((tech) => (
+                            <Badge
+                              key={tech}
+                              variant="secondary"
+                              className="text-xs bg-violet-500/10 text-violet-300 border-violet-500/20 hover:bg-violet-500/20 transition-colors duration-200"
+                            >
+                              {tech}
+                            </Badge>
+                          ))}
+                          {project.technologies.length > 3 && (
+                            <Badge
+                              variant="secondary"
+                              className="text-xs bg-violet-500/10 text-violet-300 border-violet-500/20"
+                            >
+                              +{project.technologies.length - 3}
+                            </Badge>
+                          )}
+                        </div>
+
+                        {/* Project Links */}
+                        <div className="flex gap-2 pt-2">
+                          {project.liveUrl && (
+                            <Button
+                              asChild
+                              size="sm"
+                              variant="outline"
+                              className="flex-1 border-violet-500/30 text-violet-300 hover:bg-violet-500/10 text-xs h-8"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-1.5"
+                              >
+                                <ExternalLink className="w-3 h-3" />
+                                Demo
+                              </a>
+                            </Button>
+                          )}
+                          {project.githubUrl && (
+                            <Button
+                              asChild
+                              variant="outline"
+                              size="sm"
+                              className="flex-1 border-violet-500/30 text-violet-300 hover:bg-violet-500/10 text-xs h-8"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <a
+                                href={project.githubUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-1.5"
+                              >
+                                <Github className="w-3 h-3" />
+                                Code
+                              </a>
+                            </Button>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
-
-                  {/* Project Content */}
-                  <div className="p-6 lg:p-8 flex flex-col justify-center">
-                    <div className="space-y-4">
-                      <div>
-                        <h3 className="text-2xl lg:text-3xl font-bold text-foreground font-heading mb-3 tracking-tight">
-                          {project.title}
-                        </h3>
-                        <p className="text-gray-300 leading-relaxed">
-                          {project.description}
-                        </p>
-                      </div>
-
-                      {/* Technologies */}
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech) => (
-                          <Badge
-                            key={tech}
-                            variant="secondary"
-                            className="bg-violet-500/10 text-violet-300 border-violet-500/20 hover:bg-violet-500/20 transition-colors duration-200"
-                          >
-                            {tech}
-                          </Badge>
-                        ))}
-                      </div>
-
-                      {/* Project Links */}
-                      <div className="flex gap-3 pt-4 flex-wrap">
-                        <Button
-                          asChild
-                          variant="default"
-                          size="sm"
-                          className="bg-violet-600 hover:bg-violet-700 text-white"
-                        >
-                          <Link href={`/projects/${project.slug.current}`}>
-                            View Details
-                          </Link>
-                        </Button>
-                        {project.liveUrl && (
-                          <Button
-                            asChild
-                            size="sm"
-                            variant="outline"
-                            className="border-violet-500/30 text-violet-300 hover:bg-violet-500/10"
-                          >
-                            <a
-                              href={project.liveUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-2"
-                            >
-                              <ExternalLink className="w-4 h-4" />
-                              Live Demo
-                            </a>
-                          </Button>
-                        )}
-                        {project.githubUrl && (
-                          <Button
-                            asChild
-                            variant="outline"
-                            size="sm"
-                            className="border-violet-500/30 text-violet-300 hover:bg-violet-500/10"
-                          >
-                            <a
-                              href={project.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center gap-2"
-                            >
-                              <Github className="w-4 h-4" />
-                              Source
-                            </a>
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </Link>
             </FadeContent>
           ))}
         </div>

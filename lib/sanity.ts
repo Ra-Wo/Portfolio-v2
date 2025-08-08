@@ -6,7 +6,8 @@ export const client = createClient({
   projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "your-project-id",
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   apiVersion: process.env.NEXT_PUBLIC_SANITY_API_VERSION || "2025-07-29",
-  useCdn: false, // Set to true for production
+  useCdn: process.env.NODE_ENV === "production", // Use CDN in production only
+  perspective: "published", // Ensure consistent data
 });
 
 const builder = imageUrlBuilder(client);
@@ -47,11 +48,6 @@ export interface Project {
   technologies: string[];
   category?: string;
   status?: string;
-  duration?: string;
-  teamSize?: string;
-  challenges?: string[];
-  solutions?: string[];
-  learnings?: string[];
   liveUrl?: string;
   githubUrl?: string;
   featured: boolean;
@@ -100,11 +96,6 @@ export const projectBySlugQuery = `*[_type == "project" && slug.current == $slug
   technologies,
   category,
   status,
-  duration,
-  teamSize,
-  challenges,
-  solutions,
-  learnings,
   liveUrl,
   githubUrl,
   featured,

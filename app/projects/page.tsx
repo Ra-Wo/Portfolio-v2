@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { ArrowLeft } from "lucide-react";
-import { client, projectsQuery, type Project } from "@/lib/sanity";
+import { client, projectsQuery, urlFor, type Project } from "@/lib/sanity";
 
 export const metadata: Metadata = {
   title: "Projects | Rachid's Portfolio",
@@ -13,30 +14,34 @@ export const metadata: Metadata = {
 export default async function ProjectsPage() {
   let projects: Project[] = [];
 
+  // Helper function to safely get image URL
+  const getImageUrl = (image: Project["image"]): string | null => {
+    try {
+      if (image?.asset?._ref && !image.asset._ref.startsWith("mock-image")) {
+        return urlFor(image).width(600).height(400).url();
+      }
+      return null;
+    } catch (err) {
+      console.error("Error generating image URL:", err);
+      return null;
+    }
+  };
+
+  console.log("Fetching projects...");
+
   try {
     projects = await client.fetch(projectsQuery);
+    console.log("Fetched projects:", projects);
   } catch (error) {
     console.error("Error fetching projects:", error);
-    // Use mock data as fallback
-    projects = [
-      {
-        _id: "1",
-        title: "E-Commerce Platform",
-        slug: { current: "ecommerce-platform" },
-        description:
-          "A full-stack e-commerce platform built with Next.js and NestJS",
-        image: { asset: { _ref: "mock-image-1" }, alt: "E-Commerce Platform" },
-        technologies: ["Next.js", "NestJS", "TypeScript"],
-        category: "web-app",
-        status: "completed",
-        featured: true,
-        order: 1,
-      },
-    ];
+  }
+
+  if (!projects || projects.length === 0) {
+    return null;
   }
 
   return (
-    <div className="min-h-screen bg-black py-20">
+    <div className="min-h-screen bg-black py-20" suppressHydrationWarning>
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
         {/* Header */}
         <div className="mb-12">
@@ -66,20 +71,38 @@ export default async function ProjectsPage() {
               className="group block"
             >
               <div className="bg-card/30 border border-violet-500/20 rounded-lg overflow-hidden hover:bg-card/50 transition-all duration-300 hover:border-violet-500/40 hover:scale-105">
-                <div className="aspect-[4/3] bg-gradient-to-br from-violet-900/50 to-purple-900/50 flex items-center justify-center relative overflow-hidden group-hover:bg-violet-900/60 transition-colors duration-300">
-                  <div className="text-center text-violet-300 z-10">
-                    <div className="text-5xl mb-3 group-hover:scale-110 transition-transform duration-300">
-                      🚀
-                    </div>
-                    <p className="text-sm font-medium">{project.title}</p>
-                    <p className="text-xs opacity-70 mt-1">Project Preview</p>
-                  </div>
-                  {/* You can add actual image handling here when you have real images */}
+                <div className="aspect-[4/3] relative overflow-hidden">
+                  {(() => {
+                    const imageUrl = getImageUrl(project.image);
+                    return imageUrl ? (
+                      <Image
+                        src={imageUrl}
+                        alt={project.image?.alt || project.title}
+                        fill
+                        unoptimized
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-violet-900/50 to-purple-900/50 flex items-center justify-center">
+                        <div className="text-center text-violet-300">
+                          <div className="text-5xl mb-3 group-hover:scale-110 transition-transform duration-300">
+                            🚀
+                          </div>
+                          <p className="text-sm font-medium">{project.title}</p>
+                          <p className="text-xs opacity-70 mt-1">
+                            Project Preview
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })()}
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
                 <div className="p-4">
                   <div className="flex items-center gap-2 mb-2">
-                    {project.category && (
+                    {project.category && project.category !== "" && (
                       <Badge
                         variant="outline"
                         className="bg-violet-500/10 border-violet-500/20 text-violet-300 text-xs"
@@ -87,7 +110,7 @@ export default async function ProjectsPage() {
                         {project.category.replace("-", " ").toUpperCase()}
                       </Badge>
                     )}
-                    {project.featured && (
+                    {project.featured === true && (
                       <Badge
                         variant="outline"
                         className="bg-yellow-500/10 border-yellow-500/20 text-yellow-300 text-xs"
@@ -106,9 +129,9 @@ export default async function ProjectsPage() {
                   </p>
 
                   <div className="flex flex-wrap gap-1">
-                    {project.technologies.slice(0, 3).map((tech) => (
+                    {project.technologies.slice(0, 3).map((tech, index) => (
                       <Badge
-                        key={tech}
+                        key={`${project._id}-tech-${index}`}
                         variant="secondary"
                         className="bg-violet-500/10 text-violet-300 border-violet-500/20 text-xs"
                       >

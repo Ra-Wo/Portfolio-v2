@@ -27,8 +27,6 @@ export default function ProjectImage({
   image,
   alt,
   title,
-  width = 1200,
-  height = 675,
   className = "",
   objectFit = "contain",
   priority = false,
@@ -41,7 +39,7 @@ export default function ProjectImage({
         sanityImage?.asset?._ref &&
         !sanityImage.asset._ref.startsWith("mock-image")
       ) {
-        return urlFor(sanityImage).width(width).height(height).url();
+        return urlFor(sanityImage).url();
       }
       return null;
     } catch (err) {

@@ -184,36 +184,6 @@ export const projectType = defineType({
       initialValue: "completed",
     }),
     defineField({
-      name: "duration",
-      title: "Project Duration",
-      type: "string",
-      description: "e.g., '3 months', '2 weeks', etc.",
-    }),
-    defineField({
-      name: "teamSize",
-      title: "Team Size",
-      type: "string",
-      description: "e.g., 'Solo project', '3 developers', etc.",
-    }),
-    defineField({
-      name: "challenges",
-      title: "Key Challenges",
-      type: "array",
-      of: [{ type: "string" }],
-    }),
-    defineField({
-      name: "solutions",
-      title: "Solutions Implemented",
-      type: "array",
-      of: [{ type: "string" }],
-    }),
-    defineField({
-      name: "learnings",
-      title: "Key Learnings",
-      type: "array",
-      of: [{ type: "string" }],
-    }),
-    defineField({
       name: "liveUrl",
       title: "Live URL",
       type: "url",
