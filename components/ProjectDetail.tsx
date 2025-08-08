@@ -183,7 +183,6 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 <div className="flex justify-center gap-4 flex-wrap">
                   {project.liveUrl && (
                     <Button
-                      asChild
                       size="lg"
                       className="bg-violet-600 hover:bg-violet-700 text-white"
                     >
@@ -200,7 +199,6 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   )}
                   {project.githubUrl && (
                     <Button
-                      asChild
                       variant="outline"
                       size="lg"
                       className="border-violet-500/30 text-violet-300 hover:bg-violet-500/10"

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card } from "@/components/ui/card";
-import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { Send, CheckCircle, AlertCircle, Shield } from "lucide-react";
 import { contactDetails, socialLinks } from "@/lib/data";
 
 interface FormData {
@@ -16,7 +17,7 @@ interface FormData {
 }
 
 interface FormStatus {
-  type: "idle" | "loading" | "success" | "error";
+  type: "idle" | "loading" | "success" | "error" | "captcha";
   message: string;
 }
 
@@ -33,6 +34,10 @@ export default function Contact() {
     message: "",
   });
 
+  const [showCaptcha, setShowCaptcha] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -45,6 +50,26 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // First click - show reCAPTCHA
+    if (!showCaptcha) {
+      setShowCaptcha(true);
+      setFormStatus({
+        type: "captcha",
+        message: "Please verify that you're not a robot to send your message.",
+      });
+      return;
+    }
+
+    // Second click - check captcha and submit
+    if (!captchaToken) {
+      setFormStatus({
+        type: "error",
+        message: "Please complete the reCAPTCHA verification.",
+      });
+      return;
+    }
+
     setFormStatus({ type: "loading", message: "Sending message..." });
 
     try {
@@ -53,7 +78,10 @@ export default function Contact() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          captchaToken,
+        }),
       });
 
       const result = await response.json();
@@ -66,6 +94,13 @@ export default function Contact() {
           subject: "",
           message: "",
         });
+
+        // Reset captcha state
+        setShowCaptcha(false);
+        setCaptchaToken(null);
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
 
         setFormStatus({
           type: "success",
@@ -83,6 +118,13 @@ export default function Contact() {
           type: "error",
           message: result.error || "Failed to send message. Please try again.",
         });
+
+        // Reset captcha on error
+        setShowCaptcha(false);
+        setCaptchaToken(null);
+        if (recaptchaRef.current) {
+          recaptchaRef.current.reset();
+        }
       }
     } catch (error) {
       console.error("Form submission error:", error);
@@ -90,6 +132,23 @@ export default function Contact() {
         type: "error",
         message:
           "Failed to send message. Please check your connection and try again.",
+      });
+
+      // Reset captcha on error
+      setShowCaptcha(false);
+      setCaptchaToken(null);
+      if (recaptchaRef.current) {
+        recaptchaRef.current.reset();
+      }
+    }
+  };
+
+  const handleCaptchaChange = (token: string | null) => {
+    setCaptchaToken(token);
+    if (token) {
+      setFormStatus({
+        type: "idle",
+        message: "",
       });
     }
   };
@@ -264,7 +323,9 @@ export default function Contact() {
                         ? "bg-green-500/10 text-green-400 border border-green-500/20"
                         : formStatus.type === "error"
                           ? "bg-red-500/10 text-red-400 border border-red-500/20"
-                          : "bg-violet-500/10 text-violet-400 border border-violet-500/20"
+                          : formStatus.type === "captcha"
+                            ? "bg-blue-500/10 text-blue-400 border border-blue-500/20"
+                            : "bg-violet-500/10 text-violet-400 border border-violet-500/20"
                     }`}
                   >
                     {formStatus.type === "success" && (
@@ -272,6 +333,9 @@ export default function Contact() {
                     )}
                     {formStatus.type === "error" && (
                       <AlertCircle className="w-4 h-4" />
+                    )}
+                    {formStatus.type === "captcha" && (
+                      <Shield className="w-4 h-4" />
                     )}
                     {formStatus.type === "loading" && (
                       <div className="w-4 h-4 border-2 border-violet-400 border-t-transparent rounded-full animate-spin" />
@@ -293,10 +357,24 @@ export default function Contact() {
                   ) : (
                     <div className="flex items-center space-x-2">
                       <Send className="w-4 h-4" />
-                      <span>Send Message</span>
+                      <span>
+                        {showCaptcha ? "Verify & Send Message" : "Send Message"}
+                      </span>
                     </div>
                   )}
                 </Button>
+
+                {/* reCAPTCHA Component */}
+                {showCaptcha && (
+                  <div className="flex justify-center mt-6">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                      onChange={handleCaptchaChange}
+                      theme="dark"
+                    />
+                  </div>
+                )}
               </form>
             </Card>
           </div>

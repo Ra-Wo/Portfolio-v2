@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { forwardRef, useRef, useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useState } from "react";
 
 export interface AnimatedBeamProps {
   className?: string;

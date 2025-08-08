@@ -13,7 +13,6 @@ import {
   Smartphone,
   Zap,
   Rocket,
-  Coffee,
   Terminal,
   Braces,
   FileCode,

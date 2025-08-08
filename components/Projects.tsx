@@ -188,7 +188,6 @@ export default function Projects() {
                         <div className="flex gap-2 pt-2">
                           {project.liveUrl && (
                             <Button
-                              asChild
                               size="sm"
                               variant="outline"
                               className="flex-1 border-violet-500/30 text-violet-300 hover:bg-violet-500/10 text-xs h-8"
@@ -207,7 +206,6 @@ export default function Projects() {
                           )}
                           {project.githubUrl && (
                             <Button
-                              asChild
                               variant="outline"
                               size="sm"
                               className="flex-1 border-violet-500/30 text-violet-300 hover:bg-violet-500/10 text-xs h-8"

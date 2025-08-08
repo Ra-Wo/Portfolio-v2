@@ -163,7 +163,6 @@ export default async function ProjectsPage() {
             projects.
           </p>
           <Button
-            asChild
             size="lg"
             className="bg-violet-600 hover:bg-violet-700 text-white"
           >
