@@ -344,6 +344,18 @@ export default function Contact() {
                   </div>
                 )}
 
+                {/* reCAPTCHA Component */}
+                {showCaptcha && (
+                  <div className="flex justify-center my-6">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
+                      onChange={handleCaptchaChange}
+                      theme="dark"
+                    />
+                  </div>
+                )}
+
                 <Button
                   type="submit"
                   disabled={!isFormValid || formStatus.type === "loading"}
@@ -363,18 +375,6 @@ export default function Contact() {
                     </div>
                   )}
                 </Button>
-
-                {/* reCAPTCHA Component */}
-                {showCaptcha && (
-                  <div className="flex justify-center mt-6">
-                    <ReCAPTCHA
-                      ref={recaptchaRef}
-                      sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}
-                      onChange={handleCaptchaChange}
-                      theme="dark"
-                    />
-                  </div>
-                )}
               </form>
             </Card>
           </div>

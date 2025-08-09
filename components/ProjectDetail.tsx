@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import FadeContent from "@/components/ui/fade-content";
 import RichText from "@/components/ui/rich-text";
-import { Spotlight } from "@/components/ui/spotlight";
 import { urlFor, type Project } from "@/lib/sanity";
 import {
   ArrowLeft,
