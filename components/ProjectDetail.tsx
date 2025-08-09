@@ -130,7 +130,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
 
         {/* Hero Section */}
         <section className="py-4">
-          <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+          <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 pt-5">
             <FadeContent direction="up" delay={0.1}>
               <div className="text-center mb-12">
                 <div className="flex items-center justify-center gap-4 mb-6 flex-wrap">
