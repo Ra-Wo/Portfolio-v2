@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import FadeContent from "@/components/ui/fade-content";
 import { Spotlight } from "@/components/ui/spotlight";
-import { TextTrail, TextTrailChar } from "@/components/ui/text-trail";
 import { ArrowRight, Code2 } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
@@ -161,18 +160,10 @@ export default function Hero() {
             <FadeContent direction="up" delay={0.2}>
               <div className="space-y-4">
                 <div className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-400 tracking-wide">
-                  <TextTrail delay={0.3} stagger={0.1}>
-                    Hello, I&apos;m
-                  </TextTrail>
+                  Hello, I&apos;m
                 </div>
-                <h1 className="">
-                  <TextTrailChar
-                    delay={0.8}
-                    stagger={0.08}
-                    className="bg-gradient-to-r from-violet-500 via-purple-300 to-purple-800 bg-clip-text drop-shadow-2xl"
-                  >
-                    Rachid Oudouch
-                  </TextTrailChar>
+                <h1 className="bg-gradient-to-r from-violet-500 via-purple-300 to-purple-800 bg-clip-text drop-shadow-2xl text-transparent">
+                  Rachid Oudouch
                 </h1>
               </div>
             </FadeContent>

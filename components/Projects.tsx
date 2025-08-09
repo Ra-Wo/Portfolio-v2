@@ -8,7 +8,6 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import FadeContent from "@/components/ui/fade-content";
 import { Spotlight } from "@/components/ui/spotlight";
-import { TextTrail } from "@/components/ui/text-trail";
 import StarBorder from "@/components/ui/star-border";
 import { ExternalLink, Github, Loader2 } from "lucide-react";
 import { client, urlFor, projectsQuery, type Project } from "@/lib/sanity";
@@ -96,14 +95,8 @@ export default function Projects() {
             >
               Featured Work
             </Badge>
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight">
-              <TextTrail
-                delay={0.2}
-                stagger={0.1}
-                className="bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text"
-              >
-                My Projects
-              </TextTrail>
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
+              My Projects
             </h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
               A showcase of my recent work, featuring full-stack applications

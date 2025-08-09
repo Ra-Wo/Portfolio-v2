@@ -217,7 +217,7 @@ if (element) {
 - Full height with centered content
 - WebGL background with dynamic imports
 - Gradient text effects for headlines
-- Animation components (TextTrail, FadeContent, Spotlight)
+- Animation components (FadeContent, Spotlight)
 - Social links with hover effects
 
 ### Button Components

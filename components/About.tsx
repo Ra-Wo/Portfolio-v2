@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import FadeContent from "@/components/ui/fade-content";
 import { Spotlight } from "@/components/ui/spotlight";
-import { TextTrail } from "@/components/ui/text-trail";
 import { cn } from "@/lib/utils";
 import { Calendar } from "lucide-react";
 import Image from "next/image";
@@ -130,14 +129,8 @@ export default function About() {
             >
               About Me
             </Badge>
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight">
-              <TextTrail
-                delay={0.2}
-                stagger={0.1}
-                className="bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text"
-              >
-                Hey there, I&apos;m Rachid Oudouch
-              </TextTrail>
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
+              Hey there, I&apos;m Rachid Oudouch
             </h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
               Full-stack developer specializing in modern web technologies and

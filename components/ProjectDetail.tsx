@@ -6,7 +6,6 @@ import { Card } from "@/components/ui/card";
 import FadeContent from "@/components/ui/fade-content";
 import RichText from "@/components/ui/rich-text";
 import { Spotlight } from "@/components/ui/spotlight";
-import { TextTrail } from "@/components/ui/text-trail";
 import { urlFor, type Project } from "@/lib/sanity";
 import {
   ArrowLeft,
@@ -165,14 +164,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   )}
                 </div>
 
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight">
-                  <TextTrail
-                    delay={0.2}
-                    stagger={0.1}
-                    className="bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text"
-                  >
-                    {project.title}
-                  </TextTrail>
+                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
+                  {project.title}
                 </h1>
 
                 <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">

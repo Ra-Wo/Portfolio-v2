@@ -4,7 +4,6 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import FadeContent from "@/components/ui/fade-content";
 import { Spotlight } from "@/components/ui/spotlight";
-import { TextTrail } from "@/components/ui/text-trail";
 import {
   Code2,
   Globe,
@@ -139,14 +138,8 @@ export default function Skills() {
             >
               Skills & Technologies
             </Badge>
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight">
-              <TextTrail
-                delay={0.2}
-                stagger={0.1}
-                className="bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text"
-              >
-                My Technical Arsenal
-              </TextTrail>
+            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
+              My Technical Arsenal
             </h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
               Armed with a versatile toolkit of skills, I thrive in creating
@@ -155,30 +148,6 @@ export default function Skills() {
             </p>
           </div>
         </FadeContent>
-
-        {/* Skills Highlights */}
-        {/* <FadeContent direction="up" delay={0.2}>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-16">
-            {highlights.map((highlight, index) => (
-              <Card
-                key={index}
-                className="p-6 bg-card/50 border-violet-500/20 hover:bg-card/70 transition-colors duration-200 group text-center"
-              >
-                <div className="space-y-3">
-                  <div className="flex justify-center group-hover:scale-110 transition-transform duration-200">
-                    {highlight.icon}
-                  </div>
-                  <h3 className="font-semibold text-foreground tracking-tight text-sm">
-                    {highlight.title}
-                  </h3>
-                  <p className="text-xs text-gray-300 leading-relaxed">
-                    {highlight.description}
-                  </p>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </FadeContent> */}
 
         {/* Skills Categories */}
         <div className="grid md:grid-cols-2 gap-8">
