@@ -108,16 +108,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   };
 
   return (
-    <div className="min-h-screen bg-black">
-      <Spotlight
-        className="-top-40 -right-10 md:-right-32 md:-top-20 h-screen z-10"
-        fill="purple"
-      />
-      <Spotlight
-        className="top-10 left-full h-[80vh] w-[50vw] z-10"
-        fill="blue"
-      />
-
+    <div className="min-h-screen w-full bg-black">
       <div className="relative z-20">
         {/* Header Navigation */}
         <div className="sticky top-0 z-50 bg-black/80 backdrop-blur-sm border-b border-violet-500/20">
