@@ -53,12 +53,12 @@ export default async function ProjectsPage() {
             Back to Home
           </Link>
 
-          <h1 className="!text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
+          <h1 className="!text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-400 via-purple-300 to-violet-400 bg-clip-text text-transparent">
             All Projects
           </h1>
           <p className="!text-lg text-gray-300 max-w-3xl leading-relaxed">
-            A complete showcase of my work, featuring full-stack applications
-            built with modern technologies.
+            A complete showcase of my work, built with modern technologies and
+            following industry best practices.
           </p>
         </div>
 

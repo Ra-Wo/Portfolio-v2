@@ -99,8 +99,8 @@ export default function Projects() {
               My Projects
             </h2>
             <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              A showcase of my recent work, featuring full-stack applications
-              built with modern technologies and best practices.
+              A showcase of my recent work and projects, built with modern
+              technologies and following industry best practices.
             </p>
           </div>
         </FadeContent>
