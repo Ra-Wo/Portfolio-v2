@@ -25,7 +25,7 @@ export default function Navigation() {
 
   return (
     <nav className="fixed z-50 glass-nav overflow-visible w-full pt-1">
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0">

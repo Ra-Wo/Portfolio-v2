@@ -100,7 +100,7 @@ export default function Projects() {
               <TextTrail
                 delay={0.2}
                 stagger={0.1}
-                className="bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent"
+                className="bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text"
               >
                 My Projects
               </TextTrail>

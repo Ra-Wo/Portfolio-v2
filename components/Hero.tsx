@@ -169,7 +169,7 @@ export default function Hero() {
                   <TextTrailChar
                     delay={0.8}
                     stagger={0.08}
-                    className="bg-gradient-to-r from-violet-500 via-purple-300 to-purple-800 bg-clip-text text-transparent drop-shadow-2xl"
+                    className="bg-gradient-to-r from-violet-500 via-purple-300 to-purple-800 bg-clip-text drop-shadow-2xl"
                   >
                     Rachid Oudouch
                   </TextTrailChar>
