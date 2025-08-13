@@ -162,7 +162,7 @@ export default function Hero() {
                 <div className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-400 tracking-wide">
                   Hello, I&apos;m
                 </div>
-                <h1 className="bg-gradient-to-r from-violet-500 via-purple-300 to-purple-800 bg-clip-text drop-shadow-2xl text-transparent">
+                <h1 className="drop-shadow-2xl text-white">
                   Rachid Oudouch
                 </h1>
               </div>
