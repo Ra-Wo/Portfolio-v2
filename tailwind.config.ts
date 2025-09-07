@@ -10,10 +10,33 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        heading: ["var(--font-poppins)", "system-ui", "sans-serif"],
-        mono: ["var(--font-jetbrains-mono)", "Fira Code", "monospace"],
-        pacifico: ["var(--font-pacifico)", "cursive"],
+        sans: [
+          "var(--font-dm-sans)",
+          "DM Sans",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "Segoe UI",
+          "Roboto",
+          "system-ui",
+          "sans-serif",
+        ],
+        heading: [
+          "var(--font-poppins)",
+          "Poppins",
+          "-apple-system",
+          "BlinkMacSystemFont",
+          "system-ui",
+          "sans-serif",
+        ],
+        mono: [
+          "var(--font-jetbrains-mono)",
+          "JetBrains Mono",
+          "Fira Code",
+          "Cascadia Code",
+          "Monaco",
+          "monospace",
+        ],
+        pacifico: ["var(--font-pacifico)", "Pacifico", "cursive"],
       },
       colors: {
         background: "hsl(var(--background))",

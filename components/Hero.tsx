@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import FadeContent from "@/components/ui/fade-content";
+
 import { Spotlight } from "@/components/ui/spotlight";
 import { ArrowRight, Code2 } from "lucide-react";
 import dynamic from "next/dynamic";
@@ -149,65 +149,110 @@ export default function Hero() {
           {/* Left Column - Content */}
           <div className="text-left space-y-8">
             {/* Status Badge with Animation */}
-            <FadeContent direction="up" delay={0.1}>
-              <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500/20 via-violet-500/20 to-purple-500/20 border border-purple-500/30 rounded-full text-sm text-purple-300 mb-6 shadow-lg shadow-purple-500/10 backdrop-blur-sm">
-                <div className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
-                <span className="font-medium">Available for Work</span>
-              </div>
-            </FadeContent>
+
+            <div className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500/20 via-violet-500/20 to-purple-500/20 border border-purple-500/30 rounded-full text-sm text-purple-300 mb-6 shadow-lg shadow-purple-500/10 backdrop-blur-sm">
+              <div className="w-2 h-2 bg-green-400 rounded-full mr-3 animate-pulse"></div>
+              <span className="font-medium">Available for Work</span>
+            </div>
 
             {/* Main Headline with Enhanced Typography */}
-            <FadeContent direction="up" delay={0.2}>
-              <div className="space-y-4">
-                <div className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-400 tracking-wide">
-                  Hello, I&apos;m
-                </div>
-                <h1 className="drop-shadow-2xl text-white">
-                  Rachid Oudouch
-                </h1>
+
+            <div className="space-y-4">
+              <div className="text-xl sm:text-2xl lg:text-3xl font-light text-gray-400 tracking-wide">
+                Hello, I&apos;m
               </div>
-            </FadeContent>
+              <h1 className="drop-shadow-2xl text-white">Rachid Oudouch</h1>
+            </div>
 
             {/* Role with Enhanced Styling */}
-            <FadeContent direction="up" delay={0.4}>
-              <div className="flex items-center gap-3 text-xl sm:text-2xl text-gray-300 font-light">
-                <div className="p-2 bg-purple-500/20 rounded-lg border border-purple-500/30 backdrop-blur-sm">
-                  <Code2 className="w-6 h-6 text-purple-400" />
-                </div>
-                <span>Full-Stack Web Developer</span>
+
+            <div className="flex items-center gap-3 text-xl sm:text-2xl text-gray-300 font-light">
+              <div className="p-2 bg-purple-500/20 rounded-lg border border-purple-500/30 backdrop-blur-sm">
+                <Code2 className="w-6 h-6 text-purple-400" />
               </div>
-            </FadeContent>
+              <span>Full-Stack Web Developer</span>
+            </div>
 
             {/* Enhanced Description */}
-            <FadeContent direction="up" delay={0.5}>
-              <div className="space-y-4">
-                <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
-                  I focus on creating intuitive user experiences while writing
-                  clean, maintainable code that brings ideas to life.
-                </p>
-              </div>
-            </FadeContent>
+
+            <div className="space-y-4">
+              <p className="text-lg text-gray-300 leading-relaxed max-w-xl">
+                I focus on creating intuitive user experiences while writing
+                clean, maintainable code that brings ideas to life.
+              </p>
+            </div>
 
             {/* Enhanced CTA Buttons */}
-            <FadeContent direction="up" delay={0.6}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button
-                  size="lg"
-                  onClick={() => scrollToSection("#projects")}
-                  className="px-8 py-4 rounded-xl bg-white text-black"
+
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button
+                size="lg"
+                onClick={() => scrollToSection("#projects")}
+                className="px-8 py-4 rounded-xl bg-white text-black"
+              >
+                View My Work
+                <ArrowRight className="w-5 h-5 ml-2" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                onClick={() => scrollToSection("#contact")}
+                className="px-8 py-4 rounded-xl border-2 border-gray-600 text-gray-300 hover:bg-white/5 hover:border-purple-500 hover:text-white transition-all duration-300 backdrop-blur-sm"
+              >
+                Get In Touch
+                <svg
+                  className="w-4 h-4 ml-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  View My Work
-                  <ArrowRight className="w-5 h-5 ml-2" />
-                </Button>
-                <Button
-                  variant="outline"
-                  size="lg"
-                  onClick={() => scrollToSection("#contact")}
-                  className="px-8 py-4 rounded-xl border-2 border-gray-600 text-gray-300 hover:bg-white/5 hover:border-purple-500 hover:text-white transition-all duration-300 backdrop-blur-sm"
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </Button>
+            </div>
+
+            {/* Enhanced Social Links */}
+
+            <div className="flex items-center gap-6">
+              <span className="text-gray-500 text-sm font-medium">
+                Follow me:
+              </span>
+              <div className="flex gap-4">
+                {socialLinks.slice(0, 2).map((social) => {
+                  const IconComponent = social.icon;
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`group p-3 bg-gray-800/50 rounded-xl border border-gray-700 transition-all duration-300 backdrop-blur-sm transform hover:scale-110 ${
+                        social.label === "GitHub"
+                          ? "hover:border-purple-500 hover:bg-purple-500/10"
+                          : "hover:border-blue-500 hover:bg-blue-500/10"
+                      }`}
+                    >
+                      <IconComponent
+                        className={`w-5 h-5 text-gray-400 transition-colors ${
+                          social.label === "GitHub"
+                            ? "group-hover:text-white"
+                            : "group-hover:text-blue-400"
+                        }`}
+                      />
+                    </a>
+                  );
+                })}
+                <a
+                  href={contactInfo.emailHref}
+                  className="group p-3 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-purple-500 transition-all duration-300 hover:bg-purple-500/10 backdrop-blur-sm transform hover:scale-110"
                 >
-                  Get In Touch
                   <svg
-                    className="w-4 h-4 ml-2"
+                    className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -219,266 +264,209 @@ export default function Hero() {
                       d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
-                </Button>
+                </a>
               </div>
-            </FadeContent>
-
-            {/* Enhanced Social Links */}
-            <FadeContent direction="up" delay={0.7}>
-              <div className="flex items-center gap-6">
-                <span className="text-gray-500 text-sm font-medium">
-                  Follow me:
-                </span>
-                <div className="flex gap-4">
-                  {socialLinks.slice(0, 2).map((social) => {
-                    const IconComponent = social.icon;
-                    return (
-                      <a
-                        key={social.label}
-                        href={social.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={`group p-3 bg-gray-800/50 rounded-xl border border-gray-700 transition-all duration-300 backdrop-blur-sm transform hover:scale-110 ${
-                          social.label === "GitHub"
-                            ? "hover:border-purple-500 hover:bg-purple-500/10"
-                            : "hover:border-blue-500 hover:bg-blue-500/10"
-                        }`}
-                      >
-                        <IconComponent
-                          className={`w-5 h-5 text-gray-400 transition-colors ${
-                            social.label === "GitHub"
-                              ? "group-hover:text-white"
-                              : "group-hover:text-blue-400"
-                          }`}
-                        />
-                      </a>
-                    );
-                  })}
-                  <a
-                    href={contactInfo.emailHref}
-                    className="group p-3 bg-gray-800/50 rounded-xl border border-gray-700 hover:border-purple-500 transition-all duration-300 hover:bg-purple-500/10 backdrop-blur-sm transform hover:scale-110"
-                  >
-                    <svg
-                      className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M3 8l7.89 7.89a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                      />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </FadeContent>
+            </div>
           </div>
 
           {/* Right Column - Animated Code */}
           <div className="hidden lg:block relative">
-            <FadeContent direction="right" delay={0.8}>
-              <div className="relative w-full h-96 flex items-center justify-center">
-                {/* Animated Code Block */}
-                <div className="relative max-w-lg w-full">
-                  {/* Code Window */}
-                  <div className="bg-gray-900/30 backdrop-blur-xl rounded-lg border border-gray-700/20 overflow-hidden">
-                    {/* Window Header */}
-                    <div className="flex items-center justify-between px-4 py-3 bg-gray-800/40 border-b border-gray-700/30">
-                      <div className="flex space-x-2">
-                        <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                        <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                        <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                      </div>
-                      <div className="text-gray-400 text-sm font-mono">
-                        hero.tsx
-                      </div>
-                      <div className="w-12"></div>
+            <div className="relative w-full h-96 flex items-center justify-center">
+              {/* Animated Code Block */}
+              <div className="relative max-w-lg w-full">
+                {/* Code Window */}
+                <div className="bg-gray-900/30 backdrop-blur-xl rounded-lg border border-gray-700/20 overflow-hidden">
+                  {/* Window Header */}
+                  <div className="flex items-center justify-between px-4 py-3 bg-gray-800/40 border-b border-gray-700/30">
+                    <div className="flex space-x-2">
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
                     </div>
+                    <div className="text-gray-400 text-sm font-mono">
+                      hero.tsx
+                    </div>
+                    <div className="w-12"></div>
+                  </div>
 
-                    {/* Code Content */}
-                    <div className="p-6 font-mono text-sm">
-                      {/* Animated typing effect for each line */}
-                      <div className="space-y-2">
-                        <div className="flex">
-                          <span className="text-gray-500 mr-4 w-6 text-right">
-                            1
-                          </span>
-                          <span className="text-purple-400">function</span>
-                          <span className="text-yellow-400 mx-2">
-                            createDeveloper
-                          </span>
-                          <span className="text-gray-400">()</span>
-                          <span className="text-white mx-2">{`{`}</span>
-                        </div>
+                  {/* Code Content */}
+                  <div className="p-6 font-mono text-sm">
+                    {/* Animated typing effect for each line */}
+                    <div className="space-y-2">
+                      <div className="flex">
+                        <span className="text-gray-500 mr-4 w-6 text-right">
+                          1
+                        </span>
+                        <span className="text-purple-400">function</span>
+                        <span className="text-yellow-400 mx-2">
+                          createDeveloper
+                        </span>
+                        <span className="text-gray-400">()</span>
+                        <span className="text-white mx-2">{`{`}</span>
+                      </div>
 
-                        <div className="flex">
-                          <span className="text-gray-500 mr-4 w-6 text-right">
-                            2
-                          </span>
-                          <span className="ml-6 text-purple-400">return</span>
-                          <span className="text-white mx-2">{`{`}</span>
-                        </div>
+                      <div className="flex">
+                        <span className="text-gray-500 mr-4 w-6 text-right">
+                          2
+                        </span>
+                        <span className="ml-6 text-purple-400">return</span>
+                        <span className="text-white mx-2">{`{`}</span>
+                      </div>
 
-                        <div className="flex">
-                          <span className="text-gray-500 mr-4 w-6 text-right">
-                            3
-                          </span>
-                          <span className="ml-12 text-blue-400">name:</span>
-                          <span className="text-green-400 ml-2">
-                            &quot;Rachid Oudouch&quot;
-                          </span>
-                          <span className="text-gray-400">,</span>
-                        </div>
+                      <div className="flex">
+                        <span className="text-gray-500 mr-4 w-6 text-right">
+                          3
+                        </span>
+                        <span className="ml-12 text-blue-400">name:</span>
+                        <span className="text-green-400 ml-2">
+                          &quot;Rachid Oudouch&quot;
+                        </span>
+                        <span className="text-gray-400">,</span>
+                      </div>
 
-                        <div className="flex">
-                          <span className="text-gray-500 mr-4 w-6 text-right">
-                            4
-                          </span>
-                          <span className="ml-12 text-blue-400">role:</span>
-                          <span className="text-green-400 ml-2">
-                            &quot;Full-Stack Dev&quot;
-                          </span>
-                          <span className="text-gray-400">,</span>
-                        </div>
+                      <div className="flex">
+                        <span className="text-gray-500 mr-4 w-6 text-right">
+                          4
+                        </span>
+                        <span className="ml-12 text-blue-400">role:</span>
+                        <span className="text-green-400 ml-2">
+                          &quot;Full-Stack Dev&quot;
+                        </span>
+                        <span className="text-gray-400">,</span>
+                      </div>
 
-                        <div className="flex">
-                          <span className="text-gray-500 mr-4 w-6 text-right">
-                            5
-                          </span>
-                          <span className="ml-12 text-blue-400">location:</span>
-                          <span className="text-green-400 ml-2">
-                            &quot;Online&quot;
-                          </span>
-                          <span className="text-gray-400">,</span>
-                        </div>
+                      <div className="flex">
+                        <span className="text-gray-500 mr-4 w-6 text-right">
+                          5
+                        </span>
+                        <span className="ml-12 text-blue-400">location:</span>
+                        <span className="text-green-400 ml-2">
+                          &quot;Online&quot;
+                        </span>
+                        <span className="text-gray-400">,</span>
+                      </div>
 
-                        <div className="flex">
-                          <span className="text-gray-500 mr-4 w-6 text-right">
-                            6
-                          </span>
-                          <span className="ml-12 text-blue-400">passion:</span>
-                          <span className="text-green-400 ml-2">
-                            &quot;Building things&quot;
-                          </span>
-                          <span className="text-gray-400">,</span>
-                        </div>
+                      <div className="flex">
+                        <span className="text-gray-500 mr-4 w-6 text-right">
+                          6
+                        </span>
+                        <span className="ml-12 text-blue-400">passion:</span>
+                        <span className="text-green-400 ml-2">
+                          &quot;Building things&quot;
+                        </span>
+                        <span className="text-gray-400">,</span>
+                      </div>
 
-                        <div className="flex">
-                          <span className="text-gray-500 mr-4 w-6 text-right">
-                            7
-                          </span>
-                          <span className="ml-12 text-blue-400">status:</span>
-                          <span className="text-green-400 ml-2">
-                            &quot;Available&quot;
-                          </span>
-                        </div>
+                      <div className="flex">
+                        <span className="text-gray-500 mr-4 w-6 text-right">
+                          7
+                        </span>
+                        <span className="ml-12 text-blue-400">status:</span>
+                        <span className="text-green-400 ml-2">
+                          &quot;Available&quot;
+                        </span>
+                      </div>
 
-                        <div className="flex">
-                          <span className="text-gray-500 mr-4 w-6 text-right">
-                            8
-                          </span>
-                          <span className="ml-6 text-white">{`}`};</span>
-                        </div>
+                      <div className="flex">
+                        <span className="text-gray-500 mr-4 w-6 text-right">
+                          8
+                        </span>
+                        <span className="ml-6 text-white">{`}`};</span>
+                      </div>
 
-                        <div className="flex">
-                          <span className="text-gray-500 mr-4 w-6 text-right">
-                            9
-                          </span>
-                          <span className="text-white">{`}`}</span>
-                        </div>
+                      <div className="flex">
+                        <span className="text-gray-500 mr-4 w-6 text-right">
+                          9
+                        </span>
+                        <span className="text-white">{`}`}</span>
+                      </div>
 
-                        {/* Animated cursor */}
-                        <div className="flex mt-4">
-                          <span className="text-gray-500 mr-4 w-6 text-right">
-                            10
-                          </span>
-                          <span className="w-2 h-5 bg-purple-400 animate-pulse"></span>
-                        </div>
+                      {/* Animated cursor */}
+                      <div className="flex mt-4">
+                        <span className="text-gray-500 mr-4 w-6 text-right">
+                          10
+                        </span>
+                        <span className="w-2 h-5 bg-purple-400 animate-pulse"></span>
                       </div>
                     </div>
                   </div>
-
-                  {/* Floating tech icons */}
-                  {techIcons.map((icon) => (
-                    <div
-                      key={icon.id}
-                      className={`${icon.position} ${icon.bgColor} backdrop-blur-xl rounded-lg p-3 border ${icon.borderColor}`}
-                      style={{
-                        animation: icon.animation,
-                        animationDelay: icon.delay,
-                      }}
-                    >
-                      <div
-                        className={`w-8 h-8 ${icon.iconBg} rounded-md flex items-center justify-center overflow-hidden ${icon.extraClasses || ""}`}
-                      >
-                        <Image
-                          src={icon.src}
-                          alt={icon.alt}
-                          width={24}
-                          height={24}
-                          className="object-contain"
-                        />
-                      </div>
-                    </div>
-                  ))}
-
-                  {/* Animated particles */}
-                  <div className="absolute top-4 right-4 w-2 h-2 bg-purple-400 rounded-full animate-ping opacity-60"></div>
-                  <div
-                    className="absolute bottom-8 left-8 w-1.5 h-1.5 bg-blue-400 rounded-full animate-ping opacity-40"
-                    style={{ animationDelay: "1s" }}
-                  ></div>
-                  <div
-                    className="absolute top-1/3 left-4 w-1 h-1 bg-green-400 rounded-full animate-ping opacity-50"
-                    style={{ animationDelay: "2s" }}
-                  ></div>
-
-                  {/* Glow effect */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-blue-500/5 to-purple-500/10 rounded-lg blur-xl -z-10"></div>
                 </div>
+
+                {/* Floating tech icons */}
+                {techIcons.map((icon) => (
+                  <div
+                    key={icon.id}
+                    className={`${icon.position} ${icon.bgColor} backdrop-blur-xl rounded-lg p-3 border ${icon.borderColor}`}
+                    style={{
+                      animation: icon.animation,
+                      animationDelay: icon.delay,
+                    }}
+                  >
+                    <div
+                      className={`w-8 h-8 ${icon.iconBg} rounded-md flex items-center justify-center overflow-hidden ${icon.extraClasses || ""}`}
+                    >
+                      <Image
+                        src={icon.src}
+                        alt={icon.alt}
+                        width={24}
+                        height={24}
+                        className="object-contain"
+                      />
+                    </div>
+                  </div>
+                ))}
+
+                {/* Animated particles */}
+                <div className="absolute top-4 right-4 w-2 h-2 bg-purple-400 rounded-full animate-ping opacity-60"></div>
+                <div
+                  className="absolute bottom-8 left-8 w-1.5 h-1.5 bg-blue-400 rounded-full animate-ping opacity-40"
+                  style={{ animationDelay: "1s" }}
+                ></div>
+                <div
+                  className="absolute top-1/3 left-4 w-1 h-1 bg-green-400 rounded-full animate-ping opacity-50"
+                  style={{ animationDelay: "2s" }}
+                ></div>
+
+                {/* Glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 via-blue-500/5 to-purple-500/10 rounded-lg blur-xl -z-10"></div>
               </div>
-            </FadeContent>
+            </div>
           </div>
         </div>
 
         {/* Enhanced Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <FadeContent direction="up" delay={1.0}>
-            <button
-              onClick={() => scrollToSection("#about")}
-              className="group flex flex-col items-center gap-3 text-gray-400 hover:text-white transition-all duration-300"
-            >
-              <span className="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
-                Scroll Down
-              </span>
+          <button
+            onClick={() => scrollToSection("#about")}
+            className="group flex flex-col items-center gap-3 text-gray-400 hover:text-white transition-all duration-300"
+          >
+            <span className="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
+              Scroll Down
+            </span>
 
-              {/* Mouse with scroll wheel */}
-              <div className="relative">
-                <div className="w-6 h-10 border-2 border-gray-600 group-hover:border-purple-400 rounded-full flex justify-center pt-2 transition-colors duration-300 bg-gray-900/20 backdrop-blur-sm">
-                  <div className="w-1 h-3 bg-gray-500 group-hover:bg-purple-400 rounded-full animate-bounce transition-colors duration-300"></div>
-                </div>
-
-                {/* Floating dots animation */}
-                <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col space-y-1">
-                  <div
-                    className="w-1 h-1 bg-purple-400 rounded-full opacity-60 animate-ping"
-                    style={{ animationDelay: "0s" }}
-                  ></div>
-                  <div
-                    className="w-1 h-1 bg-purple-400 rounded-full opacity-40 animate-ping"
-                    style={{ animationDelay: "0.3s" }}
-                  ></div>
-                  <div
-                    className="w-1 h-1 bg-purple-400 rounded-full opacity-20 animate-ping"
-                    style={{ animationDelay: "0.6s" }}
-                  ></div>
-                </div>
+            {/* Mouse with scroll wheel */}
+            <div className="relative">
+              <div className="w-6 h-10 border-2 border-gray-600 group-hover:border-purple-400 rounded-full flex justify-center pt-2 transition-colors duration-300 bg-gray-900/20 backdrop-blur-sm">
+                <div className="w-1 h-3 bg-gray-500 group-hover:bg-purple-400 rounded-full animate-bounce transition-colors duration-300"></div>
               </div>
-            </button>
-          </FadeContent>
+
+              {/* Floating dots animation */}
+              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col space-y-1">
+                <div
+                  className="w-1 h-1 bg-purple-400 rounded-full opacity-60 animate-ping"
+                  style={{ animationDelay: "0s" }}
+                ></div>
+                <div
+                  className="w-1 h-1 bg-purple-400 rounded-full opacity-40 animate-ping"
+                  style={{ animationDelay: "0.3s" }}
+                ></div>
+                <div
+                  className="w-1 h-1 bg-purple-400 rounded-full opacity-20 animate-ping"
+                  style={{ animationDelay: "0.6s" }}
+                ></div>
+              </div>
+            </div>
+          </button>
         </div>
       </div>
     </section>

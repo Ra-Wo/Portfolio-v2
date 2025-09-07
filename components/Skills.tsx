@@ -2,7 +2,6 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
-import FadeContent from "@/components/ui/fade-content";
 import { Spotlight } from "@/components/ui/spotlight";
 import {
   Code2,
@@ -90,30 +89,6 @@ export default function Skills() {
     },
   ];
 
-  // const highlights = [
-  //   {
-  //     icon: <Layers className="w-5 h-5 text-violet-400" />,
-  //     title: "Full-Stack",
-  //     description: "End-to-end development",
-  //   },
-  //   {
-  //     icon: <Smartphone className="w-5 h-5 text-violet-400" />,
-  //     title: "Responsive",
-  //     description: "Mobile-first design",
-  //   },
-
-  //   {
-  //     icon: <Globe className="w-5 h-5 text-violet-400" />,
-  //     title: "Modern Web",
-  //     description: "React & Next.js",
-  //   },
-  //   {
-  //     icon: <Rocket className="w-5 h-5 text-violet-400" />,
-  //     title: "Performance",
-  //     description: "Optimized solutions",
-  //   },
-  // ];
-
   return (
     <section
       id="skills"
@@ -130,126 +105,121 @@ export default function Skills() {
 
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 relative z-20">
         {/* Section Header */}
-        <FadeContent direction="up" delay={0.1}>
-          <div className="text-center mb-16">
-            <Badge
-              variant="outline"
-              className="mb-4 bg-violet-500/10 border-violet-500/20 text-violet-300"
-            >
-              Skills & Technologies
-            </Badge>
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
-              My Technical Arsenal
-            </h2>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
-              Armed with a versatile toolkit of skills, I thrive in creating
-              robust solutions from system-level programming to modern web
-              applications.
-            </p>
-          </div>
-        </FadeContent>
+
+        <div className="text-center mb-16">
+          <Badge
+            variant="outline"
+            className="mb-4 bg-violet-500/10 border-violet-500/20 text-violet-300"
+          >
+            Skills & Technologies
+          </Badge>
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
+            My Technical Arsenal
+          </h2>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
+            Armed with a versatile toolkit of skills, I thrive in creating
+            robust solutions from system-level programming to modern web
+            applications.
+          </p>
+        </div>
 
         {/* Skills Categories */}
         <div className="grid md:grid-cols-2 gap-8">
           {skillCategories.map((category, categoryIndex) => (
-            <FadeContent
+            <Card
+              className="p-6 bg-card/30 border-violet-500/20 hover:bg-card/40 transition-colors duration-200"
               key={categoryIndex}
-              direction="up"
-              delay={0.3 + categoryIndex * 0.1}
             >
-              <Card className="p-6 bg-card/30 border-violet-500/20 hover:bg-card/40 transition-colors duration-200">
-                <div className="space-y-6">
-                  {/* Category Header */}
-                  <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
-                      {category.icon}
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-foreground font-heading tracking-tight">
-                        {category.title}
-                      </h3>
-                      <p className="text-sm text-gray-300">
-                        {category.description}
-                      </p>
-                    </div>
+              <div className="space-y-6">
+                {/* Category Header */}
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
+                    {category.icon}
                   </div>
-
-                  {/* Skills List */}
-                  <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill, skillIndex) => (
-                      <div
-                        key={skillIndex}
-                        className="group relative overflow-hidden rounded-lg bg-violet-500/5 border border-violet-500/10 px-3 py-2 hover:bg-violet-500/10 hover:border-violet-500/20 transition-all duration-300 cursor-default"
-                      >
-                        <div className="flex items-center gap-2">
-                          <div className="text-violet-400 group-hover:text-violet-300 group-hover:scale-110 transition-all duration-300">
-                            {skill.icon}
-                          </div>
-                          <span className="text-foreground font-medium group-hover:text-violet-300 transition-colors duration-300 text-sm">
-                            {skill.name}
-                          </span>
-                        </div>
-                        {/* Subtle glow effect on hover */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-violet-600/0 via-violet-600/5 to-purple-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
-                      </div>
-                    ))}
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground font-heading tracking-tight">
+                      {category.title}
+                    </h3>
+                    <p className="text-sm text-gray-300">
+                      {category.description}
+                    </p>
                   </div>
                 </div>
-              </Card>
-            </FadeContent>
+
+                {/* Skills List */}
+                <div className="flex flex-wrap gap-2">
+                  {category.skills.map((skill, skillIndex) => (
+                    <div
+                      key={skillIndex}
+                      className="group relative overflow-hidden rounded-lg bg-violet-500/5 border border-violet-500/10 px-3 py-2 hover:bg-violet-500/10 hover:border-violet-500/20 transition-all duration-300 cursor-default"
+                    >
+                      <div className="flex items-center gap-2">
+                        <div className="text-violet-400 group-hover:text-violet-300 group-hover:scale-110 transition-all duration-300">
+                          {skill.icon}
+                        </div>
+                        <span className="text-foreground font-medium group-hover:text-violet-300 transition-colors duration-300 text-sm">
+                          {skill.name}
+                        </span>
+                      </div>
+                      {/* Subtle glow effect on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-violet-600/0 via-violet-600/5 to-purple-600/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg"></div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </Card>
           ))}
         </div>
 
         {/* Currently Learning */}
-        <FadeContent direction="up" delay={0.6}>
-          <Card className="mt-8 p-6 bg-gradient-to-br from-violet-500/5 via-purple-500/5 to-violet-500/5 border-violet-500/20">
-            <div className="text-center space-y-4">
-              <div className="flex items-center justify-center gap-2">
-                <Zap className="w-5 h-5 text-violet-400" />
-                <h3 className="text-xl font-bold text-foreground font-heading tracking-tight">
-                  Currently Learning & Exploring
-                </h3>
-              </div>
-              <p className="text-gray-300 leading-relaxed max-w-3xl mx-auto">
-                Always pushing boundaries and staying ahead of the curve.
-                Currently diving deeper into advanced programming concepts while
-                exploring modern web technologies and AI integration.
-              </p>
-              <div className="flex flex-wrap justify-center gap-2 pt-2">
-                <Badge
-                  variant="secondary"
-                  className="bg-violet-500/10 text-violet-300 border-violet-500/20"
-                >
-                  Unity
-                </Badge>
-                <Badge
-                  variant="secondary"
-                  className="bg-violet-500/10 text-violet-300 border-violet-500/20"
-                >
-                  System Design
-                </Badge>
-                <Badge
-                  variant="secondary"
-                  className="bg-violet-500/10 text-violet-300 border-violet-500/20"
-                >
-                  WebGL
-                </Badge>
-                <Badge
-                  variant="secondary"
-                  className="bg-violet-500/10 text-violet-300 border-violet-500/20"
-                >
-                  AI/ML Integration
-                </Badge>
-                <Badge
-                  variant="secondary"
-                  className="bg-violet-500/10 text-violet-300 border-violet-500/20"
-                >
-                  GraphQL
-                </Badge>
-              </div>
+
+        <Card className="mt-8 p-6 bg-gradient-to-br from-violet-500/5 via-purple-500/5 to-violet-500/5 border-violet-500/20">
+          <div className="text-center space-y-4">
+            <div className="flex items-center justify-center gap-2">
+              <Zap className="w-5 h-5 text-violet-400" />
+              <h3 className="text-xl font-bold text-foreground font-heading tracking-tight">
+                Currently Learning & Exploring
+              </h3>
             </div>
-          </Card>
-        </FadeContent>
+            <p className="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+              Always pushing boundaries and staying ahead of the curve.
+              Currently diving deeper into advanced programming concepts while
+              exploring modern web technologies and AI integration.
+            </p>
+            <div className="flex flex-wrap justify-center gap-2 pt-2">
+              <Badge
+                variant="secondary"
+                className="bg-violet-500/10 text-violet-300 border-violet-500/20"
+              >
+                Unity
+              </Badge>
+              <Badge
+                variant="secondary"
+                className="bg-violet-500/10 text-violet-300 border-violet-500/20"
+              >
+                System Design
+              </Badge>
+              <Badge
+                variant="secondary"
+                className="bg-violet-500/10 text-violet-300 border-violet-500/20"
+              >
+                WebGL
+              </Badge>
+              <Badge
+                variant="secondary"
+                className="bg-violet-500/10 text-violet-300 border-violet-500/20"
+              >
+                AI/ML Integration
+              </Badge>
+              <Badge
+                variant="secondary"
+                className="bg-violet-500/10 text-violet-300 border-violet-500/20"
+              >
+                GraphQL
+              </Badge>
+            </div>
+          </div>
+        </Card>
       </div>
     </section>
   );

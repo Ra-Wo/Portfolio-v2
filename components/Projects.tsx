@@ -6,7 +6,6 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import FadeContent from "@/components/ui/fade-content";
 import { Spotlight } from "@/components/ui/spotlight";
 import StarBorder from "@/components/ui/star-border";
 import { ExternalLink, Github, Loader2 } from "lucide-react";
@@ -87,158 +86,150 @@ export default function Projects() {
 
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 relative z-20">
         {/* Section Header */}
-        <FadeContent direction="up" delay={0.1}>
-          <div className="text-center mb-16">
-            <Badge
-              variant="outline"
-              className="mb-4 bg-violet-500/10 border-violet-500/20 text-violet-300"
-            >
-              Featured Work
-            </Badge>
-            <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
-              My Projects
-            </h2>
-            <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              A showcase of my recent work and projects, built with modern
-              technologies and following industry best practices.
-            </p>
-          </div>
-        </FadeContent>
+
+        <div className="text-center mb-16">
+          <Badge
+            variant="outline"
+            className="mb-4 bg-violet-500/10 border-violet-500/20 text-violet-300"
+          >
+            Featured Work
+          </Badge>
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
+            My Projects
+          </h2>
+          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            A showcase of my recent work and projects, built with modern
+            technologies and following industry best practices.
+          </p>
+        </div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {projects.slice(0, 9).map((project, index) => (
-            <FadeContent
-              key={project._id}
-              direction="up"
-              delay={0.2 + index * 0.1}
-            >
-              <Link href={`/projects/${project.slug.current}`}>
-                <Card className="group h-full overflow-hidden bg-card/30 border-violet-500/20 hover:bg-card/50 hover:border-violet-400/40 transition-all duration-300 cursor-pointer hover:-translate-y-2">
-                  <div className="relative">
-                    {/* Project Image */}
-                    <div className="relative aspect-video overflow-hidden">
-                      {(() => {
-                        const imageUrl = getImageUrl(project.image);
-                        return imageUrl ? (
-                          <Image
-                            src={imageUrl}
-                            alt={project.image?.alt || project.title}
-                            fill
-                            unoptimized
-                            className="object-cover group-hover:scale-110 transition-transform duration-500"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-gradient-to-br from-violet-900/50 to-purple-900/50 flex items-center justify-center">
-                            <div className="text-center text-violet-300">
-                              <div className="text-4xl mb-2">🚀</div>
-                              <p className="text-xs opacity-70">
-                                Project Preview
-                              </p>
-                            </div>
+            <Link href={`/projects/${project.slug.current}`} key={index}>
+              <Card className="group h-full overflow-hidden bg-card/30 border-violet-500/20 hover:bg-card/50 hover:border-violet-400/40 transition-all duration-300 cursor-pointer hover:-translate-y-2">
+                <div className="relative">
+                  {/* Project Image */}
+                  <div className="relative aspect-video overflow-hidden">
+                    {(() => {
+                      const imageUrl = getImageUrl(project.image);
+                      return imageUrl ? (
+                        <Image
+                          src={imageUrl}
+                          alt={project.image?.alt || project.title}
+                          fill
+                          unoptimized
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-violet-900/50 to-purple-900/50 flex items-center justify-center">
+                          <div className="text-center text-violet-300">
+                            <div className="text-4xl mb-2">🚀</div>
+                            <p className="text-xs opacity-70">
+                              Project Preview
+                            </p>
                           </div>
-                        );
-                      })()}
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-
-                    {/* Project Content */}
-                    <div className="p-6">
-                      <div className="space-y-4">
-                        {/* Title and Description */}
-                        <div>
-                          <h3 className="!text-2xl font-bold text-foreground font-heading mb-2 tracking-tight group-hover:text-violet-300 transition-colors duration-200">
-                            {project.title}
-                          </h3>
-                          <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
-                            {project.description}
-                          </p>
                         </div>
+                      );
+                    })()}
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  </div>
 
-                        {/* Technologies */}
-                        <div className="flex flex-wrap gap-1.5">
-                          {project.technologies.slice(0, 3).map((tech) => (
-                            <Badge
-                              key={tech}
-                              variant="secondary"
-                              className="text-xs bg-violet-500/10 text-violet-300 border-violet-500/20 hover:bg-violet-500/20 transition-colors duration-200"
-                            >
-                              {tech}
-                            </Badge>
-                          ))}
-                          {project.technologies.length > 3 && (
-                            <Badge
-                              variant="secondary"
-                              className="text-xs bg-violet-500/10 text-violet-300 border-violet-500/20"
-                            >
-                              +{project.technologies.length - 3}
-                            </Badge>
-                          )}
-                        </div>
+                  {/* Project Content */}
+                  <div className="p-6">
+                    <div className="space-y-4">
+                      {/* Title and Description */}
+                      <div>
+                        <h3 className="!text-2xl font-bold text-foreground font-heading mb-2 tracking-tight group-hover:text-violet-300 transition-colors duration-200">
+                          {project.title}
+                        </h3>
+                        <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+                          {project.description}
+                        </p>
+                      </div>
 
-                        {/* Project Links */}
-                        <div className="flex gap-2 pt-2">
-                          {project.liveUrl && (
-                            <Button
-                              size="sm"
-                              variant="outline"
-                              className="flex-1 border-violet-500/30 text-violet-300 hover:bg-violet-500/10 text-xs h-8"
-                              onClick={(e) => e.stopPropagation()}
+                      {/* Technologies */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.technologies.slice(0, 3).map((tech) => (
+                          <Badge
+                            key={tech}
+                            variant="secondary"
+                            className="text-xs bg-violet-500/10 text-violet-300 border-violet-500/20 hover:bg-violet-500/20 transition-colors duration-200"
+                          >
+                            {tech}
+                          </Badge>
+                        ))}
+                        {project.technologies.length > 3 && (
+                          <Badge
+                            variant="secondary"
+                            className="text-xs bg-violet-500/10 text-violet-300 border-violet-500/20"
+                          >
+                            +{project.technologies.length - 3}
+                          </Badge>
+                        )}
+                      </div>
+
+                      {/* Project Links */}
+                      <div className="flex gap-2 pt-2">
+                        {project.liveUrl && (
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            className="flex-1 border-violet-500/30 text-violet-300 hover:bg-violet-500/10 text-xs h-8"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-1.5"
                             >
-                              <a
-                                href={project.liveUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-1.5"
-                              >
-                                <ExternalLink className="w-3 h-3" />
-                                Demo
-                              </a>
-                            </Button>
-                          )}
-                          {project.githubUrl && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="flex-1 border-violet-500/30 text-violet-300 hover:bg-violet-500/10 text-xs h-8"
-                              onClick={(e) => e.stopPropagation()}
+                              <ExternalLink className="w-3 h-3" />
+                              Demo
+                            </a>
+                          </Button>
+                        )}
+                        {project.githubUrl && (
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            className="flex-1 border-violet-500/30 text-violet-300 hover:bg-violet-500/10 text-xs h-8"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center justify-center gap-1.5"
                             >
-                              <a
-                                href={project.githubUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-1.5"
-                              >
-                                <Github className="w-3 h-3" />
-                                Code
-                              </a>
-                            </Button>
-                          )}
-                        </div>
+                              <Github className="w-3 h-3" />
+                              Code
+                            </a>
+                          </Button>
+                        )}
                       </div>
                     </div>
                   </div>
-                </Card>
-              </Link>
-            </FadeContent>
+                </div>
+              </Card>
+            </Link>
           ))}
         </div>
 
         {/* See All Projects Section */}
-        <FadeContent direction="up" delay={0.5}>
-          <div className="text-center mt-16">
-            <StarBorder
-              as={Link}
-              href="/projects"
-              color="rgb(139, 92, 246)"
-              speed="4s"
-              className="inline-block"
-            >
-              See All Projects
-            </StarBorder>
-          </div>
-        </FadeContent>
+
+        <div className="text-center mt-16">
+          <StarBorder
+            as={Link}
+            href="/projects"
+            color="rgb(139, 92, 246)"
+            speed="4s"
+            className="inline-block"
+          >
+            See All Projects
+          </StarBorder>
+        </div>
       </div>
     </section>
   );

@@ -1,31 +1,35 @@
 import type { Metadata } from "next";
-import { Inter, Poppins, JetBrains_Mono, Pacifico } from "next/font/google";
+import { Poppins, JetBrains_Mono, Pacifico } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
 
-const inter = Inter({
+const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-dm-sans",
   display: "swap",
+  preload: true,
 });
 
 const poppins = Poppins({
   subsets: ["latin"],
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
   variable: "--font-poppins",
   display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
   variable: "--font-jetbrains-mono",
   display: "swap",
 });
 
 const pacifico = Pacifico({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400"],
   variable: "--font-pacifico",
   display: "swap",
 });
@@ -43,15 +47,13 @@ export const metadata: Metadata = {
     "Morocco",
     "portfolio",
   ],
-  authors: [
-    { name: "Rachid Oudouch", url: "https://rachid-oudouch.vercel.app" },
-  ],
+  authors: [{ name: "Rachid Oudouch", url: "https://oudouch.vercel.app" }],
   creator: "Rachid Oudouch",
   openGraph: {
     title: "Rachid Oudouch - Web Developer",
     description:
       "Passionate web developer from Morocco specializing in modern web technologies.",
-    url: "https://rachid-oudouch.vercel.app",
+    url: "https://oudouch.vercel.app",
     siteName: "Rachid Oudouch Portfolio",
     locale: "en_US",
     type: "website",
@@ -76,8 +78,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
       <body
-        className={`${inter.variable} ${poppins.variable} ${jetbrainsMono.variable} ${pacifico.variable} font-sans antialiased min-h-screen bg-background text-foreground`}
+        className={`${dmSans.variable} ${poppins.variable} ${jetbrainsMono.variable} ${pacifico.variable} antialiased min-h-screen bg-background text-foreground`}
+        style={{ 
+          fontFamily: `${dmSans.style.fontFamily}, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`
+        }}
       >
         <ThemeProvider
           attribute="class"

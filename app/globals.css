@@ -2,7 +2,7 @@
 
 :root {
   /* Font families */
-  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
+  --font-sans: var(--font-dm-sans), system-ui, -apple-system, sans-serif;
   --font-heading: var(--font-poppins), system-ui, -apple-system, sans-serif;
   --font-mono:
     var(--font-jetbrains-mono), "Fira Code", "Cascadia Code", monospace;
