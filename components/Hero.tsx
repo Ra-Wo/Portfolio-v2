@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button";
 
 import { Spotlight } from "@/components/ui/spotlight";
-import { ArrowRight, Code2 } from "lucide-react";
+import { ArrowRight, Code2, Download } from "lucide-react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { socialLinks, contactInfo } from "@/lib/data";
@@ -22,6 +22,17 @@ export default function Hero() {
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
+  };
+
+  const downloadResume = () => {
+    const link = document.createElement("a");
+    link.href = "/resume.pdf";
+    link.download = "Rachid-Oudouch-Resume.pdf";
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   // Tech icons configuration array
@@ -187,11 +198,11 @@ export default function Hero() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button
                 size="lg"
-                onClick={() => scrollToSection("#projects")}
+                onClick={downloadResume}
                 className="px-8 py-4 rounded-xl bg-white text-black"
               >
-                View My Work
-                <ArrowRight className="w-5 h-5 ml-2" />
+                Download Resume
+                <Download className="w-4 h-4 mr-2" />
               </Button>
               <Button
                 variant="outline"
