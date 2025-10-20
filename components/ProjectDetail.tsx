@@ -39,8 +39,6 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   // Helper function to safely get image URL
   const getImageUrl = (
     image: SanityImage | unknown,
-    width = 1600,
-    height = 900
   ): string | null => {
     try {
       const sanityImage = image as SanityImage;
@@ -48,7 +46,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         sanityImage?.asset?._ref &&
         !sanityImage.asset._ref.startsWith("mock-image")
       ) {
-        return urlFor(sanityImage).width(width).height(height).quality(95).auto("format").url();
+        return urlFor(sanityImage).quality(100).auto("format").url();
       }
       return null;
     } catch (err) {
@@ -208,7 +206,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   <div className="relative bg-black rounded-lg overflow-hidden">
                     {(() => {
                       const currentImage = allImages[currentImageIndex];
-                      const imageUrl = getImageUrl(currentImage, 1200, 500);
+                      const imageUrl = getImageUrl(currentImage);
                       return imageUrl ? (
                         <div className="relative">
                           <Image
