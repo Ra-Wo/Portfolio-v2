@@ -12,7 +12,7 @@ import { socialLinks, contactInfo } from "@/lib/data";
 const HeroBg = dynamic(() => import("@/components/ui/hero-bg"), {
   ssr: false,
   loading: () => (
-    <div className="w-full h-full bg-gradient-to-br from-purple-900/20 via-gray-900 to-blue-900/20" />
+    <div className="w-full h-full bg-gradient-to-br from-purple-900/20 via-zinc-900 to-blue-900/20" />
   ),
 });
 
@@ -86,7 +86,7 @@ export default function Hero() {
           <div className="text-center space-y-6 flex flex-col items-center justify-center max-w-4xl">
             {/* Main Headline with Enhanced Typography */}
             <div className="space-y-3">
-              <div className="text-base sm:text-lg text-gray-400 font-light tracking-wide">
+              <div className="text-base sm:text-lg text-zinc-400 font-light tracking-wide">
                 Hi, I&apos;m
               </div>
               <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-white via-purple-200 to-violet-400 bg-clip-text text-transparent drop-shadow-2xl">
@@ -95,13 +95,13 @@ export default function Hero() {
             </div>
 
             {/* Role with Enhanced Styling */}
-            <div className="flex items-center justify-center gap-3 text-xl sm:text-2xl lg:text-3xl text-gray-300 font-light">
+            <div className="flex items-center justify-center gap-3 text-xl sm:text-2xl lg:text-3xl text-zinc-300 font-light">
               <Code2 className="w-6 h-6 sm:w-7 sm:h-7 text-purple-400" />
               <span>Full-Stack Web Developer</span>
             </div>
 
             {/* Enhanced Description */}
-            <p className="text-base sm:text-lg text-gray-400 leading-relaxed max-w-2xl">
+            <p className="text-base sm:text-lg text-zinc-400 leading-relaxed max-w-2xl">
               I create elegant digital solutions with clean code and intuitive
               design.
               <br className="hidden sm:block" />
@@ -121,7 +121,7 @@ export default function Hero() {
               <Button
                 size="lg"
                 onClick={downloadResume}
-                className="group relative px-8 py-6 bg-white text-black font-medium rounded-lg hover:bg-gray-100 transition-all duration-200"
+                className="group relative px-8 py-6 bg-white text-black font-medium rounded-lg hover:bg-zinc-100 transition-all duration-200"
               >
                 <Download className="w-5 h-5 mr-2 group-hover:translate-y-1 transition-transform duration-200" />
                 Download Resume
@@ -138,14 +138,14 @@ export default function Hero() {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group p-3 bg-gray-800/30 rounded-lg border border-gray-700/50 transition-all duration-300 backdrop-blur-sm hover:scale-110 ${
+                    className={`group p-3 bg-zinc-800/30 rounded-lg border border-zinc-700/50 transition-all duration-300 backdrop-blur-sm hover:scale-110 ${
                       social.label === "GitHub"
                         ? "hover:border-purple-500/50 hover:bg-purple-500/5"
                         : "hover:border-blue-500/50 hover:bg-blue-500/5"
                     }`}
                   >
                     <IconComponent
-                      className={`w-5 h-5 text-gray-400 transition-colors ${
+                      className={`w-5 h-5 text-zinc-400 transition-colors ${
                         social.label === "GitHub"
                           ? "group-hover:text-purple-400"
                           : "group-hover:text-blue-400"
@@ -156,10 +156,10 @@ export default function Hero() {
               })}
               <a
                 href={contactInfo.emailHref}
-                className="group p-3 bg-gray-800/30 rounded-lg border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300 hover:bg-purple-500/5 backdrop-blur-sm hover:scale-110"
+                className="group p-3 bg-zinc-800/30 rounded-lg border border-zinc-700/50 hover:border-purple-500/50 transition-all duration-300 hover:bg-purple-500/5 backdrop-blur-sm hover:scale-110"
               >
                 <svg
-                  className="w-5 h-5 text-gray-400 group-hover:text-purple-400 transition-colors"
+                  className="w-5 h-5 text-zinc-400 group-hover:text-purple-400 transition-colors"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -180,7 +180,7 @@ export default function Hero() {
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
           <button
             onClick={() => scrollToSection("#about")}
-            className="group flex flex-col items-center gap-3 text-gray-400 hover:text-white transition-all duration-300"
+            className="group flex flex-col items-center gap-3 text-zinc-400 hover:text-white transition-all duration-300"
           >
             <span className="text-xs font-medium opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0">
               Scroll Down
@@ -188,8 +188,8 @@ export default function Hero() {
 
             {/* Mouse with scroll wheel */}
             <div className="relative">
-              <div className="w-6 h-10 border-2 border-gray-600 group-hover:border-purple-400 rounded-full flex justify-center pt-2 transition-colors duration-300 bg-gray-900/20 backdrop-blur-sm">
-                <div className="w-1 h-3 bg-gray-500 group-hover:bg-purple-400 rounded-full animate-bounce transition-colors duration-300"></div>
+              <div className="w-6 h-10 border-2 border-zinc-600 group-hover:border-purple-400 rounded-full flex justify-center pt-2 transition-colors duration-300 bg-zinc-900/20 backdrop-blur-sm">
+                <div className="w-1 h-3 bg-zinc-500 group-hover:bg-purple-400 rounded-full animate-bounce transition-colors duration-300"></div>
               </div>
 
               {/* Floating dots animation */}
