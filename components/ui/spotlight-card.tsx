@@ -57,7 +57,7 @@ const SpotlightCard: React.FC<SpotlightCardProps> = ({
     <motion.div
       ref={cardRef}
       className={cn(
-        "relative overflow-hidden rounded-xl bg-white/5 dark:bg-gray-900/50 backdrop-blur-sm border border-white/10 transition-all duration-300",
+        "relative overflow-hidden rounded-xl bg-white/5 dark:bg-zinc-900/50 backdrop-blur-sm border border-white/10 transition-all duration-300",
         hoverEffect &&
           "hover:border-white/20 hover:shadow-xl hover:shadow-purple-500/20",
         className

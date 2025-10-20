@@ -56,7 +56,7 @@ export default async function ProjectsPage() {
           <h1 className="!text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-400 via-purple-300 to-violet-400 bg-clip-text text-transparent">
             All Projects
           </h1>
-          <p className="!text-lg text-gray-300 max-w-3xl leading-relaxed">
+          <p className="!text-lg text-zinc-300 max-w-3xl leading-relaxed">
             A complete showcase of my work, built with modern technologies and
             following industry best practices.
           </p>
@@ -124,7 +124,7 @@ export default async function ProjectsPage() {
                     {project.title}
                   </h3>
 
-                  <p className="text-gray-400 text-sm mb-3 line-clamp-2">
+                  <p className="text-zinc-400 text-sm mb-3 line-clamp-2">
                     {project.description}
                   </p>
 
@@ -141,7 +141,7 @@ export default async function ProjectsPage() {
                     {project.technologies.length > 3 && (
                       <Badge
                         variant="secondary"
-                        className="bg-gray-500/10 text-gray-400 border-gray-500/20 text-xs"
+                        className="bg-zinc-500/10 text-zinc-400 border-zinc-500/20 text-xs"
                       >
                         +{project.technologies.length - 3}
                       </Badge>
@@ -158,7 +158,7 @@ export default async function ProjectsPage() {
           <h3 className="text-2xl font-bold text-foreground mb-4 font-heading">
             Interested in Working Together?
           </h3>
-          <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
+          <p className="text-zinc-300 mb-6 max-w-2xl mx-auto">
             I{"'"}m always open to discussing new opportunities and exciting
             projects.
           </p>

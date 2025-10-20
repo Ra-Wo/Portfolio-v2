@@ -116,7 +116,7 @@ export default function Skills() {
           <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
             My Technical Arsenal
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-12">
+          <p className="text-lg text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-12">
             Armed with a versatile toolkit of skills, I thrive in creating
             robust solutions from system-level programming to modern web
             applications.
@@ -140,7 +140,7 @@ export default function Skills() {
                     <h3 className="text-xl font-bold text-foreground font-heading tracking-tight">
                       {category.title}
                     </h3>
-                    <p className="text-sm text-gray-300">
+                    <p className="text-sm text-zinc-300">
                       {category.description}
                     </p>
                   </div>
@@ -181,7 +181,7 @@ export default function Skills() {
                 Currently Learning & Exploring
               </h3>
             </div>
-            <p className="text-gray-300 leading-relaxed max-w-3xl mx-auto">
+            <p className="text-zinc-300 leading-relaxed max-w-3xl mx-auto">
               Always pushing boundaries and staying ahead of the curve.
               Currently diving deeper into advanced programming concepts while
               exploring modern web technologies and AI integration.

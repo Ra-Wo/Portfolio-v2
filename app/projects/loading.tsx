@@ -12,7 +12,7 @@ export default function ProjectsLoading() {
           </div>
 
           <div className="h-12 sm:h-16 lg:h-20 bg-gradient-to-r from-violet-500/20 to-purple-500/20 rounded animate-pulse mb-6"></div>
-          <div className="h-6 bg-gray-700/50 rounded animate-pulse max-w-3xl"></div>
+          <div className="h-6 bg-zinc-700/50 rounded animate-pulse max-w-3xl"></div>
         </div>
 
         {/* Projects Grid Skeleton */}
@@ -30,8 +30,8 @@ export default function ProjectsLoading() {
                   <div className="h-5 bg-yellow-500/20 rounded animate-pulse w-20"></div>
                 </div>
 
-                <div className="h-6 bg-gray-700/50 rounded animate-pulse mb-2"></div>
-                <div className="h-4 bg-gray-700/30 rounded animate-pulse mb-3 w-4/5"></div>
+                <div className="h-6 bg-zinc-700/50 rounded animate-pulse mb-2"></div>
+                <div className="h-4 bg-zinc-700/30 rounded animate-pulse mb-3 w-4/5"></div>
 
                 <div className="flex flex-wrap gap-1">
                   {Array.from({ length: 3 }).map((_, j) => (
@@ -48,8 +48,8 @@ export default function ProjectsLoading() {
 
         {/* CTA Section Skeleton */}
         <div className="text-center mt-16">
-          <div className="h-8 bg-gray-700/50 rounded animate-pulse mb-4 max-w-md mx-auto"></div>
-          <div className="h-5 bg-gray-700/30 rounded animate-pulse mb-6 max-w-2xl mx-auto"></div>
+          <div className="h-8 bg-zinc-700/50 rounded animate-pulse mb-4 max-w-md mx-auto"></div>
+          <div className="h-5 bg-zinc-700/30 rounded animate-pulse mb-6 max-w-2xl mx-auto"></div>
           <div className="h-10 bg-violet-600/30 rounded animate-pulse w-32 mx-auto"></div>
         </div>
       </div>

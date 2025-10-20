@@ -19,7 +19,7 @@ const components: any = {
             />
           </div>
           {value.caption && (
-            <p className="text-center text-sm text-gray-400 mt-2">
+            <p className="text-center text-sm text-zinc-400 mt-2">
               {value.caption}
             </p>
           )}
@@ -29,7 +29,7 @@ const components: any = {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     codeBlock: ({ value }: any) => (
       <div className="my-6">
-        <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto">
+        <pre className="bg-zinc-900 p-4 rounded-lg overflow-x-auto">
           <code className={`language-${value.language || "text"} text-sm`}>
             {value.code}
           </code>
@@ -52,11 +52,11 @@ const components: any = {
     ),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     normal: ({ children }: any) => (
-      <p className="text-gray-300 leading-relaxed mb-4">{children}</p>
+      <p className="text-zinc-300 leading-relaxed mb-4">{children}</p>
     ),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     blockquote: ({ children }: any) => (
-      <blockquote className="border-l-4 border-violet-500 pl-4 my-6 italic text-gray-300">
+      <blockquote className="border-l-4 border-violet-500 pl-4 my-6 italic text-zinc-300">
         {children}
       </blockquote>
     ),
@@ -64,13 +64,13 @@ const components: any = {
   list: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     bullet: ({ children }: any) => (
-      <ul className="list-disc list-inside text-gray-300 mb-4 space-y-2 ml-4">
+      <ul className="list-disc list-inside text-zinc-300 mb-4 space-y-2 ml-4">
         {children}
       </ul>
     ),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     number: ({ children }: any) => (
-      <ol className="list-decimal list-inside text-gray-300 mb-4 space-y-2 ml-4">
+      <ol className="list-decimal list-inside text-zinc-300 mb-4 space-y-2 ml-4">
         {children}
       </ol>
     ),
@@ -78,11 +78,11 @@ const components: any = {
   listItem: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     bullet: ({ children }: any) => (
-      <li className="text-gray-300">{children}</li>
+      <li className="text-zinc-300">{children}</li>
     ),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     number: ({ children }: any) => (
-      <li className="text-gray-300">{children}</li>
+      <li className="text-zinc-300">{children}</li>
     ),
   },
   marks: {
@@ -92,11 +92,11 @@ const components: any = {
     ),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     em: ({ children }: any) => (
-      <em className="italic text-gray-200">{children}</em>
+      <em className="italic text-zinc-200">{children}</em>
     ),
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     code: ({ children }: any) => (
-      <code className="bg-gray-800 px-2 py-1 rounded text-sm text-violet-300">
+      <code className="bg-zinc-800 px-2 py-1 rounded text-sm text-violet-300">
         {children}
       </code>
     ),

@@ -97,7 +97,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
       case "planned":
         return "bg-yellow-500/10 text-yellow-300 border-yellow-500/20";
       case "archived":
-        return "bg-gray-500/10 text-gray-300 border-gray-500/20";
+        return "bg-zinc-500/10 text-zinc-300 border-zinc-500/20";
       default:
         return "bg-violet-500/10 text-violet-300 border-violet-500/20";
     }
@@ -155,7 +155,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   {project.title}
                 </h1>
 
-                <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
+                <p className="text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-8">
                   {project.description}
                 </p>
 
@@ -222,13 +222,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           />
                         </div>
                       ) : (
-                        <div className="flex items-center justify-center h-96 bg-gray-800 rounded-lg">
-                          <div className="text-center text-gray-400">
+                        <div className="flex items-center justify-center h-96 bg-zinc-800 rounded-lg">
+                          <div className="text-center text-zinc-400">
                             <div className="text-6xl mb-4">�</div>
                             <h3 className="text-xl font-medium mb-2">
                               {project.title}
                             </h3>
-                            <p className="text-gray-500">No image available</p>
+                            <p className="text-zinc-500">No image available</p>
                           </div>
                         </div>
                       );

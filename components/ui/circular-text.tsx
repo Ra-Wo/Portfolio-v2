@@ -97,7 +97,7 @@ const CircularText: React.FC<CircularTextProps> = ({
 
         <text
           ref={textRef}
-          className="fill-gray-600 dark:fill-gray-400 font-medium select-none"
+          className="fill-zinc-600 dark:fill-zinc-400 font-medium select-none"
           fontSize={fontSize}
           style={{
             fontFamily: "inherit",

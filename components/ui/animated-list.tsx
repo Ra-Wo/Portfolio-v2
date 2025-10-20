@@ -151,9 +151,9 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
       <div
         ref={listRef}
         className={cn(
-          "max-h-[400px] overflow-y-auto p-4 rounded-lg bg-white/5 dark:bg-gray-900/50 backdrop-blur-sm border border-white/10",
+          "max-h-[400px] overflow-y-auto p-4 rounded-lg bg-white/5 dark:bg-zinc-900/50 backdrop-blur-sm border border-white/10",
           displayScrollbar
-            ? "[&::-webkit-scrollbar]:w-[8px] [&::-webkit-scrollbar-track]:bg-gray-800/50 [&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-thumb]:rounded-[4px] [&::-webkit-scrollbar-thumb]:hover:bg-gray-500"
+            ? "[&::-webkit-scrollbar]:w-[8px] [&::-webkit-scrollbar-track]:bg-zinc-800/50 [&::-webkit-scrollbar-thumb]:bg-zinc-600 [&::-webkit-scrollbar-thumb]:rounded-[4px] [&::-webkit-scrollbar-thumb]:hover:bg-zinc-500"
             : "scrollbar-hide"
         )}
         onScroll={handleScroll}
@@ -184,7 +184,7 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
                 itemClassName
               )}
             >
-              <p className="text-gray-900 dark:text-white m-0 font-medium">
+              <p className="text-zinc-900 dark:text-white m-0 font-medium">
                 {item}
               </p>
             </div>
@@ -194,11 +194,11 @@ const AnimatedList: React.FC<AnimatedListProps> = ({
       {showGradients && (
         <>
           <div
-            className="absolute top-0 left-0 right-0 h-[50px] bg-gradient-to-b from-gray-50 dark:from-gray-950 to-transparent pointer-events-none transition-opacity duration-300 ease rounded-t-lg"
+            className="absolute top-0 left-0 right-0 h-[50px] bg-gradient-to-b from-zinc-50 dark:from-zinc-950 to-transparent pointer-events-none transition-opacity duration-300 ease rounded-t-lg"
             style={{ opacity: topGradientOpacity }}
           />
           <div
-            className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-gray-50 dark:from-gray-950 to-transparent pointer-events-none transition-opacity duration-300 ease rounded-b-lg"
+            className="absolute bottom-0 left-0 right-0 h-[100px] bg-gradient-to-t from-zinc-50 dark:from-zinc-950 to-transparent pointer-events-none transition-opacity duration-300 ease rounded-b-lg"
             style={{ opacity: bottomGradientOpacity }}
           />
         </>

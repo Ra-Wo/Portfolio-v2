@@ -118,7 +118,7 @@ const MagicBentoCard: React.FC<MagicBentoCardProps> = ({
     <motion.div
       ref={cardRef}
       className={cn(
-        "relative overflow-hidden rounded-xl bg-gradient-to-br from-gray-900/50 to-gray-800/50 backdrop-blur-sm border border-white/10 cursor-pointer",
+        "relative overflow-hidden rounded-xl bg-gradient-to-br from-zinc-900/50 to-zinc-800/50 backdrop-blur-sm border border-white/10 cursor-pointer",
         className
       )}
       style={{

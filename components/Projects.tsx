@@ -97,7 +97,7 @@ export default function Projects() {
           <h2 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
             My Projects
           </h2>
-          <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-zinc-300 max-w-3xl mx-auto leading-relaxed">
             A showcase of my recent work and projects, built with modern
             technologies and following industry best practices.
           </p>
@@ -144,7 +144,7 @@ export default function Projects() {
                         <h3 className="!text-2xl font-bold text-foreground font-heading mb-2 tracking-tight group-hover:text-violet-300 transition-colors duration-200">
                           {project.title}
                         </h3>
-                        <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">
+                        <p className="text-zinc-400 text-sm leading-relaxed line-clamp-3">
                           {project.description}
                         </p>
                       </div>
