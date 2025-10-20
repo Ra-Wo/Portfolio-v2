@@ -61,6 +61,30 @@ const components: any = {
       </blockquote>
     ),
   },
+  list: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    bullet: ({ children }: any) => (
+      <ul className="list-disc list-inside text-gray-300 mb-4 space-y-2 ml-4">
+        {children}
+      </ul>
+    ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    number: ({ children }: any) => (
+      <ol className="list-decimal list-inside text-gray-300 mb-4 space-y-2 ml-4">
+        {children}
+      </ol>
+    ),
+  },
+  listItem: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    bullet: ({ children }: any) => (
+      <li className="text-gray-300">{children}</li>
+    ),
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    number: ({ children }: any) => (
+      <li className="text-gray-300">{children}</li>
+    ),
+  },
   marks: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     strong: ({ children }: any) => (

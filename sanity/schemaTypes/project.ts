@@ -41,6 +41,10 @@ export const projectType = defineType({
             { title: "Heading 3", value: "h3" },
             { title: "Quote", value: "blockquote" },
           ],
+          lists: [
+            { title: "Bullet List", value: "bullet" },
+            { title: "Numbered List", value: "number" },
+          ],
           marks: {
             decorators: [
               { title: "Bold", value: "strong" },
