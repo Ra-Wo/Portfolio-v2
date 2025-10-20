@@ -49,6 +49,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Rachid Oudouch", url: "https://oudouch.vercel.app" }],
   creator: "Rachid Oudouch",
+  icons: {
+    icon: "/avatar.png",
+  },
   openGraph: {
     title: "Rachid Oudouch - Web Developer",
     description:
