@@ -3,7 +3,6 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import FadeContent from "@/components/ui/fade-content";
 import RichText from "@/components/ui/rich-text";
 import { urlFor, type Project } from "@/lib/sanity";
 import {
@@ -40,8 +39,8 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   // Helper function to safely get image URL
   const getImageUrl = (
     image: SanityImage | unknown,
-    width = 800,
-    height = 600
+    width = 1600,
+    height = 900
   ): string | null => {
     try {
       const sanityImage = image as SanityImage;
@@ -49,7 +48,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         sanityImage?.asset?._ref &&
         !sanityImage.asset._ref.startsWith("mock-image")
       ) {
-        return urlFor(sanityImage).width(width).height(height).url();
+        return urlFor(sanityImage).width(width).height(height).quality(95).auto("format").url();
       }
       return null;
     } catch (err) {
@@ -131,7 +130,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         {/* Hero Section */}
         <section className="py-4">
           <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 pt-5">
-            <FadeContent direction="up" delay={0.1}>
+          
               <div className="text-center mb-12">
                 <div className="flex items-center justify-center gap-4 mb-6 flex-wrap">
                   {project.category && (
@@ -199,11 +198,11 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   )}
                 </div>
               </div>
-            </FadeContent>
+            
 
             {/* Main Project Image/Gallery */}
             {allImages.length > 0 && (
-              <FadeContent direction="up" delay={0.3}>
+            
                 <div className="mb-1">
                   {/* Main Image Display */}
                   <div className="relative bg-black rounded-lg overflow-hidden">
@@ -215,12 +214,13 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                           <Image
                             src={imageUrl}
                             alt={currentImage?.alt || project.title}
-                            width={1200}
-                            height={500}
+                            width={1600}
+                            height={900}
                             unoptimized
+                            quality={95}
                             className="w-full h-auto object-contain"
                             priority={true}
-                            style={{ maxHeight: "600px" }}
+                            style={{ maxHeight: "700px" }}
                           />
                         </div>
                       ) : (
@@ -237,15 +237,11 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                     })()}
                   </div>
                 </div>
-              </FadeContent>
+              
             )}
 
             {/* Technologies Section */}
-            <FadeContent
-              direction="up"
-              delay={0.35}
-              useInViewMargin="0px 0px 30% 0px"
-            >
+          
               <div className="flex flex-wrap gap-2 mt-5">
                 {project.technologies.map((tech) => (
                   <Badge
@@ -257,7 +253,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   </Badge>
                 ))}
               </div>
-            </FadeContent>
+            
           </div>
         </section>
 
@@ -268,11 +264,11 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             <div className="space-y-8">
               {/* Project Content */}
               {project.content && project.content.length > 0 ? (
-                <FadeContent direction="up" delay={0.4}>
+              
                   <Card className="p-6 bg-card/30 border-violet-500/20">
                     <RichText value={project.content} />
                   </Card>
-                </FadeContent>
+                
               ) : null}
             </div>
           </div>
