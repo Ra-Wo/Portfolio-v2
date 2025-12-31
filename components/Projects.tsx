@@ -71,10 +71,7 @@ export default function Projects() {
   }
 
   return (
-    <section
-      id="projects"
-      className="min-h-screen relative py-20 bg-black overflow-hidden"
-    >
+    <section id="projects" className="relative py-20 bg-black overflow-hidden">
       <Spotlight
         className="-top-40 -right-10 md:-right-32 md:-top-20 h-screen z-10"
         fill="purple"

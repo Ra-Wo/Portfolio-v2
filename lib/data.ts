@@ -1,12 +1,35 @@
 import { Github, Linkedin, Twitter, Mail, Instagram } from "lucide-react";
 
-// Contact Information
+// ========================================
+// PERSONAL INFORMATION
+// ========================================
+
+export const personalInfo = {
+  name: "Rachid Oudouch",
+  fullName: "Rachid Oudouch",
+  role: "Full-Stack Web Developer",
+  tagline:
+    "I create elegant digital solutions with clean code and intuitive design.",
+  description:
+    "Passionate about building web experiences that make a difference.",
+  avatar: "/avatar.png",
+  resumeFile: "/resume.pdf",
+  resumeDownloadName: "Rachid-Oudouch-Resume.pdf",
+};
+
+// ========================================
+// CONTACT INFORMATION
+// ========================================
+
 export const contactInfo = {
   email: "rashidoudouch@gmail.com",
   emailHref: "mailto:rashidoudouch@gmail.com",
 };
 
-// Social Media Links
+// ========================================
+// SOCIAL MEDIA LINKS
+// ========================================
+
 export const socialLinks = [
   {
     icon: Github,
@@ -33,6 +56,53 @@ export const socialLinks = [
     username: "@r_oudouch",
   },
 ];
+
+// ========================================
+// FOOTER DATA
+// ========================================
+
+export const footerData = {
+  brandName: personalInfo.name,
+  tagline:
+    "Full-stack developer passionate about creating exceptional digital experiences with modern technologies and clean, efficient code.",
+  techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
+  copyright: {
+    owner: personalInfo.name,
+    startYear: 2024,
+  },
+};
+
+// ========================================
+// HERO DATA
+// ========================================
+
+export const heroData = {
+  greeting: "Hi, I'm",
+  name: personalInfo.name,
+  role: personalInfo.role,
+  tagline: personalInfo.tagline,
+  description: personalInfo.description,
+  avatar: personalInfo.avatar,
+  buttons: {
+    contact: {
+      text: "Get In Touch",
+      href: "#contact",
+    },
+    resume: {
+      text: "Download Resume",
+      file: personalInfo.resumeFile,
+      downloadName: personalInfo.resumeDownloadName,
+    },
+  },
+  scrollIndicator: {
+    text: "Scroll Down",
+    target: "#about",
+  },
+};
+
+// ========================================
+// COMBINED DATA (for convenience)
+// ========================================
 
 // Contact Info Array (for Contact component)
 export const contactDetails = [

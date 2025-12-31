@@ -2,7 +2,7 @@
 
 import { Heart, ArrowUp, Coffee } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { socialLinksWithEmail } from "@/lib/data";
+import { socialLinksWithEmail, footerData } from "@/lib/data";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -23,12 +23,10 @@ export default function Footer() {
                 className="text-3xl font-bold bg-gradient-to-r from-violet-400 via-purple-400 to-violet-600 bg-clip-text text-transparent"
                 style={{ fontFamily: "var(--font-pacifico)" }}
               >
-                Rachid Oudouch
+                {footerData.brandName}
               </h3>
               <p className="text-muted-foreground mt-2 max-w-md">
-                Full-stack developer passionate about creating exceptional
-                digital experiences with modern technologies and clean,
-                efficient code.
+                {footerData.tagline}
               </p>
             </div>
 
@@ -38,16 +36,14 @@ export default function Footer() {
                 Built With
               </h4>
               <div className="flex flex-wrap gap-2">
-                {["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"].map(
-                  (tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20"
-                    >
-                      {tech}
-                    </span>
-                  )
-                )}
+                {footerData.techStack.map((tech) => (
+                  <span
+                    key={tech}
+                    className="text-xs px-3 py-1 rounded-full bg-violet-500/10 text-violet-400 border border-violet-500/20"
+                  >
+                    {tech}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
@@ -79,7 +75,9 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             {/* Copyright */}
             <div className="flex items-center space-x-2 text-sm text-muted-foreground">
-              <span>© {currentYear} Rachid Oudouch.</span>
+              <span>
+                © {currentYear} {footerData.copyright.owner}.
+              </span>
               <span className="flex items-center space-x-1">
                 <span>Made with</span>
                 <Heart className="w-4 h-4 text-red-400 fill-current" />

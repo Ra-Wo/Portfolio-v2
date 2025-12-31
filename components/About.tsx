@@ -106,10 +106,7 @@ const education = [
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="min-h-screen relative py-20 bg-black overflow-hidden"
-    >
+    <section id="about" className="relative py-20 bg-black overflow-hidden">
       <Spotlight
         className="-top-40 -left-10 md:-left-32 md:-top-20 h-screen z-10"
         fill="purple"

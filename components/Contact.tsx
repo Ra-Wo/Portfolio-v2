@@ -157,7 +157,7 @@ export default function Contact() {
     formData.name && formData.email && formData.subject && formData.message;
 
   return (
-    <section id="contact" className="min-h-screen relative py-20 lg:py-32">
+    <section id="contact" className="relative py-20 lg:py-32">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
         <div className="relative z-10">
           {/* Section Header */}

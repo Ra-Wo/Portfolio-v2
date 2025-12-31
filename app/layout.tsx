@@ -4,6 +4,7 @@ import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
+import { cn } from "@/lib/utils";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -81,14 +82,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      </head>
       <body
-        className={`${dmSans.variable} ${poppins.variable} ${jetbrainsMono.variable} ${pacifico.variable} antialiased min-h-screen bg-background text-foreground`}
-        style={{ 
-          fontFamily: `${dmSans.style.fontFamily}, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`
+        className={cn(
+          dmSans.variable,
+          poppins.variable,
+          jetbrainsMono.variable,
+          pacifico.variable,
+          "antialiased min-h-screen bg-background text-foreground"
+        )}
+        style={{
+          fontFamily: `${dmSans.style.fontFamily}, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`,
         }}
       >
         <ThemeProvider
