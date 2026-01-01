@@ -215,7 +215,6 @@ export default function Projects() {
         </div>
 
         {/* See All Projects Section */}
-
         <div className="text-center mt-16">
           <StarBorder
             as={Link}

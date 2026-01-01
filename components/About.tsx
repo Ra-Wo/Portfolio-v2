@@ -118,7 +118,6 @@ export default function About() {
 
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 relative z-20">
         {/* Section Header */}
-
         <div className="text-center mb-16">
           <Badge
             variant="outline"
@@ -137,7 +136,6 @@ export default function About() {
 
         <div className="max-w-4xl mx-auto">
           {/* Story Section */}
-
           <div className="mt-20">
             <div className="text-center mb-12">
               <div className="section-decoration mb-4">
@@ -199,7 +197,6 @@ export default function About() {
         </div>
 
         {/* Experience Section */}
-
         <div className="mt-20">
           <div className="text-center mb-12">
             <div className="section-decoration mb-4">
@@ -316,7 +313,6 @@ export default function About() {
         </div>
 
         {/* Education Section */}
-
         <div className="mt-20">
           <div className="text-center mb-12">
             <div className="section-decoration mb-4">

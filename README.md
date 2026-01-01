@@ -64,6 +64,8 @@ export const siteMetadata = { title, description, keywords, author, urls };
 
 Everything is configured in one place - no need to edit other files!
 
+**Note**: To update the About section content (bio, description, etc.), edit the `components/About.tsx` file directly.
+
 ## 🔗 Connect
 
 - **Portfolio**: [oudouch.vercel.app](https://oudouch.vercel.app)

@@ -102,7 +102,6 @@ export default function Skills() {
 
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 relative z-20">
         {/* Section Header */}
-
         <div className="text-center mb-16">
           <Badge
             variant="outline"

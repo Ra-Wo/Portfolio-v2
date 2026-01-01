@@ -37,9 +37,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Helper function to safely get image URL
-  const getImageUrl = (
-    image: SanityImage | unknown,
-  ): string | null => {
+  const getImageUrl = (image: SanityImage | unknown): string | null => {
     try {
       const sanityImage = image as SanityImage;
       if (
@@ -128,130 +126,124 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         {/* Hero Section */}
         <section className="py-4">
           <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 pt-5">
-          
-              <div className="text-center mb-12">
-                <div className="flex items-center justify-center gap-4 mb-6 flex-wrap">
-                  {project.category && (
-                    <Badge
-                      variant="outline"
-                      className="bg-violet-500/10 border-violet-500/20 text-violet-300"
-                    >
-                      <Tag className="w-3 h-3 mr-1" />
-                      {project.category.replace("-", " ").toUpperCase()}
-                    </Badge>
-                  )}
-                  {project.status && (
-                    <Badge
-                      variant="outline"
-                      className={getStatusColor(project.status)}
-                    >
-                      <CheckCircle className="w-3 h-3 mr-1" />
-                      {project.status.replace("-", " ").toUpperCase()}
-                    </Badge>
-                  )}
-                </div>
-
-                <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
-                  {project.title}
-                </h1>
-
-                <p className="text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-8">
-                  {project.description}
-                </p>
-
-                {/* Project Links */}
-                <div className="flex justify-center gap-4 flex-wrap">
-                  {project.liveUrl && (
-                    <Button
-                      size="lg"
-                      className="bg-violet-600 hover:bg-violet-700 text-white"
-                    >
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2"
-                      >
-                        <ExternalLink className="w-4 h-4" />
-                        Live Demo
-                      </a>
-                    </Button>
-                  )}
-                  {project.githubUrl && (
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="border-violet-500/30 text-violet-300 hover:bg-violet-500/10"
-                    >
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center gap-2"
-                      >
-                        <Github className="w-4 h-4" />
-                        Source Code
-                      </a>
-                    </Button>
-                  )}
-                </div>
+            <div className="text-center mb-12">
+              <div className="flex items-center justify-center gap-4 mb-6 flex-wrap">
+                {project.category && (
+                  <Badge
+                    variant="outline"
+                    className="bg-violet-500/10 border-violet-500/20 text-violet-300"
+                  >
+                    <Tag className="w-3 h-3 mr-1" />
+                    {project.category.replace("-", " ").toUpperCase()}
+                  </Badge>
+                )}
+                {project.status && (
+                  <Badge
+                    variant="outline"
+                    className={getStatusColor(project.status)}
+                  >
+                    <CheckCircle className="w-3 h-3 mr-1" />
+                    {project.status.replace("-", " ").toUpperCase()}
+                  </Badge>
+                )}
               </div>
-            
+
+              <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold mb-6 font-heading tracking-tight leading-tight bg-gradient-to-r from-violet-600 via-purple-300 to-violet-600 bg-clip-text text-transparent">
+                {project.title}
+              </h1>
+
+              <p className="text-xl text-zinc-300 max-w-3xl mx-auto leading-relaxed mb-8">
+                {project.description}
+              </p>
+
+              {/* Project Links */}
+              <div className="flex justify-center gap-4 flex-wrap">
+                {project.liveUrl && (
+                  <Button
+                    size="lg"
+                    className="bg-violet-600 hover:bg-violet-700 text-white"
+                  >
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <ExternalLink className="w-4 h-4" />
+                      Live Demo
+                    </a>
+                  </Button>
+                )}
+                {project.githubUrl && (
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-violet-500/30 text-violet-300 hover:bg-violet-500/10"
+                  >
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2"
+                    >
+                      <Github className="w-4 h-4" />
+                      Source Code
+                    </a>
+                  </Button>
+                )}
+              </div>
+            </div>
 
             {/* Main Project Image/Gallery */}
             {allImages.length > 0 && (
-            
-                <div className="mb-1">
-                  {/* Main Image Display */}
-                  <div className="relative bg-black rounded-lg overflow-hidden">
-                    {(() => {
-                      const currentImage = allImages[currentImageIndex];
-                      const imageUrl = getImageUrl(currentImage);
-                      return imageUrl ? (
-                        <div className="relative">
-                          <Image
-                            src={imageUrl}
-                            alt={currentImage?.alt || project.title}
-                            width={1600}
-                            height={900}
-                            unoptimized
-                            quality={95}
-                            className="w-full h-auto object-contain"
-                            priority={true}
-                            style={{ maxHeight: "700px" }}
-                          />
+              <div className="mb-1">
+                {/* Main Image Display */}
+                <div className="relative bg-black rounded-lg overflow-hidden">
+                  {(() => {
+                    const currentImage = allImages[currentImageIndex];
+                    const imageUrl = getImageUrl(currentImage);
+                    return imageUrl ? (
+                      <div className="relative">
+                        <Image
+                          src={imageUrl}
+                          alt={currentImage?.alt || project.title}
+                          width={1600}
+                          height={900}
+                          unoptimized
+                          quality={95}
+                          className="w-full h-auto object-contain"
+                          priority={true}
+                          style={{ maxHeight: "700px" }}
+                        />
+                      </div>
+                    ) : (
+                      <div className="flex items-center justify-center h-96 bg-zinc-800 rounded-lg">
+                        <div className="text-center text-zinc-400">
+                          <div className="text-6xl mb-4">�</div>
+                          <h3 className="text-xl font-medium mb-2">
+                            {project.title}
+                          </h3>
+                          <p className="text-zinc-500">No image available</p>
                         </div>
-                      ) : (
-                        <div className="flex items-center justify-center h-96 bg-zinc-800 rounded-lg">
-                          <div className="text-center text-zinc-400">
-                            <div className="text-6xl mb-4">�</div>
-                            <h3 className="text-xl font-medium mb-2">
-                              {project.title}
-                            </h3>
-                            <p className="text-zinc-500">No image available</p>
-                          </div>
-                        </div>
-                      );
-                    })()}
-                  </div>
+                      </div>
+                    );
+                  })()}
                 </div>
-              
+              </div>
             )}
 
             {/* Technologies Section */}
-          
-              <div className="flex flex-wrap gap-2 mt-5">
-                {project.technologies.map((tech) => (
-                  <Badge
-                    key={tech}
-                    variant="secondary"
-                    className="bg-violet-500/10 text-violet-300 border-violet-500/20 hover:bg-violet-500/20 transition-colors duration-200 text-sm px-3 py-1"
-                  >
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            
+            <div className="flex flex-wrap gap-2 mt-5">
+              {project.technologies.map((tech) => (
+                <Badge
+                  key={tech}
+                  variant="secondary"
+                  className="bg-violet-500/10 text-violet-300 border-violet-500/20 hover:bg-violet-500/20 transition-colors duration-200 text-sm px-3 py-1"
+                >
+                  {tech}
+                </Badge>
+              ))}
+            </div>
           </div>
         </section>
 
@@ -262,11 +254,9 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
             <div className="space-y-8">
               {/* Project Content */}
               {project.content && project.content.length > 0 ? (
-              
-                  <Card className="p-6 bg-card/30 border-violet-500/20">
-                    <RichText value={project.content} />
-                  </Card>
-                
+                <Card className="p-6 bg-card/30 border-violet-500/20">
+                  <RichText value={project.content} />
+                </Card>
               ) : null}
             </div>
           </div>

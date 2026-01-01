@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@portabletext/react": "^3.2.1",
@@ -44,6 +45,7 @@
     "@types/three": "^0.179.0",
     "eslint": "^9",
     "eslint-config-next": "15.4.3",
+    "prettier": "^3.7.4",
     "tailwindcss": "^4",
     "tw-animate-css": "^1.3.5",
     "typescript": "^5"
