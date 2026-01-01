@@ -129,7 +129,7 @@ export default function Skills() {
             >
               <div className="space-y-6">
                 {/* Category Header */}
-                <div className="flex items-center gap-3">
+                <div className="flex gap-3 sm:flex-row flex-col">
                   <div className="w-12 h-12 rounded-lg bg-violet-500/10 border border-violet-500/20 flex items-center justify-center text-violet-400">
                     {category.icon}
                   </div>
@@ -169,11 +169,11 @@ export default function Skills() {
         </div>
 
         {/* Currently Learning */}
-
         <Card className="mt-8 p-6 bg-gradient-to-br from-violet-500/5 via-purple-500/5 to-violet-500/5 border-violet-500/20">
           <div className="text-center space-y-4">
-            <div className="flex items-center justify-center gap-2">
-              <Zap className="w-5 h-5 text-violet-400" />
+            <div className="flex items-center justify-center gap-2 sm:flex-row flex-col">
+              <Zap className="w-8 h-8 text-violet-400" />
+              <div className="h-2 lg:hidden block" />
               <h3 className="text-xl font-bold text-foreground font-heading tracking-tight">
                 Currently Learning & Exploring
               </h3>

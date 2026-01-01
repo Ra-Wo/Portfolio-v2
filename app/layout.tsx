@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Analytics } from "@vercel/analytics/next";
 import { cn } from "@/lib/utils";
+import { siteMetadata } from "@/lib/data";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -36,38 +37,27 @@ const pacifico = Pacifico({
 });
 
 export const metadata: Metadata = {
-  title: "Rachid Oudouch - Web Developer",
-  description:
-    "Passionate web developer from Morocco specializing in modern web technologies. Building exceptional digital experiences with React, Next.js, and TypeScript.",
-  keywords: [
-    "web developer",
-    "frontend developer",
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Morocco",
-    "portfolio",
-  ],
-  authors: [{ name: "Rachid Oudouch", url: "https://oudouch.vercel.app" }],
-  creator: "Rachid Oudouch",
+  title: siteMetadata.title,
+  description: siteMetadata.description,
+  keywords: siteMetadata.keywords,
+  authors: [{ name: siteMetadata.author.name, url: siteMetadata.author.url }],
+  creator: siteMetadata.creator,
   icons: {
     icon: "/avatar.png",
   },
   openGraph: {
-    title: "Rachid Oudouch - Web Developer",
-    description:
-      "Passionate web developer from Morocco specializing in modern web technologies.",
-    url: "https://oudouch.vercel.app",
-    siteName: "Rachid Oudouch Portfolio",
-    locale: "en_US",
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    url: siteMetadata.siteUrl,
+    siteName: siteMetadata.siteName,
+    locale: siteMetadata.locale,
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Rachid Oudouch - Web Developer",
-    description:
-      "Passionate web developer from Morocco specializing in modern web technologies.",
-    creator: "@r_oudouch",
+    title: siteMetadata.title,
+    description: siteMetadata.description,
+    creator: siteMetadata.twitterHandle,
   },
   robots: {
     index: true,

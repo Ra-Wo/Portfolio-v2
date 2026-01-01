@@ -124,3 +124,31 @@ export const socialLinksWithEmail = [
     username: contactInfo.email,
   },
 ];
+
+// ========================================
+// SITE METADATA
+// ========================================
+
+export const siteMetadata = {
+  title: "Rachid Oudouch - Web Developer",
+  description:
+    "Passionate web developer from Morocco specializing in modern web technologies. Building exceptional digital experiences with React, Next.js, and TypeScript.",
+  keywords: [
+    "web developer",
+    "frontend developer",
+    "React",
+    "Next.js",
+    "TypeScript",
+    "Morocco",
+    "portfolio",
+  ],
+  author: {
+    name: "Rachid Oudouch",
+    url: "https://oudouch.vercel.app",
+  },
+  creator: "Rachid Oudouch",
+  siteUrl: "https://oudouch.vercel.app",
+  siteName: "Rachid Oudouch Portfolio",
+  locale: "en_US",
+  twitterHandle: "@r_oudouch",
+};
