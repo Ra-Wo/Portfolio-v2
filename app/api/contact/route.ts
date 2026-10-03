@@ -22,7 +22,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verify the reCAPTCHA token with Google
+    // Verify the reCAPTCHA token with Google. Tokens and secrets must be
+    // form-encoded because either value may contain reserved characters.
+    const recaptchaParams = new URLSearchParams({
+      secret: process.env.RECAPTCHA_SECRET_KEY || "",
+      response: captchaToken,
+    });
     const recaptchaResponse = await fetch(
       "https://www.google.com/recaptcha/api/siteverify",
       {
@@ -30,13 +35,19 @@ export async function POST(request: NextRequest) {
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${captchaToken}`,
+        body: recaptchaParams.toString(),
       }
     );
 
     const recaptchaResult = await recaptchaResponse.json();
 
     if (!recaptchaResult.success) {
+      // Google returns safe diagnostic codes such as invalid-input-secret or
+      // timeout-or-duplicate. Never log the secret or response token.
+      console.warn(
+        "reCAPTCHA verification rejected:",
+        recaptchaResult["error-codes"] || ["unknown-error"]
+      );
       return NextResponse.json(
         { error: "reCAPTCHA verification failed. Please try again." },
         { status: 400 }
